@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import { IconContext } from "react-icons";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import Text from "../atoms/Text";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
 import { Button } from "@mui/material";
-import Input from "../atoms/Input";
 
 const CusContainer = styled.div`
   display: flex;

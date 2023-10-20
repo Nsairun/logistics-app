@@ -24,8 +24,9 @@ const ContactContainer = styled.div`
 const ContactSubContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 40vw;
+  
   align-text: left;
   gap: 4rem;
 `;
@@ -41,22 +42,23 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
   return (
     <ContactContainer>
       <ContactContainer>
-        <div style={{ borderBottom: "0.5px solid #87C656" }}>
+        
         About
+        <div style={{ borderBottom: "0.5px solid #87C656"}}>
         <ContactSubContainer>
-          <Text headingLevel={"h1"} style={{ width: "7vw" }}>
+          <Text headingLevel={"h1"}>
             Customer ID Num:
           </Text>
           <Text headingLevel={"h1"}>{ID}</Text>
         </ContactSubContainer>
         <ContactSubContainer>
-          <Text headingLevel={"h1"} style={{ width: "10vw" }}>
+          <Text headingLevel={"h1"}>
             Delivery Area:
           </Text>
           <Text headingLevel={"h1"}>{DelivArea}</Text>
         </ContactSubContainer>
         <ContactSubContainer>
-          <Text headingLevel={"h1"} style={{ width: "12vw" }}>
+          <Text headingLevel={"h1"}>
             CarNum :
           </Text>
           <Text headingLevel={"h1"}>{CarNum}</Text>
@@ -66,13 +68,13 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
           <ContactContainer>
             Contact
             <ContactSubContainer>
-              <Text headingLevel={"h1"} style={{ width: "8vw" }}>
+              <Text headingLevel={"h1"} style={{ width: "12vw" }}>
                 Phone:
               </Text>
               <Text headingLevel={"h1"}>{tel}</Text>
             </ContactSubContainer>
             <ContactSubContainer>
-              <Text headingLevel={"h1"} style={{ width: "7vw" }}>
+              <Text headingLevel={"h1"} style={{ width: "11vw" }}>
                 Email:
               </Text>
               <Text headingLevel={"h1"}>{mail}</Text>
@@ -82,13 +84,13 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
         <div style={{ borderBottom: "0.5px solid #87C656" }}>
           Personal Statistics
           <ContactSubContainer>
-            <Text headingLevel={"h1"} style={{ width: "13vw" }}>
+            <Text headingLevel={"h1"} style={{ width: "18vw" }}>
               Trips made:
             </Text>
             <Text headingLevel={"h1"}>{trips}</Text>
           </ContactSubContainer>
           <ContactSubContainer>
-            <Text headingLevel={"h1"} style={{ width: "13vw" }}>
+            <Text headingLevel={"h1"} style={{ width: "18vw" }}>
               Number of orders delivered:
             </Text>
             <Text headingLevel={"h1"}>{NumofOrders}</Text>

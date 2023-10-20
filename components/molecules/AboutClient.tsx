@@ -15,9 +15,9 @@ const AboutClient: React.FC<AboutClientProps> = ({
 }) => {
   const ContactContainer = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border-bottom: 0.5px solid #87C656;
     width: 40vw;
     gap: 1rem;
@@ -26,7 +26,7 @@ const AboutClient: React.FC<AboutClientProps> = ({
   const ContactSubContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 50vw;
     align-text: left;
     gap: 4rem;
