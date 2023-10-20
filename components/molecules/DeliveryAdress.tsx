@@ -24,9 +24,8 @@ function DeliveryAdress({
   const ContactSubContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 50vw;
-    gap: 4rem;
+    justify-content: space-between;
+    width: 40vw;
   `;
   // map thru the various deliveries and how many deliveries done per user
   return (

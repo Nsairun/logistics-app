@@ -8,6 +8,9 @@ import {
 } from "../../hooks/MyIcons";
 import { Button } from "@mui/material";
 
+type CustomerSectionProps = {};
+
+
 const CusContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,7 +47,7 @@ const iconStyling: IconStylingProviderProps = {
   children: undefined,
 };
 
-function CustomerSection() {
+const CustomerSection: React.FC<CustomerSectionProps> = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleSelectChange = (event: {
@@ -112,7 +115,7 @@ function CustomerSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
             >
               <Text headingLevel="h1">New</Text>
@@ -122,7 +125,7 @@ function CustomerSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
             >
               <Text headingLevel="h1">Constant</Text>
@@ -181,7 +184,7 @@ function CustomerSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
             >
               <Text headingLevel="h1">All Customers</Text>
@@ -191,7 +194,7 @@ function CustomerSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
             >
               <Text headingLevel="h1">New</Text>
@@ -201,7 +204,7 @@ function CustomerSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
               }}
             >
               <Text headingLevel="h1">Constant</Text>

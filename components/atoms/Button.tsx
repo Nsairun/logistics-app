@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 

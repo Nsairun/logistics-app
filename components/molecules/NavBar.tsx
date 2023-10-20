@@ -37,8 +37,10 @@ const NavBarMain = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  padding: 10px;
+  font-size: 14px;
   gap: 1rem;
-  color: #fff;
+  color: grey;
   width: 8vw;
 `;
 

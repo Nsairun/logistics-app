@@ -27,7 +27,7 @@ const AboutClient: React.FC<AboutClientProps> = ({
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 50vw;
+    width: 40vw;
     align-text: left;
     gap: 4rem;
   `;
@@ -35,15 +35,15 @@ const AboutClient: React.FC<AboutClientProps> = ({
     <ContactContainer>
       About
       <ContactSubContainer>
-        <Text headingLevel={"h1"} style={{width: "13vw"}}>Customer ID Num:</Text>
+        <Text headingLevel={"h1"}>Customer ID Num:</Text>
         <Text headingLevel={"h1"}>{ID}</Text>
       </ContactSubContainer>
       <ContactSubContainer>
-        <Text headingLevel={"h1"}style={{width: "14vw"}}>orders Done:</Text>
+        <Text headingLevel={"h1"}>orders Done:</Text>
         <Text headingLevel={"h1"}>{ordersDone}</Text>
       </ContactSubContainer>
       <ContactSubContainer>
-        <Text headingLevel={"h1"} style={{width: "14vw"}}>orders Cancelled:</Text>
+        <Text headingLevel={"h1"}>orders Cancelled:</Text>
         <Text headingLevel={"h1"}>{ordersCancelled}</Text>
       </ContactSubContainer>
     </ContactContainer>

@@ -17,7 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}style={{background: "#000", width: "100%"}}>{children}</body>
+      <body
+        className={inter.className}
+        style={{
+          background: "#000",
+          width: "100%",
+          fontFamily: "Trebuchet MS (sans-serif)",
+          font: "caption",
+        }}
+      >
+        {children}
+      </body>
     </html>
-  )
+  );
 }
