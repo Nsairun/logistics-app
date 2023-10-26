@@ -29,7 +29,7 @@ const ContentContainer = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 5rem;
+  gap: 2rem;
 `;
 
 const CusSubContainer = styled("div")`

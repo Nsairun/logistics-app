@@ -33,7 +33,7 @@ const ChartContainer2 = styled("div")`
   align-items: center;
   flex-direction: column
   justify-content: center;
-  height: 20vh;
+  height: 45vh;
   width: 33vw;
   border: 1px solid #1c1b21;
   background-color: #1c1b21;

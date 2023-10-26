@@ -23,7 +23,7 @@ const ChartContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40vh;
+  height: 45vh;
   width: 50vw;
   color: #fff;
   border: 1px solid #1c1b21;
@@ -36,7 +36,7 @@ const ChartContainer2 = styled("div")`
   flex-direction: column
   justify-content: center;
   padding: 5px;
-  height: 40vh;
+  height: 45vh;
   width: 33vw;
   border: 1px solid #1c1b21;
   background-color: #1c1b21;
