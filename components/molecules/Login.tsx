@@ -122,7 +122,7 @@ function Registration() {
             <Text headingLevel={"h1"}>No account?</Text>
             <Button label={""}>
               
-                <Text headingLevel={"h1"} style={{ color: "aqua", borderBottom: "solid aqua" }}>
+                <Text headingLevel={"h1"} style={{ color: "#fff", borderBottom: "solid #0069C2" }}>
                   Sign Up
                 </Text>
               

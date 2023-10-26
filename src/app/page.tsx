@@ -1,11 +1,21 @@
-"use client";
-import React from "react";
+"use client"
+import React, {useState} from "react";
 import NavBar from "../../components/molecules/NavBar";
 import MapSection from "../../components/molecules/MapSection";
 import styled from "styled-components";
 import TopNavBar from "../../components/molecules/TopNavBar";
 import CustomerSection from "../../components/molecules/CustomerSection";
 import Chart1 from "../../components/molecules/Chart1";
+import { Data } from "../../hooks/Data";
+
+interface UserData {
+  labels: any[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+  }[];
+}
 
 const SubContainer = styled("div")`
   display: flex;
@@ -24,7 +34,20 @@ const LandingBody = styled("div")`
   width: 100%;
 `;
 
-function LandingPage() {
+const LandingPage: React.FC = () => {
+  console.log("Data:", Data);
+
+  const [userData, setUserData] = useState<UserData>({
+    labels: Data?.map((data) => data.month),
+    datasets: [
+      {
+        label: "expedition",
+        data: Data?.map((data) => data.expeditions),
+        backgroundColor: ["#005f73", "#e9d8a6", "#bb3e03","#e9d8a6", "#80ed99"],
+      },
+    ],
+  });
+
   return (
     <SubContainer>
       <NavBar />
@@ -42,10 +65,10 @@ function LandingPage() {
           <MapSection />
           <CustomerSection />
         </div>
-        <Chart1 />
+        <Chart1 chartData={userData} />
       </LandingBody>
     </SubContainer>
   );
-}
+};
 
 export default LandingPage;

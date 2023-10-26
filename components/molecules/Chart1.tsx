@@ -1,5 +1,15 @@
+"use client";
 import React from "react";
 import styled from "styled-components";
+import { Bar, Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale, //y
+  Tooltip,
+  Legend,
+} from "chart.js/auto";
 
 const Chart1Main = styled.div`
   display: flex;
@@ -13,28 +23,42 @@ const ChartContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20vh;
+  height: 40vh;
   width: 50vw;
+  color: #fff;
   border: 1px solid #1c1b21;
-  background-color: #0d0d0d;
+  background-color: #1c1b21;
 `;
 
 const ChartContainer2 = styled("div")`
   display: flex;
   align-items: center;
+  flex-direction: column
   justify-content: center;
-  height: 20vh;
+  padding: 5px;
+  height: 40vh;
   width: 33vw;
   border: 1px solid #1c1b21;
-  background-color: #0d0d0d;
+  background-color: #1c1b21;
 `;
 
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale, //y
+  Tooltip,
+  Legend
+);
 
-function Chart1() {
+function Chart1({ chartData }: any) {
   return (
     <Chart1Main>
-      <ChartContainer></ChartContainer>
-      <ChartContainer2></ChartContainer2>
+      <ChartContainer>
+        <Bar data={chartData} />
+      </ChartContainer>
+      <ChartContainer2>
+        <Line data={chartData} />
+      </ChartContainer2>
     </Chart1Main>
   );
 }
