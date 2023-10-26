@@ -6,11 +6,10 @@ import { IconStylingProvider, IconStylingProviderProps } from '../../hooks/MyIco
 const InputWrapper = styled.div`
   font-size: 16px;
   font-weight: 400;
-  width: 300px;
+  width: 200px;
   height: 5vh;
   color: #344054;
-  background: #fff;
-  border: 1px solid #d0d5dd;
+  background: grey;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
   padding: 10px 12px;
@@ -67,11 +66,13 @@ const Input: FC<InputProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
+        style={{border: "transparent", width: "200px",
+        height: "5vh", outline: "none"}}
       />
       {error && <Error className="error">Input field cant be empty!</Error>}
-      <IconStylingProvider value={iconStyling.value}>
+      {/* <IconStylingProvider value={iconStyling.value}>
         <FiSearch size={iconStyling.value.size} color={iconStyling.value.color}/>
-      </IconStylingProvider>
+      </IconStylingProvider> */}
     </InputWrapper>
   );
 };

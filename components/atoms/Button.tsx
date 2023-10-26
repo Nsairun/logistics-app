@@ -11,6 +11,8 @@ const Btn = styled.button`
     transform: translateY(-5px) scale(1.01);
     background-color: #87C656;
     width: 100%;
+    color: #000;
+    font-weight: 600;
 }
 `;
 
