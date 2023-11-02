@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Text from "../atoms/Text";
 import styled from "styled-components";
@@ -19,7 +20,6 @@ const AboutClient: React.FC<AboutClientProps> = ({
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 0.5px solid #87C656;
-    width: 40vw;
     gap: 1rem;
     color: #fff;
   `;
@@ -28,12 +28,11 @@ const AboutClient: React.FC<AboutClientProps> = ({
     align-items: center;
     justify-content: space-between;
     width: 40vw;
-    align-text: left;
-    gap: 4rem;
+    align-text: center;
   `;
   return (
     <ContactContainer>
-      About
+      <Text headingLevel={"h1"}>About</Text>
       <ContactSubContainer>
         <Text headingLevel={"h1"}>Customer ID Num:</Text>
         <Text headingLevel={"h1"}>{ID}</Text>

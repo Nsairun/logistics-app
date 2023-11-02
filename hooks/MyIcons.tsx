@@ -1,23 +1,33 @@
-"use client"
+
 import { createContext, useContext, ReactNode } from 'react';
 
 export interface IconStylingProviderProps {
-  children: ReactNode;
   value: {
     color: string;
     size: string;
   };
 }
 
-const IconStylingContext = createContext({});
+const IconStylingContext = createContext<IconStylingProviderProps | undefined>(
+  undefined
+);
 
 export function useIconStyling() {
-  return useContext(IconStylingContext);
+  const context = useContext(IconStylingContext);
+  if (!context) {
+    throw new Error(
+      'useIconStyling must be used within an IconStylingProvider'
+    );
+  }
+  return context.value;
 }
 
-export function IconStylingProvider({ children, value }: IconStylingProviderProps) {
+export function IconStylingProvider({
+  value,
+  children,
+}: IconStylingProviderProps & { children: ReactNode }) {
   return (
-    <IconStylingContext.Provider value={value}>
+    <IconStylingContext.Provider value={{ value }}>
       {children}
     </IconStylingContext.Provider>
   );

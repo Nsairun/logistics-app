@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
       {
         label: "expedition",
         data: Data?.map((data) => data.expeditions),
-        backgroundColor: ["#005f73", "#e9d8a6", "#bb3e03","#e9d8a6", "#80ed99"],
+        backgroundColor: ["#588157", "#283618"],
       },
     ],
   });
@@ -59,7 +59,7 @@ const LandingPage: React.FC = () => {
             alignItems: "center",
             justifyContent: "space-between",
             gap: "2rem",
-            padding: "20px",
+            padding: "10px",
           }}
         >
           <MapSection />
@@ -72,3 +72,4 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
+

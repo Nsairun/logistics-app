@@ -17,11 +17,11 @@ const CusContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  border: 1px solid #1c1b21;
+  border: 1px solid #eeeee;
   height: 70vh;
-  background-color: #1c1b21;
+  background-color: #F1F2F3;
   width: 33vw;
-  color: #b2beb5;
+  color: #000;
 `;
 
 const ContentContainer = styled("div")`
@@ -29,7 +29,7 @@ const ContentContainer = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 2rem;
+  gap: 5rem;
 `;
 
 const CusSubContainer = styled("div")`
@@ -46,7 +46,6 @@ const Pie = styled("div")`
   justify-content: space-evenly;
   height: 35vh;
   width: 100%;
-  background-color: red;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -54,7 +53,6 @@ const iconStyling: IconStylingProviderProps = {
     size: "25px",
     color: "#fff",
   },
-  children: undefined,
 };
 
 const CustomerSection: React.FC<CustomerSectionProps> = () => {
@@ -94,7 +92,7 @@ const CustomerSection: React.FC<CustomerSectionProps> = () => {
                       style={{
                         padding: "7px",
                         borderRadius: "10px",
-                        color: "#fff",
+                        color: "#87C656",
                         backgroundColor: "#000",
                         border: " 0.5px solid  #87C656",
                         cursor: "pointer",

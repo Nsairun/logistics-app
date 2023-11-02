@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Text from "../atoms/Text";
 import styled from "styled-components";
@@ -17,16 +18,18 @@ const PaymentDetails: React.FC<PaymentDetailsProps> = ({
     flex-direction: column;
     justify-content: space-evenly;
     width: 50vw;
-    color: #fff;
+    color: #000;
     border-bottom: 0.5px solid #87C656;
     width: 40vw;
     gap: 2rem;
+    color: #fff;
   `;
   const ContactSubContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     gap: 1.5rem;
+    color: #fff;
   `;
   // we will have to map this section get all the payment methods of our user
   return (

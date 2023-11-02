@@ -46,7 +46,10 @@ function MapSection() {
       <Image
         src={image}
         placeholder="blur"
-        style={{ objectFit: "cover" }}
+        style={{
+          objectFit: "cover",
+          backgroundImage: "linear-gradient(to bottom, #fff, #000, #eee, red, green)",
+        }}
         quality={100}
         sizes="100vw"
         alt="bg_image"
@@ -59,15 +62,25 @@ function MapSection() {
           >
             Statistics of services
           </Text>
-          <Button label={""}>
-          <Text headingLevel={"p"}>
-            <u>Quarter...</u>
-          </Text>
+          <Button
+            label={""}
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            <Text headingLevel={"p"}>
+              <u>Quarter...</u>
+            </Text>
           </Button>
-          <Button label="">
-          <Text headingLevel={"p"}>
-            <u>Warehouse...</u>
-          </Text>
+          <Button
+            label=""
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            <Text headingLevel={"p"}>
+              <u>Warehouse...</u>
+            </Text>
           </Button>
         </MapSubSection>
         <MapSubSection>
@@ -77,20 +90,35 @@ function MapSection() {
           >
             Top Delivery Areas
           </Text>
-          <Button label={""}>
-          <Text headingLevel={"p"}>
-            <u>Biyemassi...</u>
-          </Text>
+          <Button
+            label={""}
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            <Text headingLevel={"p"}>
+              <u>Biyemassi...</u>
+            </Text>
           </Button>
-          <Button label={""}>
-          <Text headingLevel={"p"}>
-            <u>Bastos...</u>
-          </Text>
+          <Button
+            label={""}
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            <Text headingLevel={"p"}>
+              <u>Bastos...</u>
+            </Text>
           </Button>
-          <Button label={""}>
-          <Text headingLevel={"p"}>
-            <u>Efoulan...</u>
-          </Text>
+          <Button
+            label={""}
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          >
+            <Text headingLevel={"p"}>
+              <u>Efoulan...</u>
+            </Text>
           </Button>
         </MapSubSection>
       </MapContainerHolder>

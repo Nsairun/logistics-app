@@ -27,6 +27,6 @@ const Banner: React.FC<{ headingText: string; description: string }> = ({
 }) => (
   <div>
     <Text headingLevel="h1" style={{ fontWeight: 'bold' }}>{headingText}</Text>
-    <p style={{ fontWeight: 'bold' }}>{description}</p>
+    <p style={{ fontWeight: 'normal' }}>{description}</p>
   </div>
 );

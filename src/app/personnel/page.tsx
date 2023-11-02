@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -21,23 +20,31 @@ import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
 
 const OrderSubContainer = styled("div")`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 const OrderMain = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  width: 100%;
+`;
+
+const ClientSection = styled("div")`
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 1rem;
+  padding: 15px;
   width: 100%;
 `;
 
 const ProfileContainer = styled("div")`
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  background: #1C1B21;
   flex-direction: column;
-  gap: 1rem;
-  width: 100%;
+  padding: 20px;
 `;
 
 const CustomerDetails = styled("div")`
@@ -45,8 +52,15 @@ const CustomerDetails = styled("div")`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 27px;
+  padding: 29px;
 `;
+
+  const ContactSection =styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  `;
 
 const CustomerMainDetails = styled("div")`
   display: flex;
@@ -63,19 +77,17 @@ const iconStyling: IconStylingProviderProps = {
     size: "28px",
     color: "#fff",
   },
-  children: undefined,
 };
 
 const bigIcon: IconStylingProviderProps = {
   value: {
-    size: "60px",
+    size: "50px",
     color: "#fff",
   },
-  children: undefined,
 };
 
 const page: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleSelectChange = (value: string) => {
     setSelectedOption(value);
@@ -84,37 +96,20 @@ const page: React.FC = () => {
     <OrderSubContainer>
       <NavBar />
       <OrderMain>
-        <TopNavBar />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            gap: "1rem",
-            padding: "15px",
-          }}
-        >
+       <TopNavBar />
+         <ClientSection>
           <ProfileContainer>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "center",
-                gap: "1rem",
-              }}
-            >
               <IconStylingProvider value={iconStyling.value}>
                 <div
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-evenly",
+                    justifyContent: "space-between",
+                    gap: "1rem",
+                    width: "70%",
                     borderRadius: "5px",
-                    width: "50vw",
-                    height: "100%",
-                    padding: "10px",
+                    padding: "5px",
                     color: "grey",
-                    background: "#1c1b21",
                   }}
                 >
                   <Text headingLevel={"h1"}>
@@ -134,13 +129,19 @@ const page: React.FC = () => {
                       fontSize: "14px",
                     }}
                   >
-                    <Button label={"Client Name"}>
+                    <Button
+                      label={""}
+                      onClick={function (): void {
+                        throw new Error("Function not implemented.");
+                      }}
+                    >
                       <Text
                         headingLevel={"h1"}
                         style={{
                           display: "flex",
-                          alignItems: "flex-start",
+                          alignItems: "center",
                           justifyContent: "center",
+                          gap: "1rem"
                         }}
                       >
                         Calls
@@ -150,13 +151,19 @@ const page: React.FC = () => {
                         />
                       </Text>
                     </Button>
-                    <Button label={"Message"}>
+                    <Button
+                      label={""}
+                      onClick={function (): void {
+                        throw new Error("Function not implemented.");
+                      }}
+                    >
                       <Text
                         headingLevel={"h1"}
                         style={{
                           display: "flex",
-                          alignItems: "flex-start",
+                          alignItems: "center",
                           justifyContent: "center",
+                          gap: "1rem"
                         }}
                       >
                         Message
@@ -169,20 +176,8 @@ const page: React.FC = () => {
                   </div>
                 </div>
               </IconStylingProvider>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-evenly",
-                flexDirection: "column",
-                padding: "5px",
-                width: "50vw",
-                height: "82vh",
-                background: "#1C1B21",
-              }}
-            >
-              <PersonnelInfo
+            <ContactSection>
+            <PersonnelInfo
                 ID={"3246SDFHJ"}
                 DelivArea={"Mfoundi"}
                 CarNum={"1542"}
@@ -191,23 +186,27 @@ const page: React.FC = () => {
                 trips={"70"}
                 NumofOrders={80}
               />
-            </div>
+            </ContactSection> 
           </ProfileContainer>
           <CustomerMainDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Date</Text>
-              <Text headingLevel={"h1"}>{}</Text>
+              <Text headingLevel={"h1"}>ID</Text>
+              <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Time</Text>
-              <Text headingLevel={"h1"}>{}</Text>
+              <Text headingLevel={"h1"}>Points</Text>
+              <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Details</Text>
-              <Text headingLevel={"h1"}>{}</Text>
+              <Text headingLevel={"h1"}>Status</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>Detail</Text>
+              <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
           </CustomerMainDetails>
-        </div>
+        </ClientSection> 
       </OrderMain>
     </OrderSubContainer>
   );

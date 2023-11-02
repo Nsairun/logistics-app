@@ -35,7 +35,7 @@ justify-content: center;
 flex-direction: column;
 gap: 1rem;
 `
-const page: React.FC = () => {
+const page: any = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleSelectChange = (value: string) => {

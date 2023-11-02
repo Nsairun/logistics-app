@@ -1,6 +1,5 @@
-"use client";
 import React from "react";
-import Button from "../../components/atoms/Button";
+import { useRouter } from "next/navigation"; 
 import Text from "../atoms/Text";
 import {
   BsGrid1X2,
@@ -12,14 +11,15 @@ import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
 import { PiWarehouse } from "react-icons/pi";
 import { styled } from "styled-components";
 import { IconStylingProvider, IconStylingProviderProps } from "../../hooks/MyIcons";
+import CustomButton from '../atoms/Button';
 
 const NavContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  background-color: #0d0d0d;
-  border: 0.5px solid ;
+  background-color: #F1F2F3;
+  border: 0.5px solid #eeeee;
 `;
 
 const NavSubContainer = styled("div")`
@@ -27,12 +27,12 @@ const NavSubContainer = styled("div")`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #fff;
+  color: #000;
   height: 40px;
 `;
 
 const NavBarMain = styled("div")`
-  background-color: #1C1B21;
+  background-color: #F1F2F3;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -45,21 +45,27 @@ const NavBarMain = styled("div")`
 `;
 
 function NavBar() {
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+
   const iconStyling: IconStylingProviderProps = {
     value: {
       size: "25px",
-      color: "#fff",
-    },
-    children: undefined,
+      color: "#000",
+    }
   };
+
   return (
     <NavContainer>
       <NavBarMain>
         <Text
           headingLevel={"h1"}
           style={{
-            color: "#87C656",
-            fontWeight: "bold",
+            color: "#606c38",
+            fontWeight: "bolder",
             padding: "10px",
             fontFamily: "Montserrat, sans-serif",
             fontSize: "15px",
@@ -68,76 +74,55 @@ function NavBar() {
         >
           LOGISTIC APP
         </Text>
-        <Button label={"Overview"}>
+        <CustomButton label={""}  onClick={() => navigateToPage("/")}>
           <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-            <BsGrid1X2 size={iconStyling.value.size} color={iconStyling.value.color}/>
-            <Text headingLevel={"h1"}>Overview</Text>
-          </IconStylingProvider>
-          </NavSubContainer>
-        </Button>
-
-        <Button label={"Orders"}>
-          <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <BsBookmarks size={iconStyling.value.size} color={iconStyling.value.color}/>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <BsGrid1X2 size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <Text headingLevel={"h1"}>Overview</Text>
             </IconStylingProvider>
+          </NavSubContainer>
+        </CustomButton>
 
+        <CustomButton label={""} onClick={() => navigateToPage("/orders")}>
+          <NavSubContainer>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <BsBookmarks size={iconStyling.value.size} color={iconStyling.value.color}/>
+            </IconStylingProvider>
             <Text headingLevel={"h1"}>Orders</Text>
           </NavSubContainer>
-        </Button>
-        <Button label={"Orders"}>
+        </CustomButton>
+
+        <CustomButton label={""} onClick={() => navigateToPage("/customer")}>
           <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <CiDeliveryTruck size={iconStyling.value.size} color={iconStyling.value.color}/>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <BsPeople size={iconStyling.value.size} color={iconStyling.value.color}/>
             </IconStylingProvider>
-
-            <Text headingLevel={"h1"}>Delivering</Text>
+            <Text headingLevel={"h1"}>Clients</Text>
           </NavSubContainer>
-        </Button>
-        <Button label={"Orders"}>
+        </CustomButton>
+
+        <CustomButton label={""} onClick={() => navigateToPage("/personnel")}>
           <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <PiWarehouse size={iconStyling.value.size} color={iconStyling.value.color}/>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <BsPersonVcard size={iconStyling.value.size} color={iconStyling.value.color}/>
             </IconStylingProvider>
-
-            <Text headingLevel={"h1"}>Warehouse</Text>
-          </NavSubContainer>
-        </Button>
-        <Button label={"Orders"}>
-          <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <CiLocationOn size={iconStyling.value.size} color={iconStyling.value.color}/>
-            </IconStylingProvider>
-
-            <Text headingLevel={"h1"}>Tracking</Text>
-          </NavSubContainer>
-        </Button>
-        <Button label={"Orders"}>
-          <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <BsPeople size={iconStyling.value.size} color={iconStyling.value.color}/>
-            </IconStylingProvider>
-
-            <Text headingLevel={"h1"}>Client</Text>
-          </NavSubContainer>
-        </Button>
-        <Button label={"Orders"}>
-          <NavSubContainer>
-          <IconStylingProvider value={iconStyling.value}>
-
-            <BsPersonVcard size={iconStyling.value.size} color={iconStyling.value.color}/>
-            </IconStylingProvider>
-
             <Text headingLevel={"h1"}>Personnel</Text>
           </NavSubContainer>
-        </Button>
-        <Text headingLevel={"h1"} style={{fontSize:"small", padding: "15px"}}>Do You Need Help?</Text>
+        </CustomButton>
+        
+        <CustomButton label={""} onClick={() => navigateToPage("/transportation")}>
+          <NavSubContainer>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <CiDeliveryTruck size={iconStyling.value.size} color={iconStyling.value.color}/>
+            </IconStylingProvider>
+            <Text headingLevel={"h1"}>Delivering</Text>
+          </NavSubContainer>
+        </CustomButton>
       </NavBarMain>
     </NavContainer>
   );

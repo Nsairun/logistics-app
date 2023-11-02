@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from "react";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
@@ -15,7 +16,8 @@ const TopBar = styled.div`
   width: 100%;
   height: 6vh;
   gap: 1rem;
-  background-color: #1C1B21;
+  background-color: #F1F2F3;
+  border: 0.5px solid #eeeee;
 `;
 
 const SubTopBar = styled.div`
@@ -29,9 +31,8 @@ const SubTopBar = styled.div`
 const iconStyling: IconStylingProviderProps = {
   value: {
     size: "28px",
-    color: "#fff",
+    color: "#000",
   },
-  children: undefined,
 };
 
 function TopNavBar() {
@@ -51,7 +52,7 @@ function TopNavBar() {
 
   return (
     <TopBar>
-      <Text headingLevel="h1" style={{color: "#fff", paddingLeft: "70px"}}>
+      <Text headingLevel="h1" style={{color: "#000", paddingLeft: "70px"}}>
         <Text headingLevel={"h1"}>{currentDate}{currentTime}</Text>
       </Text>
       <SubTopBar>

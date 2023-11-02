@@ -15,7 +15,7 @@ const Chart1Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   gap: 2rem;
 `;
 
@@ -23,11 +23,11 @@ const ChartContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 45vh;
+  height: 40vh;
   width: 50vw;
   color: #fff;
-  border: 1px solid #1c1b21;
-  background-color: #1c1b21;
+  border: 1px solid #eeeee;
+  background-color: #F1F2F3;
 `;
 
 const ChartContainer2 = styled("div")`
@@ -35,11 +35,10 @@ const ChartContainer2 = styled("div")`
   align-items: center;
   flex-direction: column
   justify-content: center;
-  padding: 5px;
-  height: 45vh;
+  height: 40vh;
   width: 33vw;
-  border: 1px solid #1c1b21;
-  background-color: #1c1b21;
+  border: 1px solid #eeeee;
+  background-color: #F1F2F3;
 `;
 
 ChartJS.register(

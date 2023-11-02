@@ -13,6 +13,10 @@ import {
   IconStylingProviderProps,
 } from "../../../hooks/MyIcons";
 import Button from "../../../components/atoms/Button";
+import AboutClient from "../../../components/molecules/AboutClient";
+import Contact from "../../../components/molecules/Contact";
+import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
+import PaymentDetails from "../../../components/molecules/PaymentDetails";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -21,8 +25,16 @@ const OrderSubContainer = styled("div")`
 const OrderMain = styled("div")`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+`;
+
+const ClientSection = styled("div")`
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 1rem;
+  padding: 15px;
   width: 100%;
 `;
 
@@ -30,9 +42,34 @@ const ProfileContainer = styled("div")`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background: #1C1B21;
   flex-direction: column;
+  padding: 20px;
+`;
+
+const CustomerDetails = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 29px;
+`;
+
+  const ContactSection =styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  `;
+
+const CustomerMainDetails = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
-  width: 100%;
+  color: #fff;
+  background: #1c1b21;
+  border-radius: 5px;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -40,15 +77,13 @@ const iconStyling: IconStylingProviderProps = {
     size: "28px",
     color: "#fff",
   },
-  children: undefined,
 };
 
 const bigIcon: IconStylingProviderProps = {
   value: {
-    size: "60px",
+    size: "50px",
     color: "#fff",
   },
-  children: undefined,
 };
 
 const page: React.FC = () => {
@@ -61,84 +96,112 @@ const page: React.FC = () => {
     <OrderSubContainer>
       <NavBar />
       <OrderMain>
-        <TopNavBar />
-        <ProfileContainer>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "center",
-              gap: "1rem",
-              padding: "10px",
-            }}
-          >
-            <IconStylingProvider value={iconStyling.value}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                  borderRadius: "5px",
-                  width: "50vw",
-                  height: "100%",
-                  padding: "10px",
-                  color: "grey",
-                  background: "#1c1b21",
-                }}
-              >
-                <Text headingLevel={"h1"}>
-                  <CgProfile
-                    size={bigIcon.value.size}
-                    color={iconStyling.value.color}
-                  />
-                </Text>
-                <Text headingLevel={"h1"}>Name of Client</Text>
+       <TopNavBar />
+         <ClientSection>
+          <ProfileContainer>
+              <IconStylingProvider value={iconStyling.value}>
                 <div
                   style={{
-                    width: "8vw",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    color: "#fff"
+                    gap: "1rem",
+                    width: "70%",
+                    borderRadius: "5px",
+                    padding: "5px",
+                    color: "grey",
                   }}
                 >
-                  <Button label={"Client Name"}>
-                    <Text
-                      headingLevel={"h1"}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        justifyContent: "center",
+                  <Text headingLevel={"h1"}>
+                    <CgProfile
+                      size={bigIcon.value.size}
+                      color={iconStyling.value.color}
+                    />
+                  </Text>
+                  <Text headingLevel={"h1"}>Name of Client</Text>
+                  <div
+                    style={{
+                      width: "8vw",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      color: "#fff",
+                      fontSize: "14px",
+                    }}
+                  >
+                    <Button
+                      label={""}
+                      onClick={function (): void {
+                        throw new Error("Function not implemented.");
                       }}
                     >
-                      Calls
-                      <PiPhoneCallThin
-                        size={iconStyling.value.size}
-                        color={iconStyling.value.color}
-                      />
-                    </Text>
-                  </Button>
-                  <Button label={"Message"}>
-                    <Text
-                      headingLevel={"h1"}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        justifyContent: "center",
+                      <Text
+                        headingLevel={"h1"}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "1rem"
+                        }}
+                      >
+                        Calls
+                        <PiPhoneCallThin
+                          size={iconStyling.value.size}
+                          color={iconStyling.value.color}
+                        />
+                      </Text>
+                    </Button>
+                    <Button
+                      label={""}
+                      onClick={function (): void {
+                        throw new Error("Function not implemented.");
                       }}
                     >
-                      Message
-                      <RiMessage2Line
-                        size={iconStyling.value.size}
-                        color={iconStyling.value.color}
-                      />
-                    </Text>
-                  </Button>
+                      <Text
+                        headingLevel={"h1"}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "1rem"
+                        }}
+                      >
+                        Message
+                        <RiMessage2Line
+                          size={iconStyling.value.size}
+                          color={iconStyling.value.color}
+                        />
+                      </Text>
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </IconStylingProvider>
-          </div>
-        </ProfileContainer>
+              </IconStylingProvider>
+            <ContactSection>
+              <Contact tel={653315415} mail={"55"} />
+              <AboutClient ID={123} ordersDone={5} ordersCancelled={2} />
+              <DeliveryAdress deliveriesDone={80} Deliveries={"bag garri"} />
+              <PaymentDetails paymentMethod={"MOMO"} Number={"654124554"} />
+            </ContactSection> 
+          </ProfileContainer>
+          <CustomerMainDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>ID</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>Points</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>Status</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>Detail</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+          </CustomerMainDetails>
+        </ClientSection> 
       </OrderMain>
     </OrderSubContainer>
   );

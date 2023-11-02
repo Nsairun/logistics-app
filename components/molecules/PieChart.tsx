@@ -35,8 +35,7 @@ const ChartContainer2 = styled("div")`
   justify-content: center;
   height: 42vh;
   width: 47vw;
-  border: 1px solid #1c1b21;
-  background-color: #1c1b21;
+  background-color: #eeeee;
 `;
 
 ChartJS.register(
@@ -56,7 +55,7 @@ const PieChart: React.FC = () => {
       {
         label: "recievals",
         data: Data?.map((data) => data.recievals),
-        backgroundColor: ["#81b29a", "#ff7900", "#80ed99", "#80ed99"],
+        backgroundColor: ["#606c38", "#283618"],
       },
     ],
   });

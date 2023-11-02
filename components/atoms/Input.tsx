@@ -32,7 +32,6 @@ const iconStyling: IconStylingProviderProps = {
         size: '20px',
         color: '#000',
     },
-    children: undefined
 };
 
 interface InputProps {

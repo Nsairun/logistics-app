@@ -220,7 +220,9 @@ function Registration() {
           </Title>
           <Account>
             <Text headingLevel={"h1"}>Already have an account?</Text>
-            <Button label={""}>
+            <Button label={""} onClick={function (): void {
+              throw new Error("Function not implemented.");
+            } }>
               
                 <Text headingLevel={"h1"} style={{ color: "aqua", borderBottom: "solid aqua" }}>
                   Sign In
@@ -228,7 +230,9 @@ function Registration() {
               
             </Button>
           </Account>
-          <Button label={""}>
+          <Button label={""} onClick={function (): void {
+            throw new Error("Function not implemented.");
+          } }>
             <Text
               headingLevel={"h1"}
               style={{

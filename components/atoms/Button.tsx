@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
@@ -13,18 +14,17 @@ const Btn = styled.button`
     width: 100%;
     color: #000;
     font-weight: 600;
-}
-`;
+}`
+;
 
 interface ButtonProps {
   label: string;
-  children?: React.ReactNode;
+  onClick: () => void;
+  children?: ReactNode; 
 }
 
-export function Button({ children, ...rest }: ButtonProps): React.JSX.Element {
-  return (
-    <Btn>{children}</Btn>
-  );
+function Button({ label, onClick, children }: ButtonProps) {
+  return <Btn onClick={onClick}>{children} {label}</Btn>;
 }
 
 export default Button;
