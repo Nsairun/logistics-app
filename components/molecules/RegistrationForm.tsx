@@ -1,39 +1,37 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
-import RegImage from "../../public/real logo.png";
-import Image from "next/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 
-const RegContainer = styled("div")`
+export const RegContainer = styled("div")`
   display: flex;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  justify-content: space-evenly;
+  width: 70vw;
+  padding: 15px;
+  background: #F1F2F3;
+  box-shadow: 2px 4px 30px 1px grey;
   gap: 1rem;
 `;
 
-const RegImageContainer = styled("div")`
+const RegMainContainer = styled("div")`
   display: flex;
-  align-items: start;
-  justify-content: start;
-  margin-bottom: 5%;
-  width: 25vw;
-  padding: 5px;
-  box-shadow: 2px 2px 2px 1px gray;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
 `;
 
 const RegSection = styled("div")`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
-  height: 85vh;
-  width: 100%;
-  color: grey;
+  justify-content: center;
+  gap: 1rem;
+  color: #000;
 `;
 
 const RegSectionRoles = styled("div")`
@@ -41,43 +39,38 @@ const RegSectionRoles = styled("div")`
   gap: 1rem;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 5px;
 `;
 
 const Title = styled("div")`
   display: grid;
-  grid-template-columns: 100px 250px 100px 250px;
-  column-gap: 5px;
-  row-gap: 5px;
+  grid-template-columns: 90px 250px 150px 250px;
+  column-gap: 3px;
+  row-gap: 3px;
+  background: #eeeee;
+  align-items: center;
   justify-content: space-evenly;
-  height: 16vh;
+  height: 10vh;
 `;
 const Account = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
   gap: 1rem;
 `;
 function Registration() {
   return (
+    <RegMainContainer>
     <RegContainer>
-      <RegImageContainer>
-        <Image
-          src={RegImage}
-          alt={"background image"}
-          style={{ height: "fit-content", padding: "2px" }}
-        />
-      </RegImageContainer>
       <RegSection>
         <Account>
-          <Text headingLevel={"h1"} style={{ color: "#fff" }}>
+          <Text headingLevel={"h1"} style={{ color: "#000" }}>
             Hey! Welcome to{" "}
           </Text>
           <Text
             headingLevel={"h1"}
-            style={{ color: "#87C656", fontWeight: "bolder" }}
+            style={{ color: "#87C656", fontWeight: "bolder", borderBottom: "4px solid #87C656" }}
           >
             LogiscticBambe
           </Text>
@@ -224,7 +217,7 @@ function Registration() {
               throw new Error("Function not implemented.");
             } }>
               
-                <Text headingLevel={"h1"} style={{ color: "aqua", borderBottom: "solid aqua" }}>
+                <Text headingLevel={"h1"} style={{ color: "#000", borderBottom: "#000" }}>
                   Sign In
                 </Text>
               
@@ -247,6 +240,7 @@ function Registration() {
         </RegSectionRoles>
       </RegSection>
     </RegContainer>
+    </RegMainContainer>
   );
 }
 
