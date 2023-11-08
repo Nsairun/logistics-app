@@ -1,75 +1,12 @@
-"use client"
-import React, {useState} from "react";
-import NavBar from "../../components/molecules/NavBar";
-import MapSection from "../../components/molecules/MapSection";
-import styled from "styled-components";
-import TopNavBar from "../../components/molecules/TopNavBar";
-import CustomerSection from "../../components/molecules/CustomerSection";
-import Chart1 from "../../components/molecules/Chart1";
-import { Data } from "../../hooks/Data";
+import React from 'react'
+import LandingPage from '../../components copy/molecules/LandingPage'
 
-interface UserData {
-  labels: any[];
-  datasets: {
-    label: string;
-    data: number[];
-    backgroundColor: string[];
-  }[];
+function page() {
+  return (
+    <div>
+      <LandingPage />
+    </div>
+  )
 }
 
-const SubContainer = styled("div")`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-`;
-
-const LandingBody = styled("div")`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-`;
-
-const LandingPage: React.FC = () => {
-  console.log("Data:", Data);
-
-  const [userData, setUserData] = useState<UserData>({
-    labels: Data?.map((data) => data.month),
-    datasets: [
-      {
-        label: "expedition",
-        data: Data?.map((data) => data.expeditions),
-        backgroundColor: ["#588157", "#283618"],
-      },
-    ],
-  });
-
-  return (
-    <SubContainer>
-      <NavBar />
-      <LandingBody>
-        <TopNavBar />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "2rem",
-            padding: "10px",
-          }}
-        >
-          <MapSection />
-          <CustomerSection />
-        </div>
-        <Chart1 chartData={userData} />
-      </LandingBody>
-    </SubContainer>
-  );
-};
-
-export default LandingPage;
-
+export default page

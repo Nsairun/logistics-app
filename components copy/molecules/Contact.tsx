@@ -17,7 +17,7 @@ const Contact: React.FC<ContactProps> = ({ tel, mail }) => {
     gap: 1rem;
     border-bottom: 0.5px solid #87C656;
     width: 40vw;
-    color: #fff;
+    color: #000;
   `;
   const ContactSubContainer = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ const Contact: React.FC<ContactProps> = ({ tel, mail }) => {
   `;
   return (
     <ContactContainer>
-      Contact
+      <Text headingLevel={"h1"}style={{color: "#87C656"}}>Contact</Text>
       <ContactSubContainer>
         <Text headingLevel={"h1"}>Phone:</Text>
         <Text headingLevel={"h1"}>{tel}</Text>

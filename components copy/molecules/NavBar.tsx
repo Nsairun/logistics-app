@@ -18,6 +18,7 @@ const NavContainer = styled("div")`
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
+  height: 100%;
   background-color: #F1F2F3;
   border: 0.5px solid #eeeee;
 `;
@@ -64,7 +65,7 @@ function NavBar() {
         <Text
           headingLevel={"h1"}
           style={{
-            color: "#606c38",
+            color: "#87C656",
             fontWeight: "bolder",
             padding: "10px",
             fontFamily: "Montserrat, sans-serif",
@@ -74,7 +75,7 @@ function NavBar() {
         >
           LOGISTIC APP
         </Text>
-        <CustomButton label={""}  onClick={() => navigateToPage("/")}>
+        <CustomButton label={""}  onClick={() => navigateToPage("/dashboard")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
               

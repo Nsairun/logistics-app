@@ -26,9 +26,9 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({
         padding: "8px",
         width: "12vw",
         borderRadius: "5px",
-        color: "#87C656",
+        color: "#000",
         fontSize: "12px",
-        backgroundColor: "#1c1b21",
+        backgroundColor: "#d9d9d9",
         cursor: "pointer",
       }}
     >

@@ -17,7 +17,7 @@ function DeliveryAdress({
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    color: #fff;
+    color: #000;
     border-bottom: 0.5px solid #87C656;
     width: 40vw;
     gap: 1rem;
@@ -31,7 +31,8 @@ function DeliveryAdress({
   // map thru the various deliveries and how many deliveries done per user
   return (
     <ContactContainer>
-        Deliveries
+        <Text headingLevel="h1" style={{color: "#87C656"}}>Deliveries</Text>
+        
       <ContactSubContainer>
         <Text headingLevel="h1" style={{width: "14vw"}}>{Deliveries}</Text>
         <Text headingLevel="h1">{deliveriesDone}</Text>

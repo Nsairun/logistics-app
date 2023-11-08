@@ -6,6 +6,10 @@ import Image from "next/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import { useRouter } from 'next/navigation';
+import Landingimage from "../../public/backound.webp";
+
+
 // import SlideModal from "../../modal/SlideModal";
 // import RegistrationForm from "./RegistrationForm";
 // import ReactModal from "react-modal";
@@ -15,17 +19,15 @@ const RegMainContainer = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 15px;
+  height: 100vh;
 `;
 
 const RegContainer = styled("div")`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 70%;
-  height: 75%;
-  gap: 2rem;
-  position: relative;
+  justify-content: spac-between;
+  width: 50%;
+  background: #F1F2F3;
   box-shadow: 2px 4px 30px 1px grey;
 `;
 
@@ -33,11 +35,13 @@ const RegImageContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 85vh;
-  width: 40vw;
-  margin: auto;
-  padding: 5px;
-  background: #000;
+  height: 75vh;
+  width: 35vw;
+  padding: 4px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+  url(${Landingimage.src});
+  background-size: cover;
+  background-position: center;
 `;
 
 const RegSection = styled("div")`
@@ -47,7 +51,6 @@ const RegSection = styled("div")`
   justify-content: space-evenly;
   background: #F1F2F3;
   padding: 5px;
-  height: 85vh;
   color: #000;
 `;
 
@@ -76,6 +79,11 @@ const Account = styled("div")`
   gap: 1rem;
 `;
 function Registration() {
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -146,30 +154,17 @@ function Registration() {
           </Title>
           <Account>
             <Text headingLevel={"h1"}>No account?</Text>
-            <Button label={""} onClick={openModal}>
+            <Button label={""} onClick={() => navigateToPage("/registrationlogin")}>
               
-                <Text headingLevel={"h1"} style={{ color: "#000", borderBottom: "solid #0069C2" }}>
                   Sign Up
-                </Text>
             {/* <ReactModal isOpen={isModalOpen} onRequestClose={closeModal}>
             <SlideModal isOpen={isModalOpen} onClose={closeModal} />
             <RegistrationForm/>
           </ReactModal> */}
             </Button>
           </Account>
-          <Button label={""} onClick={function (): void {
-            throw new Error("Function not implemented.");
-          } }>
-            <Text
-              headingLevel={"h1"}
-              style={{
-                borderRadius: "5px",
-                border: " solid #87C656",
-                padding: "5px",
-              }}
-            >
+          <Button label={""} onClick={() => navigateToPage("/dashboard")}>
               Login
-            </Text>
           </Button>
         </RegSectionRoles>
       </RegSection>

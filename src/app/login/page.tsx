@@ -1,11 +1,10 @@
+"use client"
 import React from 'react'
-import Login from '../../../components/molecules/Login'
+import Login from '../../../components copy/molecules/Login'
 
 function page() {
   return (
-    <div>
         <Login/>
-    </div>
   )
 }
 

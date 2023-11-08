@@ -2,11 +2,11 @@
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
-import NavBar from "../../../components/molecules/NavBar";
-import TopNavBar from "../../../components/molecules/TopNavBar";
-import SelectField from "../../../components/atoms/SelectField";
-import Text from "../../../components/atoms/Text";
-import Info from "../../../components/atoms/Info";
+import NavBar from "../../../components copy/molecules/NavBar";
+import TopNavBar from "../../../components copy/molecules/TopNavBar";
+import SelectField from "../../../components copy/atoms/SelectField";
+import Text from "../../../components copy/atoms/Text";
+import Info from "../../../components copy/atoms/Info";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -61,7 +61,7 @@ const page: any = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               sort by Date
             </Text>
@@ -74,7 +74,7 @@ const page: any = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by starting point
             </Text>
@@ -88,7 +88,7 @@ const page: any = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by deposit point
             </Text>
@@ -102,7 +102,7 @@ const page: any = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by time
             </Text>
@@ -118,7 +118,7 @@ const page: any = () => {
             >
               <Text
                 headingLevel={"h1"}
-                style={{ color: "grey", fontSize: "15px" }}
+                style={{ color: "#87C656", fontSize: "15px" }}
               >
                 from:
               </Text>
@@ -129,7 +129,7 @@ const page: any = () => {
               />
               <Text
                 headingLevel={"h4"}
-                style={{ color: "grey", fontSize: "15px" }}
+                style={{ color: "#87C656", fontSize: "15px" }}
               >
                 to:
               </Text>
@@ -158,6 +158,7 @@ const page: any = () => {
             txt6={""}
             txt7=""
           />
+          
         </InfoDiv>
       </OrderMain>
     </OrderSubContainer>

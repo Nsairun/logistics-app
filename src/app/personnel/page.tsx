@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
-import NavBar from "../../../components/molecules/NavBar";
-import TopNavBar from "../../../components/molecules/TopNavBar";
-import Text from "../../../components/atoms/Text";
+import NavBar from "../../../components copy/molecules/NavBar";
+import TopNavBar from "../../../components copy/molecules/TopNavBar";
+import Text from "../../../components copy/atoms/Text";
 import { CgProfile } from "react-icons/cg";
 import { PiPhoneCallThin } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
@@ -11,12 +11,8 @@ import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../../hooks/MyIcons";
-import Button from "../../../components/atoms/Button";
-import AboutClient from "../../../components/molecules/AboutClient";
-import Contact from "../../../components/molecules/Contact";
-import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
-import PaymentDetails from "../../../components/molecules/PaymentDetails";
-import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
+import Button from "../../../components copy/atoms/Button";
+import PersonnelInfo from "../../../components copy/molecules/PersonnelInfo";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -42,7 +38,7 @@ const ProfileContainer = styled("div")`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: #1C1B21;
+  background: #F1F2F3;
   flex-direction: column;
   padding: 20px;
 `;
@@ -67,22 +63,21 @@ const CustomerMainDetails = styled("div")`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: #fff;
-  background: #1c1b21;
+  color: #000;
   border-radius: 5px;
 `;
 
 const iconStyling: IconStylingProviderProps = {
   value: {
     size: "28px",
-    color: "#fff",
+    color: "#000",
   },
 };
 
 const bigIcon: IconStylingProviderProps = {
   value: {
     size: "50px",
-    color: "#fff",
+    color: "#000",
   },
 };
 
@@ -125,7 +120,7 @@ const page: React.FC = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      color: "#fff",
+                      color: "#000",
                       fontSize: "14px",
                     }}
                   >

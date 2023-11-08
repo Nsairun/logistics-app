@@ -16,7 +16,7 @@ const OrderMain = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: flex-start;
+  justify-content: flex-start;
   width: 100%;
 `;
 
@@ -61,7 +61,7 @@ const page: React.FC = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               sort by Date
             </Text>
@@ -74,7 +74,7 @@ const page: React.FC = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by starting point
             </Text>
@@ -88,7 +88,7 @@ const page: React.FC = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by deposit point
             </Text>
@@ -102,7 +102,7 @@ const page: React.FC = () => {
           <SelectContainer>
             <Text
               headingLevel={"h1"}
-              style={{ color: "grey", fontSize: "15px" }}
+              style={{ color: "#87C656", fontSize: "15px" }}
             >
               filter by time
             </Text>
@@ -118,7 +118,7 @@ const page: React.FC = () => {
             >
               <Text
                 headingLevel={"h1"}
-                style={{ color: "grey", fontSize: "15px" }}
+                style={{ color: "#87C656", fontSize: "15px" }}
               >
                 from:
               </Text>
@@ -129,7 +129,7 @@ const page: React.FC = () => {
               />
               <Text
                 headingLevel={"h4"}
-                style={{ color: "grey", fontSize: "15px" }}
+                style={{ color: "#87C656", fontSize: "15px" }}
               >
                 to:
               </Text>

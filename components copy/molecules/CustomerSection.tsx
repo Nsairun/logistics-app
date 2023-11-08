@@ -18,7 +18,7 @@ const CusContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   border: 1px solid #eeeee;
-  height: 70vh;
+  height: 72vh;
   background-color: #F1F2F3;
   width: 33vw;
   color: #000;
@@ -84,7 +84,7 @@ const CustomerSection: React.FC<CustomerSectionProps> = () => {
               Per Month
               <IconContext.Provider value={iconStyling.value}>
                 <Button>
-                  <div>
+                  <div style={{border: "1px solid #87C656", borderRadius: "5px", background: "#87C656"}}>
                     <select
                       id="dropdown"
                       value={selectedOption}

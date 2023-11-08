@@ -16,12 +16,12 @@ const AboutClient: React.FC<AboutClientProps> = ({
 }) => {
   const ContactContainer = styled.div`
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 0.5px solid #87C656;
     gap: 1rem;
-    color: #fff;
+    color: #000;
   `;
   const ContactSubContainer = styled.div`
     display: flex;
@@ -32,7 +32,7 @@ const AboutClient: React.FC<AboutClientProps> = ({
   `;
   return (
     <ContactContainer>
-      <Text headingLevel={"h1"}>About</Text>
+      <Text headingLevel={"h1"}style={{color: "#87C656"}}>About</Text>
       <ContactSubContainer>
         <Text headingLevel={"h1"}>Customer ID Num:</Text>
         <Text headingLevel={"h1"}>{ID}</Text>

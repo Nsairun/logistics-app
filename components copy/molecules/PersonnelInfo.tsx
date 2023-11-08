@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import styled from "styled-components";
-import Text from "../atoms/Text";
+import Text from '../atoms/Text';
 
 interface PersonalInfoProp {
   ID: string
@@ -18,18 +18,19 @@ const ContactContainer = styled.div`
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-evenly;
+  background: #F1F2F3;
   width: 40vw;
   gap: 1rem;
-  color: #fff;
+  color: #000;
 `;
 const ContactSubContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   width: 40vw;
-  
+  padding: 10px;
   align-text: left;
-  gap: 4rem;
+  gap: 1rem;
 `;
 const PersonnelInfo: React.FC<PersonalInfoProp> = ({
   ID,
@@ -43,8 +44,8 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
   return (
     <ContactContainer>
       <ContactContainer>
+        <Text headingLevel={"h1"} style={{color: "#87C656"}}>About</Text>
         
-        About
         <div style={{ borderBottom: "0.5px solid #87C656"}}>
         <ContactSubContainer>
           <Text headingLevel={"h1"}>
@@ -67,7 +68,7 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
         </div>
         <div style={{ borderBottom: "0.5px solid #87C656" }}>
           <ContactContainer>
-            Contact
+          <Text headingLevel={"h1"} style={{color: "#87C656"}}>Contact</Text>
             <ContactSubContainer>
               <Text headingLevel={"h1"} style={{ width: "12vw" }}>
                 Phone:
@@ -83,7 +84,7 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
           </ContactContainer>
         </div>
         <div style={{ borderBottom: "0.5px solid #87C656" }}>
-          Personal Statistics
+        <Text headingLevel={"h1"} style={{color: "#87C656"}}>Personal Statistics</Text>
           <ContactSubContainer>
             <Text headingLevel={"h1"} style={{ width: "18vw" }}>
               Trips made:

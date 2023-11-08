@@ -23,9 +23,10 @@ const InfoMainContainer = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background: #1c1b21;
+  background: #F1F2F3;
+  border-left: 5px solid #87C656;
   border-radius: 5px;
-  padding: 1px;
+  padding: 5px;
   gap: 1rem;
 
   &:hover {
@@ -50,6 +51,7 @@ const InfoDiv = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
 `;
 
 const Info: React.FC<TextProps> = ({
@@ -69,11 +71,11 @@ const Info: React.FC<TextProps> = ({
 }) => {
   return (
     <InfoMainContainer>
-      <InfoDiv style={{ color: "grey" }}>
+      <InfoDiv style={{ color: "#000" }}>
         <InfoContainer>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text1}</Text>
-            <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt1}</Text>
+            <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt1}</Text>
           </InfoDiv>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text2}</Text>
@@ -85,25 +87,25 @@ const Info: React.FC<TextProps> = ({
                 gap: "1rem",
               }}
             >
-              <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt2}</Text>-
-              <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt3}</Text>
+              <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt2}</Text>-
+              <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt3}</Text>
             </div>
           </InfoDiv>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text3}</Text>
-            <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt4}</Text>
+            <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt4}</Text>
           </InfoDiv>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text4}</Text>
-            <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt5}</Text>
+            <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt5}</Text>
           </InfoDiv>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text5}</Text>
-            <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt7}</Text>
+            <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt7}</Text>
           </InfoDiv>
           <InfoDiv>
             <Text headingLevel={"h1"}>{text6}</Text>
-            <Text headingLevel={"h1"} style={{ color: "#fff", fontSize: "12px" }}>{txt6}</Text>
+            <Text headingLevel={"h1"} style={{ color: "#000", fontSize: "12px" }}>{txt6}</Text>
           </InfoDiv>
         </InfoContainer>
       </InfoDiv>
