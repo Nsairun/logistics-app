@@ -35,7 +35,6 @@ const OrderMain = styled("div")`
 
   @media screen and (max-width: 770px) {
     width: 100%;
-    background: green;
 `;
 
 const ClientSection = styled("div")`
