@@ -59,17 +59,6 @@ function TopNavBar() {
         <Text headingLevel={"h1"}>{currentDate}{currentTime}</Text>
       </Text>
       <SubTopBar>
-        <Input
-          type="text"
-          placeholder="search"
-          label={""}
-          value={""}
-          name={""}
-          error={false}
-          onChange={(e) => {
-            throw new Error("Function not implemented.");
-          }}
-        />
         <IoNotificationsOutline
           size={iconStyling.value.size}
           color={iconStyling.value.color}

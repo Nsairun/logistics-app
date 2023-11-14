@@ -62,7 +62,7 @@ function MapSection() {
         style={{
           objectFit: "cover",
           backgroundImage: "linear-gradient(to bottom, #fff, #000, #eee, red, green)",
-          height: "70vh",
+          height: "72vh",
         }}
         quality={100}
         sizes="90vw"
