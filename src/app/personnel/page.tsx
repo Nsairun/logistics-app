@@ -81,7 +81,7 @@ const bigIcon: IconStylingProviderProps = {
   },
 };
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleSelectChange = (value: string) => {
@@ -207,4 +207,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;
