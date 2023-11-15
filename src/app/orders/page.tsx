@@ -7,6 +7,7 @@ import TopNavBar from "../../../components/molecules/TopNavBar";
 import SelectField from "../../../components/atoms/SelectField";
 import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
+import OrderField from "../../../components/atoms/OrderField";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -154,7 +155,7 @@ const page: any = () => {
             </div>
           </SelectContainer>
         </SelectMain>
-        
+          <OrderField/>
           <Info
             text1={"ID Number"}
             text2={"Points"}
