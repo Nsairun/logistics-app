@@ -3,19 +3,20 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  background-color: #87C656;
+  transition: background-color 0.8s;
 
   &:hover {
-    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
     background-color: #87C656;
-    width: 100%;
+    width: 40%;
     color: #000;
     font-weight: 600;
-}`
-;
+}
+`;
 
 interface ButtonProps {
   label: string;

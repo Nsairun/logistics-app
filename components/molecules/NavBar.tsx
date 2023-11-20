@@ -73,7 +73,8 @@ function NavBar() {
             padding: "10px",
             fontFamily: "Montserrat, sans-serif",
             fontSize: "15px",
-            textAlign: "center"
+            textAlign: "center",
+            textShadow: "2px 2px 4px grey",
           }}
         >
           LOGISTIC APP

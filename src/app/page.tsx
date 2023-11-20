@@ -1,5 +1,5 @@
 import React from 'react'
-import LandingPage from '../../components/molecules/LandingPage'
+import LandingPage from '../../components/Organisms/LandingPage'
 
 function page() {
   return (

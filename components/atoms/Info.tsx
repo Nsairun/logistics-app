@@ -50,7 +50,6 @@ const InfoContainer = styled("div")`
   padding: 6px;
   gap: 6rem;
   border-radius: 5px;
-  background: red;
 
   @media screen and (max-width: 770px) {
     display: block;

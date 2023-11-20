@@ -4,6 +4,17 @@ import Landingimage from "../../public/backound.webp";
 import Text from '../atoms/Text';
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
+import LandingNav from '../molecules/LandingNav';
+import SwapImg from '../molecules/SwapImg';
+import LandingAid from '../molecules/LandingAid';
+
+const LandingMainContainer = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+`;
 
 const LandingContainer = styled.div`
   display: flex;
@@ -12,6 +23,7 @@ const LandingContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   height: 100vh;
+  width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
     url(${Landingimage.src});
   background-size: cover;
@@ -53,11 +65,18 @@ const StyledButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    transform: translateY(-5px) scale(1.01);
+    transform: translateY(-3px) scale(1.0);
     background-color: #87C656;
     width: 20%;
     font-weight: 600;
 `;
+
+const Nav = styled("div")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+`
 
 function LandingPage() {
   const router = useRouter();
@@ -67,7 +86,11 @@ function LandingPage() {
   };
 
   return (
+    <LandingMainContainer>
     <LandingContainer>
+      <Nav>
+      <LandingNav />
+      </Nav>
       <LogoText headingLevel={'h1'}>LOGISTICBAMBE</LogoText>
       <DescriptionText headingLevel={'h1'}>
         let us ease your courier transportation
@@ -76,6 +99,9 @@ function LandingPage() {
         Go to Homepage
       </StyledButton>
     </LandingContainer>
+    <SwapImg/>
+    <LandingAid />
+    </LandingMainContainer>
   );
 }
 
