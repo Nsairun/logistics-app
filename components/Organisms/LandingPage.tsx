@@ -1,18 +1,19 @@
-"use client"
-import React from 'react';
+"use client";
+import React from "react";
 import Landingimage from "../../public/backound.webp";
-import Text from '../atoms/Text';
-import styled from 'styled-components';
-import { useRouter } from 'next/navigation';
-import LandingNav from '../molecules/LandingNav';
-import SwapImg from '../molecules/SwapImg';
-import LandingAid from '../molecules/LandingAid';
+import Text from "../atoms/Text";
+import styled from "styled-components";
+import { useRouter } from "next/navigation";
+import LandingNav from "../molecules/LandingNav";
+import SwapImg from "../molecules/SwapImg";
+import LandingAid from "../molecules/LandingAid";
+import Card from "../molecules/Card";
 
-const LandingMainContainer = styled('div')`
+const LandingMainContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   flex-direction: column;
 `;
 
@@ -76,7 +77,7 @@ const Nav = styled("div")`
   top: 0;
   left: 0;
   width: 100%;
-`
+`;
 
 function LandingPage() {
   const router = useRouter();
@@ -87,20 +88,21 @@ function LandingPage() {
 
   return (
     <LandingMainContainer>
-    <LandingContainer>
-      <Nav>
-      <LandingNav />
-      </Nav>
-      <LogoText headingLevel={'h1'}>LOGISTICBAMBE</LogoText>
-      <DescriptionText headingLevel={'h1'}>
-        let us ease your courier transportation
-      </DescriptionText>
-      <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
-        Go to Homepage
-      </StyledButton>
-    </LandingContainer>
-    <SwapImg/>
-    <LandingAid />
+      <LandingContainer>
+        <Nav>
+          <LandingNav />
+        </Nav>
+        <LogoText headingLevel={"h1"}>LOGISTICBAMBE</LogoText>
+        <DescriptionText headingLevel={"h1"}>
+          let us ease your courier transportation
+        </DescriptionText>
+        <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
+          Go to Homepage
+        </StyledButton>
+      </LandingContainer>
+      <SwapImg />
+      <LandingAid />
+      <Card />
     </LandingMainContainer>
   );
 }

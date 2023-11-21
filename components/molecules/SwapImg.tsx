@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import firstimg from "../../public/backgroundimg.jpg";
-import secondimg from "../../public/firstimg.jpeg";
-import thirdimg from "../../public/third image.png";
+import firstimg from "../../public/black.png";
+import secondimg from "../../public/more.png";
+import thirdimg from "../../public/truck.png";
 import Button from "../atoms/Button";
 
 const SwapContainer = styled("div")`
@@ -12,7 +12,7 @@ const SwapContainer = styled("div")`
   justify-content: end;
   border: 1px solid grey;
   border-radius: 5px;
-  height: 55vh;
+  height: 65vh;
   width: 70vw;
   position: relative;
   overflow: hidden;
