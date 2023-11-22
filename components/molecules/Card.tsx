@@ -42,8 +42,8 @@ function Card() {
           style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
         />
         <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "15px", padding: "15px", borderBottom: "1px solid #87C656"}}>Ship Like a Pro</h1>
-            <p style={{padding: "15px"}}>Get access to powerful and time-saving customizable features found only in MyDHL+</p>
+            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Ship Like a Pro</h1>
+            <p style={{padding: "12px", fontSize: "15px"}}>Get access to powerful and time-saving customizable features found only in Logisticbambe</p>
         </CardInfo>
        </CardOne>
        <CardOne>
@@ -54,8 +54,8 @@ function Card() {
           style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
         />
         <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "15px", padding: "15px", borderBottom: "1px solid #87C656"}}>Save on Frequent Shipping</h1>
-            <p style={{padding: "15px"}}>Get preferred rates, billing options and other great benefits of having a DHL Express account!</p>
+            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Save on Frequent Shipping</h1>
+            <p style={{padding: "12px", fontSize: "15px"}}>Get preferred rates, billing options and other great benefits of having an account!</p>
         </CardInfo>
        </CardOne>
        <CardOne>
@@ -66,8 +66,8 @@ function Card() {
           style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
         />
         <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "15px", padding: "15px", borderBottom: "1px solid #87C656"}}>Not Home? Change of Plans?</h1>
-            <p style={{padding: "15px"}}>Take control of your shipment delivery!  Decide when and where you want us to deliver.</p>
+            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Not Home? Change of Plans?</h1>
+            <p style={{padding: "12px", fontSize: "15px"}}>Take control of your shipment delivery!  Decide when and where you want us to deliver.</p>
         </CardInfo>
        </CardOne>
     </CardContainer>

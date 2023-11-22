@@ -8,6 +8,7 @@ import LandingNav from "../molecules/LandingNav";
 import SwapImg from "../molecules/SwapImg";
 import LandingAid from "../molecules/LandingAid";
 import Card from "../molecules/Card";
+import Footer from "./Footer";
 
 const LandingMainContainer = styled("div")`
   display: flex;
@@ -41,11 +42,11 @@ const LandingContainer = styled.div`
 const LogoText = styled(Text)`
   color: #87c656;
   font-family: monospace;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: bold;
 
   @media screen and (max-width: 770px) {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center; 
     font-weight: bold;
     width: 100%;
@@ -53,14 +54,15 @@ const LogoText = styled(Text)`
 
 const DescriptionText = styled(Text)`
   color: #fff;
+  font-size: 12px;
 `;
 
 const StyledButton = styled.button`
   background-color: #87c656;
   color: #fff;
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -77,6 +79,7 @@ const Nav = styled("div")`
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 5;
 `;
 
 function LandingPage() {
@@ -97,12 +100,13 @@ function LandingPage() {
           let us ease your courier transportation
         </DescriptionText>
         <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
-          Go to Homepage
+          Next Page
         </StyledButton>
       </LandingContainer>
       <SwapImg />
       <LandingAid />
       <Card />
+      <Footer />
     </LandingMainContainer>
   );
 }

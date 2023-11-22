@@ -46,7 +46,7 @@ const Holder = styled("div")`
   align-items: center;
   justify-content: center;
   height: 15vh;
-  width: 15vw;
+  width: 17vw;
   font-size: 12px;
   background-color: rgba(135, 198, 86, 0.5);
 
@@ -59,7 +59,7 @@ const Holder = styled("div")`
 function LandingAid() {
   const iconStyling: IconStylingProviderProps = {
     value: {
-      size: "35px",
+      size: "30px",
       color: "#000",
     },
   };
@@ -84,41 +84,72 @@ function LandingAid() {
         <AidContainer>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-              <FaTruckArrowRight size={iconStyling.value.size}
-            color={iconStyling.value.color}/>
+              <FaTruckArrowRight
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
-            <Button
-              label={"Create shipment"}
-              onClick={function (): void {
-                throw new Error("Function not implemented.");
+            <div
+              style={{
+                width: "10vw",
+                background: "#87c656",
+                borderRadius: "5px",
+                textAlign: "center",
               }}
-            />
+            >
+              <Button
+                label={"Create shipment"}
+                onClick={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            </div>
           </Holder>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-              <LiaHandsHelpingSolid size={iconStyling.value.size}
-            color={iconStyling.value.color}/>
+              <LiaHandsHelpingSolid
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
-
-            <Button
-              label={"Help and support"}
-              onClick={function (): void {
-                throw new Error("Function not implemented.");
+            <div
+              style={{
+                width: "10vw",
+                background: "#87c656",
+                borderRadius: "5px",
+                textAlign: "center",
               }}
-            />
+            >
+              <Button
+                label={"Help and support"}
+                onClick={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            </div>
           </Holder>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-              <FcAbout size={iconStyling.value.size}
-            color={iconStyling.value.color}/>
+              <FcAbout
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
-
-            <Button
-              label={"About"}
-              onClick={function (): void {
-                throw new Error("Function not implemented.");
+            <div
+              style={{
+                width: "10vw",
+                background: "#87c656",
+                borderRadius: "5px",
+                textAlign: "center",
               }}
-            />
+            >
+              <Button
+                label={"About"}
+                onClick={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            </div>
           </Holder>
         </AidContainer>
       </AidMain>

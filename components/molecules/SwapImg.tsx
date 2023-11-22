@@ -16,6 +16,7 @@ const SwapContainer = styled("div")`
   width: 70vw;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
 `;
 
 const SwapSubContainer = styled("div")`
@@ -64,12 +65,14 @@ function SwapImg() {
       <SwapSubContainer>
         <h1 style={{padding:"5px", fontWeight: "700"}}>We know customers</h1>
         <p style={{padding:"5px", width: "20vw"}}>We handle packages with care, all over your city with a steady door to door service </p>
+        <div style={{width: "10vw", background: "grey", borderRadius: "5px", textAlign: "center"}}>
         <Button
           label={"let us help you"}
           onClick={function (): void {
             throw new Error("Function not implemented.");
           }}
         />
+        </div>
       </SwapSubContainer>
     </SwapContainer>
   );

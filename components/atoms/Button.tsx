@@ -6,13 +6,13 @@ const Btn = styled.button`
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #87C656;
-  transition: background-color 0.8s;
+  font-size: 15px;
+  transition: background-color 0.6s;
 
   &:hover {
-    box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+    transform: translateY(-5px) scale(1.01);
     background-color: #87C656;
-    width: 40%;
+    width: 100%;
     color: #000;
     font-weight: 600;
 }

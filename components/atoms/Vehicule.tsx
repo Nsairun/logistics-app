@@ -28,7 +28,7 @@ const VehiculeContainer = styled("div")`
 function Vehicule() {
   const iconStyling: IconStylingProviderProps = {
     value: {
-      size: "30px",
+      size: "25px",
       color: "#fff",
     },
   };
