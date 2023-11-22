@@ -61,8 +61,10 @@ function OrderField() {
   const [nameOfGood, setNameOfGood] = useState("");
   const [timeDeparture, setDepartureTime] = useState("");
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
+  const handleSubmit: (e?: React.FormEvent) => void = async (e) => {
+    if (e) {
+      e.preventDefault(); // Prevent the default form submission behavior
+    }
     try {
       const response = await axios.post("/api/order", {
         name,
@@ -196,7 +198,7 @@ function OrderField() {
         </OrderSection>
         <Vehicule />
         <OrderBtn>
-          <Button onClick={handleSubmit} label={""}>Submit</Button>
+          <Button onClick={() => handleSubmit()} label={""}>Submit</Button>
         </OrderBtn>
       </OrderMainContainer>
     </form>
