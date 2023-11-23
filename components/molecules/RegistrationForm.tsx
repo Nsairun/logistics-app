@@ -149,7 +149,13 @@ function Registration() {
       errors.push({
         password: "Password should be at least 6 characters long",
       });
-    } else if (data.password !== data.confirmPassword) {
+    }
+    else if (!/A-Z/.test(data.password) || !/a-z/.test(data.password)) {
+      errors.push({
+        password: "Password should contain at least one uppercase letter and lowercase letter",
+      });
+    }
+    else if (data.password !== data.confirmPassword) {
       errors.push({ confirmPassword: "Passwords don't match" });
     }
 
@@ -349,7 +355,7 @@ function Registration() {
                   Sign In
                 </Button>
               </Account>
-              {error && <Text headingLevel={"h1"}>{error}</Text>}
+              {error && <Text headingLevel={"h1"} style={{color:"red"}}>{error}</Text>}
               <Button label={""} onClick={() => handleSubmit}>
                 <Text
                   headingLevel={"h1"}

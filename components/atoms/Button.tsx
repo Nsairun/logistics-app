@@ -7,7 +7,7 @@ const Btn = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 15px;
-  transition: background-color 0.6s;
+  transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
 
   &:hover {
     transform: translateY(-5px) scale(1.01);
@@ -15,7 +15,7 @@ const Btn = styled.button`
     width: 100%;
     color: #000;
     font-weight: 600;
-}
+  }
 `;
 
 interface ButtonProps {

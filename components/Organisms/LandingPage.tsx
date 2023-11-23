@@ -9,6 +9,9 @@ import SwapImg from "../molecules/SwapImg";
 import LandingAid from "../molecules/LandingAid";
 import Card from "../molecules/Card";
 import Footer from "./Footer";
+import firstimg from "../../public/firstimg.jpeg";
+import secondimg from "../../public/more.png";
+import thirdimg from "../../public/truck.png";
 
 const LandingMainContainer = styled("div")`
   display: flex;
@@ -54,7 +57,7 @@ const LogoText = styled(Text)`
 
 const DescriptionText = styled(Text)`
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
 `;
 
 const StyledButton = styled.button`
@@ -65,12 +68,13 @@ const StyledButton = styled.button`
   font-size: 15px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
 
   &:hover {
-    transform: translateY(-3px) scale(1.0);
+    transform: translateY(-5px) scale(1.01);
     background-color: #87C656;
     width: 20%;
+    color: #fff;
     font-weight: 600;
 `;
 
@@ -80,6 +84,19 @@ const Nav = styled("div")`
   left: 0;
   width: 100%;
   z-index: 5;
+`;
+
+const SwapContainer = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 65vh;
+  width: 70vw;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
 `;
 
 function LandingPage() {
@@ -96,14 +113,16 @@ function LandingPage() {
           <LandingNav />
         </Nav>
         <LogoText headingLevel={"h1"}>LOGISTICBAMBE</LogoText>
-        <DescriptionText headingLevel={"h1"}>
+        <DescriptionText headingLevel={"h2"}>
           let us ease your courier transportation
         </DescriptionText>
         <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
           Next Page
         </StyledButton>
       </LandingContainer>
-      <SwapImg />
+      <SwapContainer>
+        <SwapImg images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png"]} />
+      </SwapContainer>
       <LandingAid />
       <Card />
       <Footer />

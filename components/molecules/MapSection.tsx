@@ -11,7 +11,6 @@ const MapContainer = styled("div")`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid #1C1B21;
   text-align: left;
   width: 50vw;
   color: #fff;
@@ -65,7 +64,7 @@ function MapSection() {
           height: "72vh",
         }}
         quality={100}
-        sizes="90vw"
+        sizes="92vw"
         alt="bg_image"
       />
       <MapContainerHolder>

@@ -2,7 +2,6 @@ import React from "react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { BsTaxiFront } from "react-icons/bs";
 import { MdElectricBike } from "react-icons/md";
-import { IoMdAdd } from "react-icons/io";
 import {
   IconStylingProvider,
   IconStylingProviderProps,

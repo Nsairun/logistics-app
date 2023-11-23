@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import firstimg from "../../public/third image.png";
+import firstimg from "../../public/card.jpg.png";
 import Button from "../atoms/Button";
 import { FaTruckArrowRight } from "react-icons/fa6";
 import { LiaHandsHelpingSolid } from "react-icons/lia";

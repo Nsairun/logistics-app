@@ -2,6 +2,7 @@
 import React from 'react'
 import Registration from '../../../components/molecules/RegistrationForm';
 import styled from 'styled-components';
+import LandingNav from '../../../components/molecules/LandingNav';
 
 const RegistrationContainer =styled("div")`
 
@@ -13,6 +14,7 @@ const RegistrationContainer =styled("div")`
 function page() {
   return (
     <RegistrationContainer>
+        <LandingNav/>
         <Registration />
     </RegistrationContainer>
   )
