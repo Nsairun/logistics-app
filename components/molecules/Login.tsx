@@ -6,8 +6,10 @@ import Image from "next/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Landingimage from "../../public/backound.webp";
+import { API_URL } from "@/services/contants";
 
 
 // import SlideModal from "../../modal/SlideModal";
@@ -24,6 +26,7 @@ const RegMainContainer = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+  }
 ;`
 
 const RegContainer = styled("div")`
@@ -39,6 +42,7 @@ const RegContainer = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+  }
 `;
 
 const RegImageContainer = styled("div")`
@@ -55,6 +59,7 @@ const RegImageContainer = styled("div")`
 
   @media screen and (max-width: 770px) {
     display: none;
+  }
 `;
 
 const RegSection = styled("div")`
@@ -70,6 +75,7 @@ const RegSection = styled("div")`
     display: block;
     width: 100%;
     padding: 15px;
+  }
 `;
 
 const RegSectionRoles = styled("div")`
@@ -84,6 +90,7 @@ const RegSectionRoles = styled("div")`
     display: block;
     width: 100%;
     padding: 10px;
+  }
 `;
 
 const Title = styled("div")`
@@ -101,21 +108,31 @@ const Account = styled("div")`
   padding: 5px;
   gap: 1rem;
 `;
-function Registration() {
+function Login() {
   const router = useRouter();
 
   const navigateToPage = (path: string) => {
     router.push(path);
   };
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/api/users/signin`, {
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", response.data.token);
+      router.push("/dashboard");
+    } catch (error) {
+      setErrorMessage("Invalid email or password");
+    }
   };
+    
   return (
     <RegMainContainer>
     <RegContainer>
@@ -145,15 +162,12 @@ function Registration() {
             <Input
               type={"text"}
               label={""}
-              value={""}
+              value={email}
               name={""}
-              placeholder={""}
+              placeholder={"Email"}
               error={false}
-              onChange={function (
-                e: React.ChangeEvent<HTMLInputElement>
-              ): void {
-                throw new Error("Function not implemented.");
-              }}
+              onChange={(e) => setEmail(e.target.value)}
+
             />
           </Title>
         </RegSectionRoles>
@@ -164,15 +178,12 @@ function Registration() {
             <Input
               type={"text"}
               label={""}
-              value={""}
+              value={password}
               name={""}
-              placeholder={""}
+              placeholder={"Password"}
               error={false}
-              onChange={function (
-                e: React.ChangeEvent<HTMLInputElement>
-              ): void {
-                throw new Error("Function not implemented.");
-              }}
+              onChange={(e) => setPassword(e.target.value)}
+
             />
           </Title>
           <Account>
@@ -180,22 +191,17 @@ function Registration() {
             <Button label={""} onClick={() => navigateToPage("/registrationlogin")}>
               
                   Sign Up
-            {/* <ReactModal isOpen={isModalOpen} onRequestClose={closeModal}>
-            <SlideModal isOpen={isModalOpen} onClose={closeModal} />
-            <RegistrationForm/>
-          </ReactModal> */}
             </Button>
           </Account>
-          <Button label={""} onClick={() => navigateToPage("/dashboard")}>
+          <Button label={""} onClick={handleLogin}>
               Login
           </Button>
         </RegSectionRoles>
+        {errorMessage && <Text headingLevel={"h1"}>{errorMessage}</Text>}
       </RegSection>
     </RegContainer>
     </RegMainContainer>
   );
 }
 
-export default Registration;
-
-
+export default Login;

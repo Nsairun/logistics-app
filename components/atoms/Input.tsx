@@ -70,7 +70,7 @@ const Input: FC<InputProps> = ({
         onChange={onChange}
         disabled={disabled}
         style={{border: "transparent", width: "200px",
-        height: "5vh", outline: "none"}}
+        height: "5vh", outline: "none", padding: "5px"}}
       />
       {error && <Error className="error">Input field cant be empty!</Error>}
       {/* <IconStylingProvider value={iconStyling.value}>

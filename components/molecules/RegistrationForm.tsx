@@ -133,7 +133,6 @@ function Registration() {
   const [validationErrors, setValidationErrors] = useState<
     { fullname?: string; password?: string; confirmPassword?: string }[]
   >([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const validateData = () => {
@@ -167,6 +166,8 @@ function Registration() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    console.log(validateData());
+
     if (
       !data.fullname ||
       !data.email ||
@@ -178,10 +179,10 @@ function Registration() {
       return;
     }
 
-    if (!validateData()) {
-      setError("Validation failed");
-      return;
-    }
+    // if (!validateData()) {
+    //   setError("Validation failed");
+    //   return;
+    // }
 
     try {
       console.log({ API_URL, data });
@@ -202,20 +203,15 @@ function Registration() {
         setError("User registration failed");
       }
 
+      const token = res.data.token;
+
+      localStorage.setItem('token', token);
+
       console.log("data", { res });
     } catch (error) {
       console.log("Error during registration", error);
       setError("Error during registration");
     }
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
   };
 
   return (
