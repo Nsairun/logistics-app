@@ -22,6 +22,7 @@ const NavContainerSub = styled("div")`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  padding-right: 10px;
   width: 30vw;
   color: #fff;
 `;
@@ -48,7 +49,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#87c656",
             borderRadius: "5px",
             textAlign: "center",
           }}
@@ -63,7 +64,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#87c656",
             borderRadius: "5px",
             textAlign: "center",
           }}
@@ -78,7 +79,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#87c656",
             borderRadius: "5px",
             textAlign: "center",
           }}

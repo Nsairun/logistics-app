@@ -7,9 +7,14 @@ import Button from "../atoms/Button";
 import RegImage from "../../public/real logo.png";
 import Landingimage from "../../public/backound.webp";
 import Image from "next/image";
+import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { API_URL } from "@/services/contants";
+import {
+  IconStylingProvider,
+  IconStylingProviderProps,
+} from "../../hooks/MyIcons";
 
 export const RegContainer = styled("div")`
   display: flex;
@@ -116,6 +121,12 @@ const Account = styled("div")`
     width: 100%;
 `;
 function Registration() {
+  const iconStyling: IconStylingProviderProps = {
+    value: {
+      size: "35px",
+      color: "#fff",
+    },
+  };
   const router = useRouter();
 
   const navigateToPage = (path: string) => {
@@ -148,13 +159,12 @@ function Registration() {
       errors.push({
         password: "Password should be at least 6 characters long",
       });
-    }
-    else if (!/A-Z/.test(data.password) || !/a-z/.test(data.password)) {
+    } else if (!/A-Z/.test(data.password) || !/a-z/.test(data.password)) {
       errors.push({
-        password: "Password should contain at least one uppercase letter and lowercase letter",
+        password:
+          "Password should contain at least one uppercase letter and lowercase letter",
       });
-    }
-    else if (data.password !== data.confirmPassword) {
+    } else if (data.password !== data.confirmPassword) {
       errors.push({ confirmPassword: "Passwords don't match" });
     }
 
@@ -179,11 +189,6 @@ function Registration() {
       return;
     }
 
-    // if (!validateData()) {
-    //   setError("Validation failed");
-    //   return;
-    // }
-
     try {
       console.log({ API_URL, data });
       // const res = await axios.post( `${API_URL}/api/users/signup`, data);
@@ -205,7 +210,7 @@ function Registration() {
 
       const token = res.data.token;
 
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
 
       console.log("data", { res });
     } catch (error) {
@@ -347,11 +352,61 @@ function Registration() {
             <RegSectionRoles>
               <Account>
                 <Text headingLevel={"h1"}>Already have an account?</Text>
+                <div
+                style={{
+                  width: "7vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  background: "#87C656",
+                  gap: "1rem",
+                }}
+              >
                 <Button label={""} onClick={() => navigateToPage("/login")}>
                   Sign In
                 </Button>
+                </div>
               </Account>
-              {error && <Text headingLevel={"h1"} style={{color:"red"}}>{error}</Text>}
+              
+                <button
+                  onClick={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                  style={{
+                    width: "25vw",
+                    display: "flex",
+                    alignItems: "center",
+                    backgroundColor:" rgba(135, 198, 86, 0.5)",
+                    padding: "5px",
+                    gap: "1rem",
+                  }}
+                >
+                  <IconStylingProvider value={iconStyling.value}>
+                    <FcGoogle
+                      size={iconStyling.value.size}
+                      color={iconStyling.value.color}
+                    />
+                  </IconStylingProvider>
+                  <Text headingLevel={"h1"}> Register with google account</Text>
+                </button>
+                
+              {error && (
+                <Text headingLevel={"h1"} style={{ color: "red" }}>
+                  {error}
+                </Text>
+              )}
+<div
+                style={{
+                  width: "7vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  background: "#87C656",
+                  gap: "1rem",
+                }}
+              >
               <Button label={""} onClick={() => handleSubmit}>
                 <Text
                   headingLevel={"h1"}
@@ -364,6 +419,7 @@ function Registration() {
                   Register
                 </Text>
               </Button>
+              </div>
             </RegSectionRoles>
           </form>
         </RegSection>

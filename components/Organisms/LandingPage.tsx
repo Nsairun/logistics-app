@@ -45,7 +45,7 @@ const LandingContainer = styled.div`
 const LogoText = styled(Text)`
   color: #87c656;
   font-family: monospace;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
 
   @media screen and (max-width: 770px) {
@@ -68,13 +68,13 @@ const StyledButton = styled.button`
   font-size: 15px;
   border: none;
   cursor: pointer;
-  transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
     transform: translateY(-5px) scale(1.01);
-    background-color: #87C656;
-    width: 20%;
-    color: #fff;
+    transition: 0.3s ease-in-out;
+    padding: 0.6rem 4rem;
+    font-size: 18px;
     font-weight: 600;
 `;
 
