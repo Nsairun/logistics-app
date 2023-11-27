@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Vehicule from "../atoms/Vehicule";
 import Button from "../atoms/Button";
+import { useRouter } from "next/navigation"; 
+
 
 const NavContainer = styled("div")`
   display: flex;
@@ -40,6 +42,13 @@ const Logo = styled("div")`
 `;
 
 function LandingNav() {
+
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+  
   return (
     <NavContainer>
       <Logo>
@@ -56,9 +65,7 @@ function LandingNav() {
         >
           <Button
             label={"HomePage"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/")}
           />
         </div>
         <div
@@ -71,9 +78,7 @@ function LandingNav() {
         >
           <Button
             label={"Registration"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/registrationlogin")}
           />
         </div>
         <div
@@ -86,9 +91,7 @@ function LandingNav() {
         >
           <Button
             label={"Login"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/login")}
           />
         </div>
       </NavContainerSub>

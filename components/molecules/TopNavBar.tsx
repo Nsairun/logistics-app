@@ -1,13 +1,15 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Text from "../atoms/Text";
-import Input from "../atoms/Input";
+import { FaHome } from "react-icons/fa";
 import { IoNotificationsOutline, IoPersonCircle } from "react-icons/io5";
 import styled from "styled-components";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
+import Button from "../atoms/Button";
+import { useRouter } from "next/navigation";
 
 const TopBar = styled.div`
   display: flex;
@@ -39,6 +41,12 @@ const iconStyling: IconStylingProviderProps = {
 };
 
 function TopNavBar() {
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -55,17 +63,40 @@ function TopNavBar() {
 
   return (
     <TopBar>
-      <Text headingLevel="h1" style={{color: "#000", paddingLeft: "70px"}}>
-        <Text headingLevel={"h1"}>{currentDate}{currentTime}</Text>
+      <Text headingLevel="h1" style={{ color: "#000", paddingLeft: "70px" }}>
+        <Text headingLevel={"h1"}>
+          {currentDate}
+          {currentTime}
+        </Text>
       </Text>
       <SubTopBar>
+        <div
+          style={{
+            width: "2.5vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Button label={""} onClick={() => navigateToPage("/")}>
+            <IconStylingProvider value={iconStyling.value}>
+              <FaHome
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+            </IconStylingProvider>
+          </Button>
+        </div>
         <IoNotificationsOutline
           size={iconStyling.value.size}
           color={iconStyling.value.color}
         />
 
         <IconStylingProvider value={iconStyling.value}>
-          <IoPersonCircle size={iconStyling.value.size} color={iconStyling.value.color} />
+          <IoPersonCircle
+            size={iconStyling.value.size}
+            color={iconStyling.value.color}
+          />
         </IconStylingProvider>
         <Text headingLevel="h1">{}</Text>
       </SubTopBar>

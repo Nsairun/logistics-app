@@ -10,11 +10,12 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Landingimage from "../../public/backound.webp";
 import { API_URL } from "@/services/contants";
+import {
+  IconStylingProvider,
+  IconStylingProviderProps,
+} from "../../hooks/MyIcons";
+import { FcGoogle } from "react-icons/fc";
 
-
-// import SlideModal from "../../modal/SlideModal";
-// import RegistrationForm from "./RegistrationForm";
-// import ReactModal from "react-modal";
 
 const RegMainContainer = styled("div")`
   display: flex;
@@ -37,7 +38,7 @@ const RegContainer = styled("div")`
   background: #F1F2F3;
   box-shadow: 2px 4px 30px 1px grey;
   border-top: 6px solid #87C656;
-  border-radius: 10px;
+  border-top-radius: 10px;
 
   @media screen and (max-width: 770px) {
     display: block;
@@ -108,6 +109,15 @@ const Account = styled("div")`
   padding: 5px;
   gap: 1rem;
 `;
+
+const iconStyling: IconStylingProviderProps = {
+  value: {
+    size: "28px",
+    color: "#000",
+  },
+};
+
+
 function Login() {
   const router = useRouter();
 
@@ -193,10 +203,37 @@ function Login() {
                   Sign Up
             </Button>
           </Account>
+          
+          <button  style={{
+            width: "16vw",
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            justifyContent: "center",
+            backgroundColor:" rgba(135, 198, 86, 0.5)",
+            padding: "5px",
+          }} onClick={() => navigateToPage("/")}>
+            <IconStylingProvider value={iconStyling.value}>
+            <FcGoogle
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+                Login with Google
+            </IconStylingProvider>
+          </button>
+          <div style={{
+            width: "16vw",
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            justifyContent: "center",
+          }}>
           <Button label={""} onClick={handleLogin}>
               Login
           </Button>
+          </div>
         </RegSectionRoles>
+        
         {errorMessage && <Text headingLevel={"h1"}>{errorMessage}</Text>}
       </RegSection>
     </RegContainer>
