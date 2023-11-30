@@ -79,7 +79,7 @@ const ClientProfile = styled("div")`
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    background: red;
+    background: gray;
 `;
 
 const CustomerDetails = styled("div")`

@@ -22,7 +22,7 @@ export const RegContainer = styled("div")`
   flex-direction: column;
   justify-content: space-evenly;
   width: 50vw;
-  height: 90vh;
+  height: 100%;
   background: #F1F2F3;
   gap: 1rem;
   border-top: 6px solid #87C656;
@@ -30,6 +30,7 @@ export const RegContainer = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+    margin: auto;
 `;
 
 const RegImageContainer = styled("div")`
@@ -60,6 +61,7 @@ const RegMainContainer = styled("div")`
     display: block;
     width: 100%;
     height: 100%;
+    margin: auto;
     background: #87C656;
 `;
 
@@ -72,7 +74,6 @@ const RegSection = styled("div")`
   color: #000;
 
   @media screen and (max-width: 770px) {
-    display: block;
     width: 100%;
 `;
 
@@ -85,7 +86,7 @@ const RegSectionRoles = styled("div")`
   padding: 5px;
 
   @media screen and (max-width: 770px) {
-    display: block;
+    marigin auto;
     width: 100%;
 `;
 
@@ -96,6 +97,10 @@ const Title = styled("div")`
   flex-direction: column;
   justify-content: center;
   padding: 5px;
+
+  @media screen and (max-width: 770px) {
+    marigin auto;
+    width: 100%;
 `;
 
 const Separation = styled("div")`
@@ -117,8 +122,9 @@ const Account = styled("div")`
   gap: 1rem;
 
   @media screen and (max-width: 770px) {
-    display: block;
-    width: 100%;
+    // display: block;
+    margin: auto;
+    // width: 100%;
 `;
 function Registration() {
   const iconStyling: IconStylingProviderProps = {
@@ -230,21 +236,6 @@ function Registration() {
       </RegImageContainer>
       <RegContainer>
         <RegSection>
-          <Account>
-            <Text headingLevel={"h1"} style={{ color: "#000" }}>
-              Hey! Welcome to{" "}
-            </Text>
-            <Text
-              headingLevel={"h1"}
-              style={{
-                color: "#87C656",
-                fontWeight: "bolder",
-                borderBottom: "4px solid #87C656",
-              }}
-            >
-              LogiscticBambe
-            </Text>
-          </Account>
           <form onSubmit={handleSubmit}>
             <RegSectionRoles>
               <Separation>
@@ -353,52 +344,51 @@ function Registration() {
               <Account>
                 <Text headingLevel={"h1"}>Already have an account?</Text>
                 <div
-                style={{
-                  width: "7vw",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "5px",
-                  background: "#87C656",
-                  gap: "1rem",
-                }}
-              >
-                <Button label={""} onClick={() => navigateToPage("/login")}>
-                  Sign In
-                </Button>
-                </div>
-              </Account>
-              
-                <button
-                  onClick={function (): void {
-                    throw new Error("Function not implemented.");
-                  }}
                   style={{
-                    width: "25vw",
+                    width: "20%",
                     display: "flex",
                     alignItems: "center",
-                    backgroundColor:" rgba(135, 198, 86, 0.5)",
-                    padding: "5px",
+                    justifyContent: "center",
+                    borderBottom: "1px solid #87C656",
                     gap: "1rem",
                   }}
                 >
-                  <IconStylingProvider value={iconStyling.value}>
-                    <FcGoogle
-                      size={iconStyling.value.size}
-                      color={iconStyling.value.color}
-                    />
-                  </IconStylingProvider>
-                  <Text headingLevel={"h1"}> Register with google account</Text>
-                </button>
-                
+                  <Button label={""} onClick={() => navigateToPage("/login")}>
+                    Sign In
+                  </Button>
+                </div>
+              </Account>
+
+              <button
+                onClick={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: " rgba(135, 198, 86, 0.5)",
+                  padding: "5px",
+                  gap: "1rem",
+                }}
+              >
+                <IconStylingProvider value={iconStyling.value}>
+                  <FcGoogle
+                    size={iconStyling.value.size}
+                    color={iconStyling.value.color}
+                  />
+                </IconStylingProvider>
+                <Text headingLevel={"h1"}> Register with google account</Text>
+              </button>
+
               {error && (
                 <Text headingLevel={"h1"} style={{ color: "red" }}>
                   {error}
                 </Text>
               )}
-<div
+              <div
                 style={{
-                  width: "7vw",
+                  width: "20vw",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -407,18 +397,18 @@ function Registration() {
                   gap: "1rem",
                 }}
               >
-              <Button label={""} onClick={() => handleSubmit}>
-                <Text
-                  headingLevel={"h1"}
-                  style={{
-                    borderRadius: "5px",
-                    border: " solid #87C656",
-                    padding: "5px",
-                  }}
-                >
-                  Register
-                </Text>
-              </Button>
+                <Button label={""} onClick={() => handleSubmit}>
+                  <Text
+                    headingLevel={"h1"}
+                    style={{
+                      borderRadius: "5px",
+                      border: " solid #87C656",
+                      padding: "5px",
+                    }}
+                  >
+                    Register
+                  </Text>
+                </Button>
               </div>
             </RegSectionRoles>
           </form>

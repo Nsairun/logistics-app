@@ -1,7 +1,5 @@
 import { ChangeEvent, FC } from 'react';
 import { styled } from 'styled-components';
-import { FiSearch } from 'react-icons/fi';
-import { IconStylingProvider, IconStylingProviderProps } from '../../hooks/MyIcons';
 
 const InputWrapper = styled.div`
   font-size: 16px;
@@ -31,12 +29,6 @@ const Error = styled.div`
   color: #667085;
 `;
 
-const iconStyling: IconStylingProviderProps = {
-    value: {
-        size: '20px',
-        color: '#000',
-    },
-};
 
 interface InputProps {
   type: 'text' | 'number' | 'email' | 'password';

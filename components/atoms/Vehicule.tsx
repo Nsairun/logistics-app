@@ -14,14 +14,12 @@ const VehiculeMain = styled("div")`
  align-items: center;
  justify-content; start;
  flex-direction: column;
- gap: 1rem;
 `;
 
 const VehiculeContainer = styled("div")`
  display: flex;
  align-items: center;
  justify-content; start;
- gap: 1rem;
 `;
 
 function Vehicule() {

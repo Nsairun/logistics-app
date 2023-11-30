@@ -11,12 +11,11 @@ const NavContainer = styled("div")`
   justify-content: space-between;
   width: 100%;
   height: 7vh;
-  border: 0.5px solid grey;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 128, 0, 0.5),
-    rgba(0, 128, 0, 0)
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0));
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+
 `;
 
 const NavContainerSub = styled("div")`
@@ -25,8 +24,11 @@ const NavContainerSub = styled("div")`
   justify-content: center;
   gap: 1rem;
   padding-right: 10px;
-  width: 30vw;
+  width: 100%;
   color: #fff;
+
+  @media screen and (max-width: 770px) {
+      display: none
 `;
 
 const Logo = styled("div")`
@@ -58,7 +60,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            color: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}
@@ -71,7 +73,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            color: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}
@@ -84,7 +86,7 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            color: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}

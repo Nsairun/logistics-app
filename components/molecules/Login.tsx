@@ -22,11 +22,12 @@ const RegMainContainer = styled("div")`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 
   @media screen and (max-width: 770px) {
-    display: block;
     width: 100%;
+    gap: 1rem;
+    background: #F1F2F3;
   }
 ;`
 
@@ -34,15 +35,17 @@ const RegContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: spac-between;
-  width: 50%;
+  width: 70%;
+  height: 100%;
   background: #F1F2F3;
   box-shadow: 2px 4px 30px 1px grey;
   border-top: 6px solid #87C656;
   border-top-radius: 10px;
 
   @media screen and (max-width: 770px) {
-    display: block;
     width: 100%;
+    gap: 1rem;
+    box-shadow: none;
   }
 `;
 
@@ -75,6 +78,7 @@ const RegSection = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+    margin: auto
     padding: 15px;
   }
 `;
@@ -90,6 +94,7 @@ const RegSectionRoles = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+    margin: auto;
     padding: 10px;
   }
 `;
@@ -107,7 +112,12 @@ const Account = styled("div")`
   align-items: center;
   justify-content: center;
   padding: 5px;
+  width: 100%;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    margin: auto;
+    width: 100%;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -205,7 +215,7 @@ function Login() {
           </Account>
           
           <button  style={{
-            width: "16vw",
+            width: "100%",
             display: "flex",
             alignItems: "center",
             gap: "1rem",
@@ -222,7 +232,7 @@ function Login() {
             </IconStylingProvider>
           </button>
           <div style={{
-            width: "16vw",
+            width: "100%",
             display: "flex",
             alignItems: "center",
             gap: "1rem",

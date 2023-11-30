@@ -9,12 +9,14 @@ import styled from "styled-components";
 import Text from "./Text";
 import Vehicule from "./Vehicule";
 import axios from "axios";
+import { API_URL } from "@/services/contants";
 
 const OrderMainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 const OrderBtn = styled.div`
@@ -34,6 +36,11 @@ const OrderSection = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const OrderInput = styled.div`
@@ -43,6 +50,10 @@ const OrderInput = styled.div`
   align-items: start;
   gap: 1rem;
   flex-direction: column;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+  }
 `;
 
 const OrderSubContainer = styled.div`
@@ -51,6 +62,11 @@ const OrderSubContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 function OrderField() {
@@ -66,25 +82,39 @@ function OrderField() {
       e.preventDefault(); // Prevent the default form submission behavior
     }
     try {
-      const response = await axios.post("/api/order", {
+      const response = await axios.post(`${API_URL}/api/ordersRoute/order`, {
         name,
         idNumber,
         pointFrom,
         pointTo,
         nameOfGood,
-        timeDeparture
+        timeDeparture,
       });
       // Handle success response
-      console.log(response.data);
-    } catch (error) {
+      console.log("data", response.data);
+      setName("");
+      setIdNumber("");
+      setPointFrom("");
+      setPointTo("");
+      setNameOfGood("");
+      setDepartureTime("");
+    } catch (error: any) {
       // Handle error response
       console.error(error);
+      if (error.response && error.response.status === 404) {
+        setErrorMessage("Resource not found. Please try again.");
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <OrderMainContainer>
+        <h1 style={{ fontSize: "35px", width: "60%", textAlign: "center" }}>
+          PLACE YOUR SHIPMENT ORDER HERE
+        </h1>
         <OrderSection>
           <OrderSubContainer>
             <OrderInput>
@@ -198,7 +228,9 @@ function OrderField() {
         </OrderSection>
         <Vehicule />
         <OrderBtn>
-          <Button onClick={() => handleSubmit()} label={""}>Submit</Button>
+          <Button onClick={() => handleSubmit()} label={""}>
+            Submit
+          </Button>
         </OrderBtn>
       </OrderMainContainer>
     </form>
@@ -206,3 +238,7 @@ function OrderField() {
 }
 
 export default OrderField;
+
+function setErrorMessage(arg0: string) {
+  throw new Error("Function not implemented.");
+}

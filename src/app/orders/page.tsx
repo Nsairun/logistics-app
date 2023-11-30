@@ -87,6 +87,7 @@ const orders = [
 ];
 
 const Page = () => {
+  const [ordersData, setOrdersData] = useState([]);
   const [sortByDate, setSortByDate] = useState("");
   const [filterStartPoint, setFilterStartPoint] = useState("");
   const [filterDepositPoint, setFilterDepositPoint] = useState("");
@@ -109,8 +110,8 @@ const Page = () => {
       });
     } else if (sortBy === "Time") {
       return data.sort((a, b) => {
-        const timeA = new Date("1970/01/01 " + a.time);
-        const timeB = new Date("1970/01/01 " + b.time);
+        const timeA = new Date("1970/01/01" + a.time);
+        const timeB = new Date("1970/01/01" + b.time);
 
         if (timeA < timeB) {
           return -1;

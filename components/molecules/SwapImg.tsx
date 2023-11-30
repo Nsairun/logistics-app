@@ -18,7 +18,11 @@ const SwapContainer = styled("div")`
   width: 70vw;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0.2), rgba(0, 100, 0, 0));
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
 `;
 
 const SwapSubContainer = styled("div")`
@@ -38,6 +42,9 @@ const SwapSubContainer = styled("div")`
   );
   top: 0;
   left: 0;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
 `;
 
 interface CarouselProps {
@@ -68,14 +75,14 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
   return (
     <SwapContainer>
       <div style={{ width: "4vw", zIndex: "5" }}>
-        <Button label={""} onClick={goToPreviousImage}>
+        <button onClick={goToPreviousImage}>
           <IconStylingProvider value={iconStyling.value}>
-            <TfiControlForward
+            <TfiControlBackward
               size={iconStyling.value.size}
               color={iconStyling.value.color}
             />
           </IconStylingProvider>
-        </Button>
+        </button>
       </div>
       <Image
         src={images[currentImageIndex]}
@@ -83,11 +90,11 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
         objectFit="cover"
         width={600}
         height={10}
-        style={{ width: "75vw", height: "65vh", padding: "1px" }}
+        style={{ width: "100%", height: "65vh", padding: "1px" }}
       />
       <SwapSubContainer>
         <h1 style={{ padding: "5px", fontWeight: "700" }}>We know customers</h1>
-        <p style={{ padding: "5px", width: "20vw" }}>
+        <p style={{ padding: "35px", width: "100%" }}>
           We handle packages with care, all over your city with a steady door to
           door service{" "}
         </p>
@@ -108,14 +115,14 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
         </div>
       </SwapSubContainer>
       <div style={{ width: "4vw"}}>
-        <Button label={""} onClick={goToNextImage}>
+        <button onClick={goToNextImage}>
           <IconStylingProvider value={iconStyling.value}>
-            <TfiControlBackward
+            <TfiControlForward
               size={iconStyling.value.size}
               color={iconStyling.value.color}
             />
           </IconStylingProvider>
-        </Button>
+        </button>
       </div>
     </SwapContainer>
   );

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
   padding: 5px;
+  height: 5vh
   border-radius: 5px;
   cursor: pointer;
   font-size: 15px;
@@ -15,6 +16,18 @@ const Btn = styled.button`
     width: 100%;
     color: #000;
     font-weight: 600;
+
+    @media screen and (max-width: 770px) {
+      width: fit-content;
+      max-width: 100%;
+      border-radius: 5px;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.01);
+        background-color: #87C656;
+        width: fit-content;
+        color: #000;
+        font-weight: 600;
   }
 `;
 

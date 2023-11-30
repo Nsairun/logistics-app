@@ -3,9 +3,9 @@ import Image from "next/image";
 import styled from "styled-components";
 import firstimg from "../../public/card.jpg.png";
 import Button from "../atoms/Button";
-import { FaTruckArrowRight } from "react-icons/fa6";
+import { FiTruck } from "react-icons/fi";
 import { LiaHandsHelpingSolid } from "react-icons/lia";
-import { FcAbout } from "react-icons/fc";
+import { GoReport } from "react-icons/go";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
@@ -19,6 +19,13 @@ const LadingAidContainer = styled("div")`
   width: 80vw;
   height: 35vh;
   border-radius: 5px;
+
+  @media screen and (max-width: 770px) {
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
 `;
 
 const AidMain = styled("div")`
@@ -28,17 +35,32 @@ const AidMain = styled("div")`
   flex-direction: column;
   width: 50vw;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+
 `;
 
 const ImgContainer = styled("div")`
   height: 35vh;
   width: 22vw;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+
 `;
 
 const AidContainer = styled("div")`
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
 `;
 
 const Holder = styled("div")`
@@ -54,6 +76,10 @@ const Holder = styled("div")`
     font-weight: 600;
     box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
   }
+  
+  @media screen and (max-width: 770px) {
+    width: 60%;
+    margin: auto;
 `;
 
 function LandingAid() {
@@ -77,28 +103,28 @@ function LandingAid() {
         <h1 style={{ color: "#000", fontSize: "20px", fontWeight: "700" }}>
           Reliable, Powerful and Easy services
         </h1>
-        <p style={{ color: "#000" }}>
+        <p style={{ color: "#000", width: "100%", padding: "10px"}}>
           We make it easier than ever to transport, get quotes, schedule
           pickups, find locations, track shipments and more!
         </p>
         <AidContainer>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-              <FaTruckArrowRight
+            <FiTruck
                 size={iconStyling.value.size}
                 color={iconStyling.value.color}
               />
             </IconStylingProvider>
             <div
               style={{
-                width: "10vw",
+                width: "fitContent",
                 background: "#87c656",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
             >
               <Button
-                label={"Create shipment"}
+                label={"Create order"}
                 onClick={function (): void {
                   throw new Error("Function not implemented.");
                 }}
@@ -114,7 +140,7 @@ function LandingAid() {
             </IconStylingProvider>
             <div
               style={{
-                width: "10vw",
+                width: "fitContent",
                 background: "#87c656",
                 borderRadius: "5px",
                 textAlign: "center",
@@ -130,7 +156,7 @@ function LandingAid() {
           </Holder>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-              <FcAbout
+              <GoReport
                 size={iconStyling.value.size}
                 color={iconStyling.value.color}
               />
