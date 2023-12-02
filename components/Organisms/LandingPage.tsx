@@ -19,12 +19,13 @@ const LandingMainContainer = styled("div")`
   justify-content: center;
   gap: 3rem;
   flex-direction: column;
+  background: #F1F2F3;
 
   @media screen and (max-width: 770px) {
     width: 100%;
     height: 100%;
     padding: 20px;
-
+  }
 `;
 
 const LandingContainer = styled.div`

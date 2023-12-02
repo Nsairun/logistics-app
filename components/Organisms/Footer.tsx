@@ -9,7 +9,7 @@ const FooterContainer = styled("div")`
   height: 35vh;
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 100, 0, 0.2), rgba(0, 100, 0, 0));
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 
   @media screen and (max-width: 770px) {
     width: 100%;
@@ -33,7 +33,8 @@ const Logo = styled("div")`
     justify-content: space-evenly;
     font-weight: 700;
     font-size: 18px;
-    padding: 20px;
+    background: #fff;
+    padding: 10px;
     color: #000;
     font-family: Helvetica;
     text-shadow: 2px 2px 4px grey;

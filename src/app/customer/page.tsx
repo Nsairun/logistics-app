@@ -20,6 +20,7 @@ import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
 import PaymentDetails from "../../../components/molecules/PaymentDetails";
 import Modal from "../../../modal/SlideModal";
 import Details from "../../../components/molecules/Details";
+import Footer from "../../../components/Organisms/Footer";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -262,6 +263,7 @@ const page: React.FC = () => {
             </CustomerDetails>
           </CustomerMainDetails>
         </ClientSection>
+        <Footer />
       </OrderMain>
     </OrderSubContainer>
   );

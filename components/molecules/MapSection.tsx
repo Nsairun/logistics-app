@@ -60,8 +60,10 @@ function MapSection() {
         placeholder="blur"
         style={{
           objectFit: "cover",
-          backgroundImage: "linear-gradient(to bottom, #fff, #000, #eee, red, green)",
+          backgroundImage:
+            "linear-gradient(to bottom, #fff, #000, #eee, red, green)",
           height: "72vh",
+          boxShadow: "3px 5px 15px 2px #ccc",
         }}
         quality={100}
         sizes="92vw"

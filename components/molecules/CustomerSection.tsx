@@ -19,6 +19,7 @@ const CusContainer = styled.div`
   justify-content: space-evenly;
   border: 1px solid #eeeee;
   height: 72vh;
+  border-radius: 10px;
   background-color: #F1F2F3;
   width: 33vw;
   color: #000;

@@ -13,6 +13,7 @@ import {
 } from "../../../hooks/MyIcons";
 import Button from "../../../components/atoms/Button";
 import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
+import Footer from "../../../components/Organisms/Footer";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -202,6 +203,7 @@ const Page: React.FC = () => {
             </CustomerDetails>
           </CustomerMainDetails>
         </ClientSection> 
+        <Footer />
       </OrderMain>
     </OrderSubContainer>
   );

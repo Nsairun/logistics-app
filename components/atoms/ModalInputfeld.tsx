@@ -11,6 +11,7 @@ const FormContainer = styled.form`
 const FormInput = styled.input`
   padding: 8px;
   width: 35vw;
+  margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;

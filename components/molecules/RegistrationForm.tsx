@@ -37,7 +37,7 @@ const RegImageContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100vh;
   width: 35vw;
   padding: 4px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
@@ -339,6 +339,30 @@ function Registration() {
                   />
                 </Title>
               </Separation>
+              <div
+                style={{
+                  width: "20vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  background: "#87C656",
+                  gap: "1rem",
+                }}
+              >
+                <Button label={""} onClick={() => handleSubmit}>
+                  <Text
+                    headingLevel={"h1"}
+                    style={{
+                      borderRadius: "5px",
+                      border: " solid #87C656",
+                      padding: "5px",
+                    }}
+                  >
+                    Register
+                  </Text>
+                </Button>
+              </div>
             </RegSectionRoles>
             <RegSectionRoles>
               <Account>
@@ -386,30 +410,7 @@ function Registration() {
                   {error}
                 </Text>
               )}
-              <div
-                style={{
-                  width: "20vw",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "5px",
-                  background: "#87C656",
-                  gap: "1rem",
-                }}
-              >
-                <Button label={""} onClick={() => handleSubmit}>
-                  <Text
-                    headingLevel={"h1"}
-                    style={{
-                      borderRadius: "5px",
-                      border: " solid #87C656",
-                      padding: "5px",
-                    }}
-                  >
-                    Register
-                  </Text>
-                </Button>
-              </div>
+              
             </RegSectionRoles>
           </form>
         </RegSection>

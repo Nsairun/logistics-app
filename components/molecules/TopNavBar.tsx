@@ -10,6 +10,7 @@ import {
 } from "../../hooks/MyIcons";
 import Button from "../atoms/Button";
 import { useRouter } from "next/navigation";
+import Vehicule from "../atoms/Vehicule";
 
 const TopBar = styled.div`
   display: flex;
@@ -31,6 +32,18 @@ const SubTopBar = styled.div`
   justify-content: space-evenly;
   height: 6vh;
   gap: 1rem;
+`;
+
+const Logo = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 20px;
+  color: #000;
+  font-family: Helvetica;
+  text-shadow: 2px 2px 4px grey;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -63,6 +76,9 @@ function TopNavBar() {
 
   return (
     <TopBar>
+      <Logo>
+        LOGISTICBAMBE <Vehicule />
+      </Logo>
       <Text headingLevel="h1" style={{ color: "#000", paddingLeft: "70px" }}>
         <Text headingLevel={"h1"}>
           {currentDate}

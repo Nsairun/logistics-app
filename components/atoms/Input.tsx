@@ -2,15 +2,9 @@ import { ChangeEvent, FC } from 'react';
 import { styled } from 'styled-components';
 
 const InputWrapper = styled.div`
-  font-size: 16px;
-  font-weight: 400;
-  width: 200px;
   height: 5vh;
   color: #344054;
-  background: grey;
-  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
-  padding: 10px 12px;
   font-size: 16px;
   font-weight: 400;
   color: #667085;
@@ -20,13 +14,26 @@ const InputWrapper = styled.div`
 
   @media screen and (max-width: 770px) {
     width: 100%;
-    background: #fff;
+  }
 `;
 
 const Error = styled.div`
   font-size: 16px;
   font-weight: 400;
   color: #667085;
+`;
+
+const FormInput = styled.input`
+padding: 5px;
+width: 100%;
+height: 5vh;
+border: transparent;
+outline: none;
+// margin-bottom: 10px;
+
+@media screen and (max-width: 770px) {
+  width: 100%;
+}
 `;
 
 
@@ -53,7 +60,7 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <InputWrapper>
-      <input
+      <FormInput
         type={type}
         id={label}
         value={value}
@@ -61,8 +68,7 @@ const Input: FC<InputProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
-        style={{border: "transparent", width: "200px",
-        height: "5vh", outline: "none", padding: "5px"}}
+
       />
       {error && <Error className="error">Input field cant be empty!</Error>}
       {/* <IconStylingProvider value={iconStyling.value}>

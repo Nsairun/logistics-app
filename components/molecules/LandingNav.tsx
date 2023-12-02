@@ -15,33 +15,34 @@ const NavContainer = styled("div")`
 
   @media screen and (max-width: 770px) {
     width: 100%;
-
+  }
 `;
 
 const NavContainerSub = styled("div")`
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   gap: 1rem;
-  padding-right: 10px;
-  width: 100%;
+  padding-right: 5px;
   color: #fff;
 
   @media screen and (max-width: 770px) {
       display: none
+  }
 `;
 
 const Logo = styled("div")`
   display: flex;
   align-items: center;
+  padding-left: 3%;
   justify-content: space-evenly;
   font-weight: 700;
   font-size: 18px;
-  padding: 20px;
   color: #fff;
   font-family: Helvetica;
   text-shadow: 2px 2px 4px #87c656;
 `;
+
 
 function LandingNav() {
 

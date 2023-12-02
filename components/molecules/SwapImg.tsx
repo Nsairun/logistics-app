@@ -14,8 +14,8 @@ const SwapContainer = styled("div")`
   justify-content: space-between;
   border: 1px solid grey;
   border-radius: 5px;
-  height: 65vh;
-  width: 70vw;
+  height: 70vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0.2), rgba(0, 100, 0, 0));

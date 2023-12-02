@@ -16,6 +16,7 @@ const OrderSubContainer = styled("div")`
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
   top: 0;
   left: 0;
 
@@ -156,7 +157,20 @@ const Page = () => {
       <OrderMain>
       <NavBar />
         <InfoDiv>
+        <h1
+          style={{
+            fontSize: "30px",
+            width: "85%",
+            textAlign: "center",
+            margin: "0 auto",
+            boxShadow: "1px 5px 15px 2px #ccc",
+            padding: "3px",
+          }}
+        >
+          PLACE YOUR SHIPMENT ORDER HERE
+        </h1>
           <SelectMain>
+            
             <SelectContainer>
               <Text
                 headingLevel={"h1"}

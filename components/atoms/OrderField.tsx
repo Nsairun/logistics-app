@@ -48,11 +48,13 @@ const OrderInput = styled.div`
   border-radius: 5px;
   display: flex;
   align-items: start;
+  justify-content: center;
   gap: 1rem;
   flex-direction: column;
 
   @media screen and (max-width: 770px) {
     width: 100%;
+    display: block;
   }
 `;
 
@@ -66,6 +68,19 @@ const OrderSubContainer = styled.div`
   @media screen and (max-width: 770px) {
     width: 100%;
     display: block;
+  }
+`;
+
+const FormInput = styled.input`
+  padding: 8px;
+  width: 30vw;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    padding: 12px;
   }
 `;
 
@@ -112,24 +127,15 @@ function OrderField() {
   return (
     <form onSubmit={handleSubmit}>
       <OrderMainContainer>
-        <h1 style={{ fontSize: "35px", width: "60%", textAlign: "center" }}>
-          PLACE YOUR SHIPMENT ORDER HERE
-        </h1>
         <OrderSection>
           <OrderSubContainer>
             <OrderInput>
               <Text headingLevel="h1">
                 Name <IoMdPerson />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Name"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -139,15 +145,9 @@ function OrderField() {
                 ID Number
                 <FaRegIdCard />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="ID Number"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={idNumber}
                 onChange={(e) => setIdNumber(e.target.value)}
               />
@@ -158,15 +158,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Point From <GrLocationPin />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Point From"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={pointFrom}
                 onChange={(e) => setPointFrom(e.target.value)}
               />
@@ -175,15 +169,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Point To <GrLocationPin />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Point To"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={pointTo}
                 onChange={(e) => setPointTo(e.target.value)}
               />
@@ -194,15 +182,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Name of Good <GoPackage />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Name of Good"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={nameOfGood}
                 onChange={(e) => setNameOfGood(e.target.value)}
               />
@@ -211,22 +193,15 @@ function OrderField() {
               <Text headingLevel="h1">
                 Time Departure <GiSandsOfTime />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Time Departure"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={timeDeparture}
                 onChange={(e) => setDepartureTime(e.target.value)}
               />
             </OrderInput>
           </OrderSubContainer>
         </OrderSection>
-        <Vehicule />
         <OrderBtn>
           <Button onClick={() => handleSubmit()} label={""}>
             Submit

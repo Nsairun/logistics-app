@@ -65,20 +65,6 @@ function NavBar() {
   return (
     <NavContainer>
       <NavBarMain>
-        <Text
-          headingLevel={"h1"}
-          style={{
-            color: "#87C656",
-            fontWeight: "bolder",
-            padding: "10px",
-            fontFamily: "Montserrat, sans-serif",
-            fontSize: "15px",
-            textAlign: "center",
-            textShadow: "2px 2px 4px grey",
-          }}
-        >
-          LOGISTIC APP
-        </Text>
         <CustomButton label={""}  onClick={() => navigateToPage("/dashboard")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
@@ -125,7 +111,7 @@ function NavBar() {
               
               <CiDeliveryTruck size={iconStyling.value.size} color={iconStyling.value.color}/>
             </IconStylingProvider>
-            <Text headingLevel={"h1"}>Delivering</Text>
+            <Text headingLevel={"h1"}>Shipment</Text>
           </NavSubContainer>
         </CustomButton>
       </NavBarMain>

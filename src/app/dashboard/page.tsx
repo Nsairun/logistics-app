@@ -8,6 +8,7 @@ import CustomerSection from "../../../components/molecules/CustomerSection";
 import Chart1 from "../../../components/molecules/Chart1";
 import { Data } from "../../../hooks/Data";
 import px2vw from "../../../src/utils/px2vw";
+import Footer from "../../../components/Organisms/Footer";
 
 interface UserData {
   labels: any[];
@@ -47,13 +48,9 @@ const LandingBody = styled("div")`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 1rem;
   height: 100%;
   width: 100%;
-  
-  // @media screen and (max-width: 770px) {
-  //   display: block;
-  //   background: blue;
-  //   max-width: 100%;
 `;
 
 const LandingPage: React.FC = () => {
@@ -80,6 +77,7 @@ const LandingPage: React.FC = () => {
           <CustomerSection />
         </FirstSectionHolder>
         <Chart1 chartData={userData} />
+        <Footer />
       </LandingBody>
     </SubContainer>
   );

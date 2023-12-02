@@ -1,13 +1,13 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import RegImage from "../../public/real logo.png";
 import Image from "next/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import Landingimage from "../../public/backound.webp";
 import { API_URL } from "@/services/contants";
 import {
@@ -16,20 +16,20 @@ import {
 } from "../../hooks/MyIcons";
 import { FcGoogle } from "react-icons/fc";
 
-
 const RegMainContainer = styled("div")`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  margin-top: 5%;
 
   @media screen and (max-width: 770px) {
     width: 100%;
     gap: 1rem;
-    background: #F1F2F3;
+    background: #f1f2f3;
   }
-;`
+`;
 
 const RegContainer = styled("div")`
   display: flex;
@@ -37,9 +37,9 @@ const RegContainer = styled("div")`
   justify-content: spac-between;
   width: 70%;
   height: 100%;
-  background: #F1F2F3;
+  background: #f1f2f3;
   box-shadow: 2px 4px 30px 1px grey;
-  border-top: 6px solid #87C656;
+  border-top: 6px solid #87c656;
   border-top-radius: 10px;
 
   @media screen and (max-width: 770px) {
@@ -57,7 +57,7 @@ const RegImageContainer = styled("div")`
   width: 35vw;
   padding: 4px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
-  url(${Landingimage.src});
+    url(${Landingimage.src});
   background-size: cover;
   background-position: center;
 
@@ -127,17 +127,15 @@ const iconStyling: IconStylingProviderProps = {
   },
 };
 
-
 function Login() {
   const router = useRouter();
 
   const navigateToPage = (path: string) => {
     router.push(path);
   };
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -152,101 +150,120 @@ function Login() {
       setErrorMessage("Invalid email or password");
     }
   };
-    
+
   return (
     <RegMainContainer>
-    <RegContainer>
-      <RegImageContainer>
-        <Image
-          src={RegImage}
-          alt={"background image"}
-          style={{ height: "fit-content", padding: "2px" }}
-        />
-      </RegImageContainer>
-      <RegSection>
-        <Account>
-          <Text headingLevel={"h1"} style={{ color: "grey" }}>
-            Hey! Welcome {" "}
-          </Text>
-          <Text
-            headingLevel={"h1"}
-            style={{ color: "#87C656", fontWeight: "bolder" }}
-          >
-           Sign In
-          </Text>
-        </Account>
-        <RegSectionRoles>
-          <Title>
-            <Text headingLevel={"h1"}>Email:</Text>
-
-            <Input
-              type={"text"}
-              label={""}
-              value={email}
-              name={""}
-              placeholder={"Email"}
-              error={false}
-              onChange={(e) => setEmail(e.target.value)}
-
-            />
-          </Title>
-        </RegSectionRoles>
-        <RegSectionRoles>
-          <Title>
-            <Text headingLevel={"h1"}>Password:</Text>
-
-            <Input
-              type={"text"}
-              label={""}
-              value={password}
-              name={""}
-              placeholder={"Password"}
-              error={false}
-              onChange={(e) => setPassword(e.target.value)}
-
-            />
-          </Title>
+      <RegContainer>
+        <RegImageContainer>
+          <Image
+            src={RegImage}
+            alt={"background image"}
+            style={{ height: "fit-content", padding: "2px" }}
+          />
+        </RegImageContainer>
+        <RegSection>
           <Account>
-            <Text headingLevel={"h1"}>No account?</Text>
-            <Button label={""} onClick={() => navigateToPage("/registrationlogin")}>
-              
-                  Sign Up
-            </Button>
+            <Text headingLevel={"h1"} style={{ color: "grey" }}>
+              Hey! Welcome{" "}
+            </Text>
+            <Text
+              headingLevel={"h1"}
+              style={{ color: "#87C656", fontWeight: "bolder" }}
+            >
+              Sign In
+            </Text>
           </Account>
-          
-          <button  style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            justifyContent: "center",
-            backgroundColor:" rgba(135, 198, 86, 0.5)",
-            padding: "5px",
-          }} onClick={() => navigateToPage("/")}>
-            <IconStylingProvider value={iconStyling.value}>
-            <FcGoogle
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
+          <RegSectionRoles>
+            <Title>
+              <Text headingLevel={"h1"}>Email:</Text>
+
+              <Input
+                type={"text"}
+                label={""}
+                value={email}
+                name={""}
+                placeholder={"Email"}
+                error={false}
+                onChange={(e) => setEmail(e.target.value)}
               />
+            </Title>
+          </RegSectionRoles>
+          <RegSectionRoles>
+            <Title>
+              <Text headingLevel={"h1"}>Password:</Text>
+
+              <Input
+                type={"text"}
+                label={""}
+                value={password}
+                name={""}
+                placeholder={"Password"}
+                error={false}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Title>
+            <div
+              style={{
+                width: "50%",
+                display: "flex",
+                margin: "0 auto",
+                alignItems: "center",
+                border: "1px solid gray",
+                background: "#87c656",
+                gap: "1rem",
+                justifyContent: "center",
+              }}
+            >
+              <Button label={""} onClick={handleLogin}>
+                Login
+              </Button>
+            </div>
+            <Account>
+              <Text headingLevel={"h1"}>No account?</Text>
+              <div
+              style={{
+                width: "20%",
+                display: "flex",
+                alignItems: "center",
+                borderBottom: "1px solid #87c656",
+                gap: "1rem",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                label={""}
+                onClick={() => navigateToPage("/registrationlogin")}
+              >
+                Sign Up
+              </Button>
+              </div>
+            </Account>
+
+            <button
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                gap: "1rem",
+                justifyContent: "center",
+                backgroundColor: " rgba(135, 198, 86, 0.5)",
+                padding: "5px",
+              }}
+              onClick={() => navigateToPage("/")}
+            >
+              <IconStylingProvider value={iconStyling.value}>
+                <FcGoogle
+                  size={iconStyling.value.size}
+                  color={iconStyling.value.color}
+                />
                 Login with Google
-            </IconStylingProvider>
-          </button>
-          <div style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            justifyContent: "center",
-          }}>
-          <Button label={""} onClick={handleLogin}>
-              Login
-          </Button>
-          </div>
-        </RegSectionRoles>
-        
-        {errorMessage && <Text headingLevel={"h1"}>{errorMessage}</Text>}
-      </RegSection>
-    </RegContainer>
+              </IconStylingProvider>
+            </button>
+          </RegSectionRoles>
+
+          {errorMessage && <Text headingLevel={"h1"}>{errorMessage}</Text>}
+        </RegSection>
+      </RegContainer>
     </RegMainContainer>
   );
 }

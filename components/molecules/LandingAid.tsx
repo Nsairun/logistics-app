@@ -72,7 +72,7 @@ const Holder = styled("div")`
   height: 15vh;
   width: 17vw;
   font-size: 12px;
-  background-color: rgba(135, 198, 86, 0.5);
+  background: #fff;
 
   &:hover {
     font-weight: 600;
@@ -102,14 +102,7 @@ function LandingAid() {
   };
   return (
     <LadingAidContainer>
-      <ImgContainer>
-        <Image
-          src={firstimg}
-          alt="Slider Image"
-          objectFit="cover"
-          style={{ height: "100%", width: "100%" }}
-        />
-      </ImgContainer>
+      
       <AidMain>
         <h1 style={{ color: "#000", fontSize: "20px", fontWeight: "700" }}>
           Reliable, Powerful and Easy services
@@ -129,7 +122,7 @@ function LandingAid() {
             <div
               style={{
                 width: "fitContent",
-                background: "#87c656",
+                backgroundColor: "rgba(135, 198, 86, 0.5)",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
@@ -153,7 +146,7 @@ function LandingAid() {
             <div
               style={{
                 width: "fitContent",
-                background: "#87c656",
+                backgroundColor: "rgba(135, 198, 86, 0.5)",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
@@ -176,7 +169,7 @@ function LandingAid() {
             <div
               style={{
                 width: "10vw",
-                background: "#87c656",
+                backgroundColor: "rgba(135, 198, 86, 0.5)",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
@@ -191,6 +184,14 @@ function LandingAid() {
           </Holder>
         </AidContainer>
       </AidMain>
+      <ImgContainer>
+        <Image
+          src={firstimg}
+          alt="Slider Image"
+          objectFit="cover"
+          style={{ height: "100%", width: "100%" }}
+        />
+      </ImgContainer>
     </LadingAidContainer>
   );
 }
