@@ -8,6 +8,7 @@ import Text from "../../../components/atoms/Text";
 import { CgProfile } from "react-icons/cg";
 import { PiPhoneCallThin } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
+import { CgDetailsMore } from "react-icons/cg";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
@@ -17,6 +18,8 @@ import AboutClient from "../../../components/molecules/AboutClient";
 import Contact from "../../../components/molecules/Contact";
 import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
 import PaymentDetails from "../../../components/molecules/PaymentDetails";
+import Modal from "../../../modal/SlideModal";
+import Details from "../../../components/molecules/Details";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -69,7 +72,7 @@ const ClientProfile = styled("div")`
   justify-content: space-evenly;
   box-shadow: 2px 5px 5px 2px solid gray;
   gap: 1rem;
-  width: 50%;
+  width: 80%;
   borderRadius: 5px;
   padding: 5px;
   color: grey;
@@ -90,12 +93,12 @@ const CustomerDetails = styled("div")`
   padding: 29px;
 `;
 
-  const ContactSection =styled('div')`
+const ContactSection = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  `;
+`;
 
 const CustomerMainDetails = styled("div")`
   display: flex;
@@ -126,6 +129,15 @@ const bigIcon: IconStylingProviderProps = {
 
 const page: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSelectChange = (value: string) => {
     setSelectedOption(value);
@@ -134,81 +146,81 @@ const page: React.FC = () => {
     <OrderSubContainer>
       <NavBar />
       <OrderMain>
-       <TopNavBar />
-         <ClientSection>
+        <TopNavBar />
+        <ClientSection>
           <ProfileContainer>
-              <IconStylingProvider value={iconStyling.value}>
-                <ClientProfile>
-                  <Text headingLevel={"h1"}>
-                    <CgProfile
-                      size={bigIcon.value.size}
-                      color={iconStyling.value.color}
-                    />
-                  </Text>
-                  <Text headingLevel={"h1"}>Name of Client</Text>
-                  <div
-                    style={{
-                      width: "8vw",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      color: "#000",
-                      fontSize: "14px",
+            <IconStylingProvider value={iconStyling.value}>
+              <ClientProfile>
+                <Text headingLevel={"h1"}>
+                  <CgProfile
+                    size={bigIcon.value.size}
+                    color={iconStyling.value.color}
+                  />
+                </Text>
+                <Text headingLevel={"h1"}>Name of Client</Text>
+                <div
+                  style={{
+                    width: "8vw",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    color: "#000",
+                    fontSize: "14px",
+                  }}
+                >
+                  <Button
+                    label={""}
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
                     }}
                   >
-                    <Button
-                      label={""}
-                      onClick={function (): void {
-                        throw new Error("Function not implemented.");
+                    <Text
+                      headingLevel={"h1"}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "1rem",
                       }}
                     >
-                      <Text
-                        headingLevel={"h1"}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "1rem"
-                        }}
-                      >
-                        Calls
-                        <PiPhoneCallThin
-                          size={iconStyling.value.size}
-                          color={iconStyling.value.color}
-                        />
-                      </Text>
-                    </Button>
-                    <Button
-                      label={""}
-                      onClick={function (): void {
-                        throw new Error("Function not implemented.");
+                      Calls
+                      <PiPhoneCallThin
+                        size={iconStyling.value.size}
+                        color={iconStyling.value.color}
+                      />
+                    </Text>
+                  </Button>
+                  <Button
+                    label={""}
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
+                    }}
+                  >
+                    <Text
+                      headingLevel={"h1"}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "1rem",
                       }}
                     >
-                      <Text
-                        headingLevel={"h1"}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "1rem"
-                        }}
-                      >
-                        Message
-                        <RiMessage2Line
-                          size={iconStyling.value.size}
-                          color={iconStyling.value.color}
-                        />
-                      </Text>
-                    </Button>
-                  </div>
-                </ClientProfile>
-              </IconStylingProvider>
+                      Message
+                      <RiMessage2Line
+                        size={iconStyling.value.size}
+                        color={iconStyling.value.color}
+                      />
+                    </Text>
+                  </Button>
+                </div>
+              </ClientProfile>
+            </IconStylingProvider>
             <ContactSection>
               <Contact tel={653315415} mail={"55"} />
               <AboutClient ID={123} ordersDone={5} ordersCancelled={2} />
               <DeliveryAdress deliveriesDone={80} Deliveries={"bag garri"} />
               <PaymentDetails paymentMethod={"MOMO"} Number={"654124554"} />
-            </ContactSection> 
+            </ContactSection>
           </ProfileContainer>
           <CustomerMainDetails>
             <CustomerDetails>
@@ -224,11 +236,32 @@ const page: React.FC = () => {
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Detail</Text>
-              <Text headingLevel={"h1"}></Text>
+              <div>
+                <Button label={""} onClick={openModal}>
+                  <IconStylingProvider value={iconStyling.value}>
+                  <CgDetailsMore size={iconStyling.value.size}
+                    color={iconStyling.value.color}/>
+                  </IconStylingProvider>
+                </Button>
+                <Modal
+                  isOpen={isModalOpen}
+                  onClose={closeModal}
+                  // eslint-disable-next-line react/no-children-prop
+                  children={
+                    <Details
+                      name={"Nsairun"}
+                      idCard={""}
+                      from={""}
+                      to={""}
+                      goodName={""}
+                      serviceType={""}
+                    />
+                  }
+                />
+              </div>
             </CustomerDetails>
           </CustomerMainDetails>
-        </ClientSection> 
+        </ClientSection>
       </OrderMain>
     </OrderSubContainer>
   );

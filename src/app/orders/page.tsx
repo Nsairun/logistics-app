@@ -9,11 +9,15 @@ import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
 import Vehicule from "../../../components/atoms/Vehicule";
 import OrderField from "../../../components/atoms/OrderField";
+import Footer from "../../../components/Organisms/Footer";
 
 const OrderSubContainer = styled("div")`
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
+  top: 0;
+  left: 0;
 
   @media screen and (max-width: 770px) {
     width: 100%;
@@ -21,9 +25,8 @@ const OrderSubContainer = styled("div")`
 
 const OrderMain = styled("div")`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: start;
+  justify-content: start;
   width: 100%;
 
   @media screen and (max-width: 770px) {
@@ -57,6 +60,7 @@ const InfoDiv = styled("div")`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: auto;
   gap: 1rem;
 `;
 const orders = [
@@ -148,9 +152,9 @@ const Page = () => {
 
   return (
     <OrderSubContainer>
-      <NavBar />
+      <TopNavBar />
       <OrderMain>
-        <TopNavBar />
+      <NavBar />
         <InfoDiv>
           <SelectMain>
             <SelectContainer>
@@ -206,9 +210,8 @@ const Page = () => {
               />
             </SelectContainer>
           </SelectMain>
-        </InfoDiv>
-        <OrderField />
-        <Info
+          <OrderField />
+          <Info
           text1={""}
           text2={""}
           text3={""}
@@ -223,8 +226,10 @@ const Page = () => {
           txt6={""}
           txt7={""}
         />
+        </InfoDiv>
       </OrderMain>
       <InfoDiv />
+      <Footer />
     </OrderSubContainer>
   );
 };

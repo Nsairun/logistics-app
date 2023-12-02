@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import firstimg from "../../public/card.jpg.png";
@@ -10,6 +10,8 @@ import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
+import Modal from "../../modal/SlideModal";
+import ModalInputfeld from "../atoms/ModalInputfeld";
 
 const LadingAidContainer = styled("div")`
   display: flex;
@@ -83,6 +85,15 @@ const Holder = styled("div")`
 `;
 
 function LandingAid() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const iconStyling: IconStylingProviderProps = {
     value: {
       size: "30px",
@@ -103,14 +114,14 @@ function LandingAid() {
         <h1 style={{ color: "#000", fontSize: "20px", fontWeight: "700" }}>
           Reliable, Powerful and Easy services
         </h1>
-        <p style={{ color: "#000", width: "100%", padding: "10px"}}>
+        <p style={{ color: "#000", width: "100%", padding: "10px" }}>
           We make it easier than ever to transport, get quotes, schedule
           pickups, find locations, track shipments and more!
         </p>
         <AidContainer>
           <Holder>
             <IconStylingProvider value={iconStyling.value}>
-            <FiTruck
+              <FiTruck
                 size={iconStyling.value.size}
                 color={iconStyling.value.color}
               />
@@ -123,11 +134,12 @@ function LandingAid() {
                 textAlign: "center",
               }}
             >
-              <Button
-                label={"Create order"}
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
+              <Button label={"Create order"} onClick={openModal} />
+              <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                // eslint-disable-next-line react/no-children-prop
+                children={<ModalInputfeld />}
               />
             </div>
           </Holder>
