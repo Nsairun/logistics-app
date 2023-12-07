@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const FormContainer = styled.form`
   display: flex;

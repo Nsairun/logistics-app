@@ -33,8 +33,8 @@ const RegMainContainer = styled("div")`
 const RegContainer = styled("div")`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 70%;
+  justify-content: space-evenly;
+  width: 60%;
   height: 100%;
   background: #f1f2f3;
   box-shadow: 2px 4px 30px 1px grey;
