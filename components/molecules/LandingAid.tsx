@@ -113,74 +113,83 @@ function LandingAid() {
         </p>
         <AidContainer>
           <Holder>
-            <IconStylingProvider value={iconStyling.value}>
-              <FiTruck
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
-            <div
-              style={{
-                width: "fitContent",
-                backgroundColor: "rgba(135, 198, 86, 0.5)",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              <Button label={"Create order"} onClick={openModal} />
-              <Modal
-                isOpen={isModalOpen}
-                onClose={closeModal}
-                // eslint-disable-next-line react/no-children-prop
-                children={<ModalInputfeld />}
-              />
-            </div>
-          </Holder>
-          <Holder>
-            <IconStylingProvider value={iconStyling.value}>
-              <LiaHandsHelpingSolid
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
-            <div
-              style={{
-                width: "fitContent",
-                backgroundColor: "rgba(135, 198, 86, 0.5)",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
-            >
-              <Button
-                label={"Help and support"}
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            </div>
-          </Holder>
-          <Holder>
-            <IconStylingProvider value={iconStyling.value}>
-              <GoReport
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
-            <div
-              style={{
+            
+            <Button label={"Create Order"} onClick={openModal}              
+            style={{
+                display: " flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "5px",
                 width: "10vw",
                 backgroundColor: "rgba(135, 198, 86, 0.5)",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
             >
-              <Button
-                label={"About"}
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
+              
+              <IconStylingProvider value={iconStyling.value}>
+              <FiTruck
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
               />
-            </div>
+            </IconStylingProvider>
+            </Button>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                // eslint-disable-next-line react/no-children-prop
+                children={<ModalInputfeld />}
+              />
+          </Holder>
+          <Holder>
+            
+            <Button label={"Help & support"} onClick={function (): void {
+              throw new Error("Function not implemented.");
+            } }             
+             style={{
+                display: " flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "5px",
+                width: "15vw",
+                backgroundColor: "rgba(135, 198, 86, 0.5)",
+                borderRadius: "5px",
+                textAlign: "center",
+              }}
+            >
+              <IconStylingProvider value={iconStyling.value}>
+              <LiaHandsHelpingSolid
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+            </IconStylingProvider>
+              
+            </Button>
+          </Holder>
+          <Holder>
+            
+            <Button label={"About"} onClick={function (): void {
+              throw new Error("Function not implemented.");
+            } }              
+            style={{
+                display: " flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "5px",
+                width: "10vw",
+                backgroundColor: "rgba(135, 198, 86, 0.5)",
+                borderRadius: "5px",
+                textAlign: "center",
+              }}
+            >
+              <IconStylingProvider value={iconStyling.value}>
+              <GoReport
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+            </IconStylingProvider>
+              
+            </Button>
           </Holder>
         </AidContainer>
       </AidMain>

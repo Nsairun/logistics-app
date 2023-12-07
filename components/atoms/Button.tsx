@@ -1,6 +1,7 @@
 
-import React, { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import styled from 'styled-components';
+import style from 'styled-jsx/style';
 
 const Btn = styled.button`
   padding: 5px;
@@ -34,11 +35,13 @@ const Btn = styled.button`
 interface ButtonProps {
   label: string;
   onClick: () => void;
-  children?: ReactNode; 
+  children?: ReactNode;
+  style?: CSSProperties;
+ 
 }
 
-function Button({ label, onClick, children }: ButtonProps) {
-  return <Btn onClick={onClick}>{children} {label}</Btn>;
+function Button({ label, onClick, children, style }: ButtonProps) {
+  return <Btn onClick={onClick} style={style}>{children} {label}</Btn>;
 }
 
 export default Button;

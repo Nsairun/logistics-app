@@ -6,15 +6,14 @@ import Image from "next/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Landingimage from "../../public/backound.webp";
-import { API_URL } from "@/services/contants";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
 import { FcGoogle } from "react-icons/fc";
+import { login } from "@/services/api";
 
 const RegMainContainer = styled("div")`
   display: flex;
@@ -34,7 +33,7 @@ const RegMainContainer = styled("div")`
 const RegContainer = styled("div")`
   display: flex;
   align-items: center;
-  justify-content: spac-between;
+  justify-content: space-between;
   width: 70%;
   height: 100%;
   background: #f1f2f3;
@@ -139,10 +138,9 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${API_URL}/api/users/signin`, {
-        email,
-        password,
-      });
+      const response = await login(email, password);
+
+      console.log({ response })
 
       localStorage.setItem("token", response.data.token);
       router.push("/dashboard");

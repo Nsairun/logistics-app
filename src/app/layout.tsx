@@ -1,3 +1,4 @@
+import { AppContextProvider } from "../../hooks/AppContext";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -22,7 +23,7 @@ export default function RootLayout({
           font: "caption",
         }}
       >
-        {children}
+        <AppContextProvider>{children}</AppContextProvider>
       </body>
     </html>
   );

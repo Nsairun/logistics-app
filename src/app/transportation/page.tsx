@@ -8,6 +8,7 @@ import SelectField from "../../../components/atoms/SelectField";
 import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
 import Footer from "../../../components/Organisms/Footer";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -167,4 +168,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default SessionGuard(page);

@@ -37,6 +37,7 @@ function Vehicule() {
           <TbTruckDelivery
             size={iconStyling.value.size}
             color={iconStyling.value.color}
+
           />
         </IconStylingProvider>
       </VehiculeContainer>

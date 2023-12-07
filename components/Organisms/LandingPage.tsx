@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import firstimg from "../../public/firstimg.jpeg";
 import secondimg from "../../public/more.png";
 import thirdimg from "../../public/truck.png";
+import { SessionGuard } from "../Guards/SessionGuard";
 
 const LandingMainContainer = styled("div")`
   display: flex;
@@ -34,7 +35,7 @@ const LandingContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
     url(${Landingimage.src});
@@ -168,4 +169,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default SessionGuard(LandingPage);

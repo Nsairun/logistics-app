@@ -14,6 +14,7 @@ import {
 import Button from "../../../components/atoms/Button";
 import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
 import Footer from "../../../components/Organisms/Footer";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -209,4 +210,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default SessionGuard (Page);

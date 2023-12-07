@@ -8,10 +8,9 @@ interface ShippingFormProps {
   from: string;
   to: string;
   goodName: string;
-  serviceType: string;
 }
 
-const ShippingFormComponent: React.FC<ShippingFormProps> = ({ name, idCard, from, to, goodName, serviceType }) => {
+const ShippingFormComponent: React.FC<ShippingFormProps> = ({ name, idCard, from, to, goodName }) => {
   const FormContainer = styled.div`
     display: flex;
     align-items: start;
@@ -44,7 +43,6 @@ const ShippingFormComponent: React.FC<ShippingFormProps> = ({ name, idCard, from
       <InfoItem>From: {from}</InfoItem>
       <InfoItem>To: {to}</InfoItem>
       <InfoItem>Name of Good: {goodName}</InfoItem>
-      <InfoItem>Type of Service: {serviceType}</InfoItem>
     </FormContainer>
 
   );

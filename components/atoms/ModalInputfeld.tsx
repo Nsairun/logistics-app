@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { useRouter } from 'next/router';
 
 const FormContainer = styled.form`
   display: flex;
@@ -17,6 +18,12 @@ const FormInput = styled.input`
 `;
 
 const FormInputFields: React.FC = () => {
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <FormContainer>
         <h1>Place your shipment details below</h1>
@@ -25,9 +32,7 @@ const FormInputFields: React.FC = () => {
       <FormInput type="text" placeholder="Form" />
       <FormInput type="text" placeholder="To" />
       <FormInput type="text" placeholder="Quarter" />
-      <Button label={''} onClick={function (): void {
-              throw new Error('Function not implemented.');
-          } }>Submit</Button>
+      <Button label={''} onClick={() => navigateToPage("/Registrationlogin")}>Submit</Button>
     </FormContainer>
   );
 };

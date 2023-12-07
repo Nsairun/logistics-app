@@ -9,12 +9,11 @@ import Landingimage from "../../public/backound.webp";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import { API_URL } from "@/services/contants";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
+import { signUp } from "@/services/api";
 
 export const RegContainer = styled("div")`
   display: flex;
@@ -196,9 +195,9 @@ function Registration() {
     }
 
     try {
-      console.log({ API_URL, data });
+      console.log({ data });
       // const res = await axios.post( `${API_URL}/api/users/signup`, data);
-      const res = await axios.post(`${API_URL}/api/users/signup`, data);
+      const res = await signUp(data);
       if (res.status === 200) {
         setData({
           fullname: "",
@@ -391,6 +390,7 @@ function Registration() {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   backgroundColor: " rgba(135, 198, 86, 0.5)",
                   padding: "5px",
                   gap: "1rem",

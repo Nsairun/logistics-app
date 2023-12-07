@@ -10,6 +10,7 @@ import Text from "./Text";
 import Vehicule from "./Vehicule";
 import axios from "axios";
 import { API_URL } from "@/services/contants";
+import { useAppContext } from "../../hooks/AppContext";
 
 const OrderMainContainer = styled.div`
   display: flex;
@@ -85,26 +86,34 @@ const FormInput = styled.input`
 `;
 
 function OrderField() {
-  const [name, setName] = useState("");
+  const {currentUser} = useAppContext()
+
+  const [name, setName] = useState(currentUser?.fullname || "");
   const [idNumber, setIdNumber] = useState("");
   const [pointFrom, setPointFrom] = useState("");
   const [pointTo, setPointTo] = useState("");
   const [nameOfGood, setNameOfGood] = useState("");
   const [timeDeparture, setDepartureTime] = useState("");
+  const [error, setError] = useState("")
 
   const handleSubmit: (e?: React.FormEvent) => void = async (e) => {
     if (e) {
       e.preventDefault(); // Prevent the default form submission behavior
     }
     try {
-      const response = await axios.post(`${API_URL}/api/ordersRoute/order`, {
+      const new_order = {
+        userId: currentUser?._id,
         name,
         idNumber,
         pointFrom,
         pointTo,
         nameOfGood,
         timeDeparture,
-      });
+      }
+
+      console.log({ new_order})
+
+      const response = await axios.post(`${API_URL}/api/ordersRoute/order`, new_order);
       // Handle success response
       console.log("data", response.data);
       setName("");
@@ -117,9 +126,9 @@ function OrderField() {
       // Handle error response
       console.error(error);
       if (error.response && error.response.status === 404) {
-        setErrorMessage("Resource not found. Please try again.");
+        setError("Resource not found. Please try again.");
       } else {
-        setErrorMessage("An error occurred. Please try again later.");
+        setError("An error occurred. Please try again later.");
       }
     }
   };
@@ -213,7 +222,3 @@ function OrderField() {
 }
 
 export default OrderField;
-
-function setErrorMessage(arg0: string) {
-  throw new Error("Function not implemented.");
-}

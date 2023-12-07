@@ -76,9 +76,11 @@ function TopNavBar() {
 
   return (
     <TopBar>
+      <button onClick={() => navigateToPage("/")}>
       <Logo>
         LOGISTICBAMBE <Vehicule />
       </Logo>
+      </button>
       <Text headingLevel="h1" style={{ color: "#000", paddingLeft: "70px" }}>
         <Text headingLevel={"h1"}>
           {currentDate}
@@ -88,7 +90,7 @@ function TopNavBar() {
       <SubTopBar>
         <div
           style={{
-            width: "2.5vw",
+            width: "3vw",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -107,13 +109,6 @@ function TopNavBar() {
           size={iconStyling.value.size}
           color={iconStyling.value.color}
         />
-
-        <IconStylingProvider value={iconStyling.value}>
-          <IoPersonCircle
-            size={iconStyling.value.size}
-            color={iconStyling.value.color}
-          />
-        </IconStylingProvider>
         <Text headingLevel="h1">{}</Text>
       </SubTopBar>
     </TopBar>

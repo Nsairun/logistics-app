@@ -91,7 +91,7 @@ const CustomerSection: React.FC<CustomerSectionProps> = () => {
               Per Month
               <IconContext.Provider value={iconStyling.value}>
                 <Button>
-                  <div style={{border: "1px solid #87C656", borderRadius: "5px", background: "#87C656"}}>
+                  <div style={{ borderRadius: "5px"}}>
                     <select
                       id="dropdown"
                       value={selectedOption}
@@ -101,7 +101,6 @@ const CustomerSection: React.FC<CustomerSectionProps> = () => {
                         borderRadius: "10px",
                         color: "#87C656",
                         backgroundColor: "#000",
-                        border: " 0.5px solid  #87C656",
                         cursor: "pointer",
                       }}
                     >

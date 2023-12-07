@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
@@ -9,6 +9,7 @@ import { CgProfile } from "react-icons/cg";
 import { PiPhoneCallThin } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
 import { CgDetailsMore } from "react-icons/cg";
+import axios from "axios";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
@@ -21,6 +22,11 @@ import PaymentDetails from "../../../components/molecules/PaymentDetails";
 import Modal from "../../../modal/SlideModal";
 import Details from "../../../components/molecules/Details";
 import Footer from "../../../components/Organisms/Footer";
+import { getUserOrders } from "@/services/api";
+import { IOrder } from "@/services/Interfaces/Interface";
+import { useAppContext } from "../../../hooks/AppContext";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import CustomerOrders from "./CustomerOrders";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -86,13 +92,6 @@ const ClientProfile = styled("div")`
     background: gray;
 `;
 
-const CustomerDetails = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 29px;
-`;
 
 const ContactSection = styled("div")`
   display: flex;
@@ -101,18 +100,6 @@ const ContactSection = styled("div")`
   justify-content: space-between;
 `;
 
-const CustomerMainDetails = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: #000;
-  background: #F1F2F3;
-  border-radius: 5px;
-
-  @media screen and (max-width: 770px) {
-    width: 100%;
-`;
 
 const iconStyling: IconStylingProviderProps = {
   value: {
@@ -121,28 +108,32 @@ const iconStyling: IconStylingProviderProps = {
   },
 };
 
-const bigIcon: IconStylingProviderProps = {
-  value: {
-    size: "50px",
-    color: "#000",
-  },
-};
 
 const page: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userOrders, setUserOrders] = useState<IOrder[]>([]);
+  const { currentUser } = useAppContext();
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
-  const handleSelectChange = (value: string) => {
-    setSelectedOption(value);
-  };
+
+  useEffect(() => {
+    const getOne = async (userId: any) => {
+      try {
+        const response = await getUserOrders(userId);
+        console.log("User data:", response.data);
+        setUserOrders(response.data);
+      } catch (error) {
+        console.log("Error while fetching user data:", error);
+      }
+    };
+    console.clear();
+    console.log({currentUser})
+    const userId = currentUser?._id;
+    getOne(userId);
+  }, [currentUser]);
+
   return (
     <OrderSubContainer>
       <NavBar />
@@ -152,13 +143,7 @@ const page: React.FC = () => {
           <ProfileContainer>
             <IconStylingProvider value={iconStyling.value}>
               <ClientProfile>
-                <Text headingLevel={"h1"}>
-                  <CgProfile
-                    size={bigIcon.value.size}
-                    color={iconStyling.value.color}
-                  />
-                </Text>
-                <Text headingLevel={"h1"}>Name of Client</Text>
+                <Text headingLevel={"h1"}>{currentUser?.fullname || ""}</Text>
                 <div
                   style={{
                     width: "8vw",
@@ -217,51 +202,21 @@ const page: React.FC = () => {
               </ClientProfile>
             </IconStylingProvider>
             <ContactSection>
-              <Contact tel={653315415} mail={"55"} />
-              <AboutClient ID={123} ordersDone={5} ordersCancelled={2} />
-              <DeliveryAdress deliveriesDone={80} Deliveries={"bag garri"} />
+              <Contact tel={653315415} mail={currentUser?.email} />
+              <AboutClient
+                ID={"currentUser?.idNumber" || ""}
+                ordersDone={userOrders.length}
+                ordersCancelled={2}
+              />
+              <DeliveryAdress
+                deliveriesDone={80}
+                Deliveries={userOrders[0]?.nameOfGood}
+              />
               <PaymentDetails paymentMethod={"MOMO"} Number={"654124554"} />
             </ContactSection>
           </ProfileContainer>
-          <CustomerMainDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>ID</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>Points</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>Status</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <div>
-                <Button label={""} onClick={openModal}>
-                  <IconStylingProvider value={iconStyling.value}>
-                  <CgDetailsMore size={iconStyling.value.size}
-                    color={iconStyling.value.color}/>
-                  </IconStylingProvider>
-                </Button>
-                <Modal
-                  isOpen={isModalOpen}
-                  onClose={closeModal}
-                  // eslint-disable-next-line react/no-children-prop
-                  children={
-                    <Details
-                      name={"Nsairun"}
-                      idCard={""}
-                      from={""}
-                      to={""}
-                      goodName={""}
-                      serviceType={""}
-                    />
-                  }
-                />
-              </div>
-            </CustomerDetails>
-          </CustomerMainDetails>
+          
+          <CustomerOrders userOrders={userOrders} />
         </ClientSection>
         <Footer />
       </OrderMain>
@@ -269,4 +224,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default SessionGuard(page);

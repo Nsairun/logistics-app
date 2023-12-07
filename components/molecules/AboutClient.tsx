@@ -4,7 +4,7 @@ import Text from "../atoms/Text";
 import styled from "styled-components";
 
 type AboutClientProps = {
-  ID: string | number;
+  ID: string;
   ordersDone: string | number;
   ordersCancelled: string | number;
 };
