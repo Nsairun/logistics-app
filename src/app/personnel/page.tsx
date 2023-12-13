@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
@@ -15,6 +15,10 @@ import Button from "../../../components/atoms/Button";
 import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
 import Footer from "../../../components/Organisms/Footer";
 import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import { useAppContext } from "../../../hooks/AppContext";
+import { getOne, getUserOrders } from "@/services/api";
+import { Props } from "react-modal";
+import { IUser } from "@/services/Interfaces/Interface";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -85,7 +89,30 @@ const bigIcon: IconStylingProviderProps = {
 
 const Page: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const [user, setUser] = useState<IUser[]>([]);
 
+  const { currentUser } = useAppContext();
+
+
+  useEffect(() => {
+    const fetchData = async (userId: string) => {
+      try {
+        const userData = await getOne(userId);
+        console.log("User data:", userData);
+        setUser(userData);
+      } catch (error) {
+        console.log("Error while fetching user data:", error);
+      }
+    };
+  
+    console.clear();
+    console.log({ currentUser });
+  
+    const userId = currentUser?._id;
+    if (userId) {
+      fetchData(userId);
+    }
+  }, [currentUser]);
   const handleSelectChange = (value: string) => {
     setSelectedOption(value);
   };
@@ -115,7 +142,7 @@ const Page: React.FC = () => {
                       color={iconStyling.value.color}
                     />
                   </Text>
-                  <Text headingLevel={"h1"}>Name of Client</Text>
+                  <Text headingLevel={"h1"}>{currentUser?.fullname}</Text>
                   <div
                     style={{
                       width: "8vw",
@@ -175,19 +202,23 @@ const Page: React.FC = () => {
               </IconStylingProvider>
             <ContactSection>
             <PersonnelInfo
-                ID={"3246SDFHJ"}
+                ID={currentUser?.fullname}
                 DelivArea={"Mfoundi"}
                 CarNum={"1542"}
-                tel={"4626495+6"}
-                mail={"ksaghlwqlkvb"}
+                tel={"4626495+6"} 
+                mail={currentUser?.email}
                 trips={"70"}
                 NumofOrders={80}
               />
             </ContactSection> 
           </ProfileContainer>
-          <CustomerMainDetails>
+           {<CustomerMainDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>ID</Text>
+              <Text headingLevel={"h1"}>{currentUser?.idNumber}</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>points</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
@@ -202,7 +233,7 @@ const Page: React.FC = () => {
               <Text headingLevel={"h1"}>Detail</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
-          </CustomerMainDetails>
+          </CustomerMainDetails>}
         </ClientSection> 
         <Footer />
       </OrderMain>

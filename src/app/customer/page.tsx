@@ -5,11 +5,8 @@ import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import Text from "../../../components/atoms/Text";
-import { CgProfile } from "react-icons/cg";
 import { PiPhoneCallThin } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
-import { CgDetailsMore } from "react-icons/cg";
-import axios from "axios";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
@@ -19,8 +16,6 @@ import AboutClient from "../../../components/molecules/AboutClient";
 import Contact from "../../../components/molecules/Contact";
 import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
 import PaymentDetails from "../../../components/molecules/PaymentDetails";
-import Modal from "../../../modal/SlideModal";
-import Details from "../../../components/molecules/Details";
 import Footer from "../../../components/Organisms/Footer";
 import { getUserOrders } from "@/services/api";
 import { IOrder } from "@/services/Interfaces/Interface";
@@ -110,13 +105,8 @@ const iconStyling: IconStylingProviderProps = {
 
 
 const page: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [userOrders, setUserOrders] = useState<IOrder[]>([]);
   const { currentUser } = useAppContext();
-
-
-
 
   useEffect(() => {
     const getOne = async (userId: any) => {
@@ -204,7 +194,7 @@ const page: React.FC = () => {
             <ContactSection>
               <Contact tel={653315415} mail={currentUser?.email} />
               <AboutClient
-                ID={"currentUser?.idNumber" || ""}
+                ID={currentUser?.idNumber || ""}
                 ordersDone={userOrders.length}
                 ordersCancelled={2}
               />

@@ -1,3 +1,5 @@
+import { Key, ReactNode } from "react"
+
 type IRoles = "ADMIN" | "PERSONNEL" | "USER"
 
 const enum Roles {
@@ -7,12 +9,15 @@ const enum Roles {
 }
 
 interface IUser {
+    id: Key | null | undefined
+    name: ReactNode
     _id?: string,
     fullname: string,
     quarter: string,
     email: string,
     password: string,
-    roles: IRoles,
+    idNumber: string
+    role: IRoles,
     verified: boolean
 }
 

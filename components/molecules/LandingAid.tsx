@@ -12,6 +12,7 @@ import {
 } from "../../hooks/MyIcons";
 import Modal from "../../modal/SlideModal";
 import ModalInputfeld from "../atoms/ModalInputfeld";
+import PersonnelModal from "../atoms/PersonnelModal";
 
 const LadingAidContainer = styled("div")`
   display: flex;
@@ -86,6 +87,8 @@ const Holder = styled("div")`
 
 function LandingAid() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPersModalOpen, setIsPersModalOpen] = useState(false);
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -94,6 +97,15 @@ function LandingAid() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const openPersModal = () => {
+    setIsPersModalOpen(true);
+  };
+
+  const closePersModal= () => {
+    setIsPersModalOpen(false);
+  };
+
   const iconStyling: IconStylingProviderProps = {
     value: {
       size: "30px",
@@ -143,9 +155,7 @@ function LandingAid() {
           </Holder>
           <Holder>
             
-            <Button label={"Help & support"} onClick={function (): void {
-              throw new Error("Function not implemented.");
-            } }             
+            <Button label={"For Personnel"} onClick={openPersModal}             
              style={{
                 display: " flex",
                 alignItems: "center",
@@ -165,6 +175,12 @@ function LandingAid() {
             </IconStylingProvider>
               
             </Button>
+            <Modal
+                isOpen={isPersModalOpen}
+                onClose={closePersModal}
+                // eslint-disable-next-line react/no-children-prop
+                children={<PersonnelModal personnel={[]} />}
+              />
           </Holder>
           <Holder>
             

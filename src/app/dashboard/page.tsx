@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useMemo, useState, useEffect} from "react";
 import NavBar from "../../../components/molecules/NavBar";
 import MapSection from "../../../components/molecules/MapSection";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ const SubContainer = styled("div")`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background-color: ${(props) => props.color};
   height: 100%;
   width: 100%;
 
@@ -53,9 +54,11 @@ const LandingBody = styled("div")`
   width: 100%;
 `;
 
+
 const LandingPage: React.FC = () => {
   console.log("Data:", Data);
 
+ 
   const [userData, setUserData] = useState<UserData>({
     labels: Data?.map((data) => data.month),
     datasets: [
@@ -66,6 +69,7 @@ const LandingPage: React.FC = () => {
       },
     ],
   });
+
 
   return (
     <SubContainer>
@@ -84,4 +88,3 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
-

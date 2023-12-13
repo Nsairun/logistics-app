@@ -5,7 +5,11 @@ import { useRouter } from 'next/navigation';
 
 const FormContainer = styled.form`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  border: 1px solid gray;
+  height: 100%;
   gap: 10px;
 `;
 
@@ -32,7 +36,7 @@ const FormInputFields: React.FC = () => {
       <FormInput type="text" placeholder="Form" />
       <FormInput type="text" placeholder="To" />
       <FormInput type="text" placeholder="Quarter" />
-      <Button label={''} onClick={() => navigateToPage("/Registrationlogin")}>Submit</Button>
+      <Button label={''} onClick={() => navigateToPage("/Registrationlogin")} style={{width: "20vw"}}>Submit</Button>
     </FormContainer>
   );
 };

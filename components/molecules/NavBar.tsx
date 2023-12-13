@@ -114,6 +114,16 @@ function NavBar() {
             <Text headingLevel={"h1"}>Shipment</Text>
           </NavSubContainer>
         </CustomButton>
+
+        <CustomButton label={""} onClick={() => navigateToPage("/tracking")}>
+          <NavSubContainer>
+            <IconStylingProvider value={iconStyling.value}>
+              
+              <PiWarehouse size={iconStyling.value.size} color={iconStyling.value.color}/>
+            </IconStylingProvider>
+            <Text headingLevel={"h1"}>Tracking</Text>
+          </NavSubContainer>
+        </CustomButton>
       </NavBarMain>
     </NavContainer>
   );

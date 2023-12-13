@@ -22,9 +22,12 @@ const Overlay = styled.div`
 const ModalContent = styled.div`
   background: #fff;
   padding: 20px;
+  width: 70%;
+  height: 80%;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer; /* Add cursor pointer to indicate click action */
+  cursor: pointer;
+  margin-bottom: 5%;
 `;
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {

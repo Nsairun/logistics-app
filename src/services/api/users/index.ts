@@ -17,7 +17,7 @@ const signUp = async (data: {
     IDcard: string;
 }) => await axios.post(`${API_URL}/api/users/signup`, data)
 
-const getCurrentUser = async(token:string) => {
+const getCurrentUser = async (token: string) => {
     return axios.get(`${API_URL}/api/users/current-user`, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -25,5 +25,30 @@ const getCurrentUser = async(token:string) => {
     });
 }
 
+const getAllUsers = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/api/users/all`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to fetch all users');
+    }
+};
 
-export { login, signUp, getCurrentUser };
+const getOne = async (userId: string) => {
+    try {
+        const response = await axios.get(`${API_URL}/api/users/${userId}`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to fetch all users');
+    }
+};
+
+const updateRolesInDatabase = async (selectedIds: string[], newRole: string) => {
+    return axios.put(`${API_URL}/api/users/update-role`, {
+        newRole,
+        arrIds: [...selectedIds],
+    });
+};
+
+
+export { login, signUp, getCurrentUser, getAllUsers, updateRolesInDatabase, getOne };
