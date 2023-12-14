@@ -22,6 +22,7 @@ import { IOrder } from "@/services/Interfaces/Interface";
 import { useAppContext } from "../../../hooks/AppContext";
 import { SessionGuard } from "../../../components/Guards/SessionGuard";
 import CustomerOrders from "./CustomerOrders";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -129,6 +130,7 @@ const page: React.FC = () => {
       <NavBar />
       <OrderMain>
         <TopNavBar />
+        <ResponseNav />
         <ClientSection>
           <ProfileContainer>
             <IconStylingProvider value={iconStyling.value}>

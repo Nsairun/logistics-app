@@ -13,7 +13,6 @@ const users = [
 
 const Dashboard: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<string>("personnel");
-  const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
   const [userId, setUserId] = useState("");

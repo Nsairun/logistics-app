@@ -16,11 +16,13 @@ export function SessionGuard(Component: React.FC<any>) {
           const user = res.data?.user;
 
           setCurrentUser(user);
+        }).catch(e => {
+          console.log("error", {token, e})
         });
       };
 
       loadUser();
-    }, []);
+    }, [setCurrentUser]);
 
     return <Component />;
   };

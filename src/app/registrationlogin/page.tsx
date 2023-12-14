@@ -3,6 +3,7 @@ import React from 'react'
 import Registration from '../../../components/molecules/RegistrationForm';
 import styled from 'styled-components';
 import LandingNav from '../../../components/molecules/LandingNav';
+import ResponseNav from '../../../components/atoms/responseNav';
 
 const RegistrationContainer =styled("div")`
   display: flex;
@@ -20,6 +21,7 @@ function page() {
   return (
     <RegistrationContainer>
         <LandingNav/>
+        <ResponseNav />
         <Registration />
     </RegistrationContainer>
   )

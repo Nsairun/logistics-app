@@ -11,6 +11,7 @@ import Vehicule from "../../../components/atoms/Vehicule";
 import OrderField from "../../../components/atoms/OrderField";
 import Footer from "../../../components/Organisms/Footer";
 import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -155,6 +156,7 @@ const Page = () => {
   return (
     <OrderSubContainer>
       <TopNavBar />
+      <ResponseNav />
       <OrderMain>
       <NavBar />
         <InfoDiv>

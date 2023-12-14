@@ -9,6 +9,7 @@ import Chart1 from "../../../components/molecules/Chart1";
 import { Data } from "../../../hooks/Data";
 import px2vw from "../../../src/utils/px2vw";
 import Footer from "../../../components/Organisms/Footer";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 interface UserData {
   labels: any[];
@@ -76,6 +77,7 @@ const LandingPage: React.FC = () => {
       <NavBar />
       <LandingBody>
         <TopNavBar />
+        <ResponseNav />
         <FirstSectionHolder>
           <MapSection />
           <CustomerSection />

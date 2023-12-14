@@ -146,7 +146,7 @@ function LandingPage() {
       </LandingContainer>
       <SwapContainer>
         <SwapImg
-          images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png"]}
+          images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png", "/new1.jpg", "/new2.jpg", "/new3.jpg"]}
         />
       </SwapContainer>
       <LandingAid />

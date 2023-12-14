@@ -3,6 +3,7 @@ import React from 'react'
 import Login from '../../../components/molecules/Login'
 import LandingNav from '../../../components/molecules/LandingNav'
 import styled from 'styled-components'
+import ResponseNav from '../../../components/atoms/responseNav'
 
 function page() {
 const RegistrationContainer =styled("div")`
@@ -18,7 +19,8 @@ const RegistrationContainer =styled("div")`
 
   return (
     <RegistrationContainer>
-      <LandingNav /> 
+      <LandingNav />
+      <ResponseNav /> 
       <Login/>
     </RegistrationContainer>
         

@@ -18,6 +18,7 @@ interface IUser {
     password: string,
     idNumber: string
     role: IRoles,
+    phonenumber: string,
     verified: boolean
 }
 

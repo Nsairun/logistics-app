@@ -19,6 +19,8 @@ import { useAppContext } from "../../../hooks/AppContext";
 import { getOne, getUserOrders } from "@/services/api";
 import { Props } from "react-modal";
 import { IUser } from "@/services/Interfaces/Interface";
+import WorkTracker from "../../../components/molecules/WorkTracker";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -121,6 +123,7 @@ const Page: React.FC = () => {
       <NavBar />
       <OrderMain>
        <TopNavBar />
+       <ResponseNav />
          <ClientSection>
           <ProfileContainer>
               <IconStylingProvider value={iconStyling.value}>
@@ -203,7 +206,6 @@ const Page: React.FC = () => {
             <ContactSection>
             <PersonnelInfo
                 ID={currentUser?.fullname}
-                DelivArea={"Mfoundi"}
                 CarNum={"1542"}
                 tel={"4626495+6"} 
                 mail={currentUser?.email}
@@ -234,7 +236,8 @@ const Page: React.FC = () => {
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
           </CustomerMainDetails>}
-        </ClientSection> 
+        </ClientSection>
+        <WorkTracker /> 
         <Footer />
       </OrderMain>
     </OrderSubContainer>
