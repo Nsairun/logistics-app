@@ -59,7 +59,6 @@ const Dashboard: React.FC = () => {
     getAll();
   }, []);
 
-
   return (
     <Container>
       <SelectContainer>
