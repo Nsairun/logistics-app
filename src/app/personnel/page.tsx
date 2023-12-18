@@ -16,8 +16,7 @@ import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
 import Footer from "../../../components/Organisms/Footer";
 import { SessionGuard } from "../../../components/Guards/SessionGuard";
 import { useAppContext } from "../../../hooks/AppContext";
-import { getOne, getUserOrders } from "@/services/api";
-import { Props } from "react-modal";
+import { getOne } from "@/services/api";
 import { IUser } from "@/services/Interfaces/Interface";
 import WorkTracker from "../../../components/molecules/WorkTracker";
 import ResponseNav from "../../../components/atoms/responseNav";
@@ -205,12 +204,13 @@ const Page: React.FC = () => {
               </IconStylingProvider>
             <ContactSection>
             <PersonnelInfo
-                ID={currentUser?.fullname}
+                ID={currentUser?.fullname || ""}
                 CarNum={"1542"}
-                tel={"4626495+6"} 
-                mail={currentUser?.email}
+                tel={"4626495+6"}
+                mail={currentUser?.email || ""}
                 trips={"70"}
-                NumofOrders={80}
+                NumofOrders={80} 
+                DelivArea={""}
               />
             </ContactSection> 
           </ProfileContainer>

@@ -7,7 +7,6 @@ import TopNavBar from "../../../components/molecules/TopNavBar";
 import SelectField from "../../../components/atoms/SelectField";
 import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
-import Vehicule from "../../../components/atoms/Vehicule";
 import OrderField from "../../../components/atoms/OrderField";
 import Footer from "../../../components/Organisms/Footer";
 import { SessionGuard } from "../../../components/Guards/SessionGuard";

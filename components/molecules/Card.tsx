@@ -128,7 +128,7 @@
 // export default Card;
 import React from "react";
 import styled from "styled-components";
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/legacy/image";
 
 const CardContainer = styled.div`
   display: flex;
@@ -181,9 +181,12 @@ function Card({ imageSrc, title, description }: CardProps) {
           src={imageSrc}
           alt="Slider Image"
           objectFit="cover"
+          width={"450"}
+          height={"400"}
+          quality={100}
           style={{
             height: "100%",
-            width: "100%",
+            width: "50vw",
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",
           }}

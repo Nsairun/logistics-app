@@ -12,11 +12,9 @@ const users = [
 ];
 
 const Dashboard: React.FC = () => {
-  const [selectedRole, setSelectedRole] = useState<string>("personnel");
+  const [selectedRole, setSelectedRole] = useState<string>("PERSONNEL");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
-  const [userId, setUserId] = useState("");
-  const [newRole, setNewRole] = useState("");
 
   const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRole(event.target.value);
@@ -60,6 +58,7 @@ const Dashboard: React.FC = () => {
     console.log({ getAllUsers });
     getAll();
   }, []);
+
 
   return (
     <Container>

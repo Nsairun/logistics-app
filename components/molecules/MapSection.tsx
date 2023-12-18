@@ -3,7 +3,7 @@ import React from "react";
 import Text from "../atoms/Text";
 import { styled } from "styled-components";
 import image from "../../public/cityscape.jpg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Button from "../atoms/Button";
 
 const MapContainer = styled("div")`
@@ -58,15 +58,10 @@ function MapSection() {
       <Image
         src={image}
         placeholder="blur"
-        style={{
-          objectFit: "cover",
-          backgroundImage:
-            "linear-gradient(to bottom, #fff, #000, #eee, red, green)",
-          height: "72vh",
-          boxShadow: "3px 5px 15px 2px #ccc",
-        }}
+        objectFit="cover"
+        width={"750"}
+        height={"500"}
         quality={100}
-        sizes="92vw"
         alt="bg_image"
       />
       <MapContainerHolder>

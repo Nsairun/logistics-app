@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styled from "styled-components";
 import Button from "../atoms/Button";
 import { TfiControlBackward, TfiControlForward } from "react-icons/tfi";
@@ -14,7 +14,7 @@ const SwapContainer = styled("div")`
   justify-content: space-between;
   border: 1px solid grey;
   border-radius: 5px;
-  height: 70vh;
+  height: 100%;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -88,9 +88,10 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
         src={images[currentImageIndex]}
         alt="Slider Image"
         objectFit="cover"
-        width={600}
-        height={10}
-        style={{ width: "100%", height: "65vh", padding: "1px" }}
+        width="1000"
+        height="500"
+        quality={100}
+        style={{ width: "100%", height: "20vh", padding: "1px" }}
       />
       <SwapSubContainer>
         <h1 style={{ padding: "5px", fontWeight: "700" }}>We know customers</h1>

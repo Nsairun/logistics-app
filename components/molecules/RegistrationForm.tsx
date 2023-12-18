@@ -6,7 +6,7 @@ import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import RegImage from "../../public/real logo.png";
 import Landingimage from "../../public/backound.webp";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import {

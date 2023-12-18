@@ -11,6 +11,8 @@ const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 6;
+  overflow: auto;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
@@ -22,8 +24,8 @@ const Overlay = styled.div`
 const ModalContent = styled.div`
   background: #fff;
   padding: 20px;
-  width: 70%;
-  height: 80%;
+  width: 80%;
+  height: fit-content;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;

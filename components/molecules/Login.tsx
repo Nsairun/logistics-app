@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import RegImage from "../../public/real logo.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";

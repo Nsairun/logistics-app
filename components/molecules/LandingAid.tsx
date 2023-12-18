@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styled from "styled-components";
 import firstimg from "../../public/card.jpg.png";
 import Button from "../atoms/Button";
@@ -89,7 +89,6 @@ function LandingAid() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPersModalOpen, setIsPersModalOpen] = useState(false);
 
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -102,7 +101,7 @@ function LandingAid() {
     setIsPersModalOpen(true);
   };
 
-  const closePersModal= () => {
+  const closePersModal = () => {
     setIsPersModalOpen(false);
   };
 
@@ -114,7 +113,6 @@ function LandingAid() {
   };
   return (
     <LadingAidContainer>
-      
       <AidMain>
         <h1 style={{ color: "#000", fontSize: "20px", fontWeight: "700" }}>
           Reliable, Powerful and Easy services
@@ -125,9 +123,10 @@ function LandingAid() {
         </p>
         <AidContainer>
           <Holder>
-            
-            <Button label={"Create Order"} onClick={openModal}              
-            style={{
+            <Button
+              label={"Create Order"}
+              onClick={openModal}
+              style={{
                 display: " flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -138,25 +137,25 @@ function LandingAid() {
                 textAlign: "center",
               }}
             >
-              
               <IconStylingProvider value={iconStyling.value}>
-              <FiTruck
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
+                <FiTruck
+                  size={iconStyling.value.size}
+                  color={iconStyling.value.color}
+                />
+              </IconStylingProvider>
             </Button>
             <Modal
-                isOpen={isModalOpen}
-                onClose={closeModal}
-                // eslint-disable-next-line react/no-children-prop
-                children={<ModalInputfeld />}
-              />
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              // eslint-disable-next-line react/no-children-prop
+              children={<ModalInputfeld />}
+            />
           </Holder>
           <Holder>
-            
-            <Button label={"For Personnel"} onClick={openPersModal}             
-             style={{
+            <Button
+              label={"For Personnel"}
+              onClick={openPersModal}
+              style={{
                 display: " flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -168,26 +167,23 @@ function LandingAid() {
               }}
             >
               <IconStylingProvider value={iconStyling.value}>
-              <LiaHandsHelpingSolid
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
-              
+                <LiaHandsHelpingSolid
+                  size={iconStyling.value.size}
+                  color={iconStyling.value.color}
+                />
+              </IconStylingProvider>
             </Button>
-            <Modal
-                isOpen={isPersModalOpen}
-                onClose={closePersModal}
-                // eslint-disable-next-line react/no-children-prop
-                children={<PersonnelModal personnel={[]} />}
-              />
+            <Modal isOpen={isPersModalOpen} onClose={closePersModal}>
+              <PersonnelModal personnel={[]} />
+            </Modal>
           </Holder>
           <Holder>
-            
-            <Button label={"About"} onClick={function (): void {
-              throw new Error("Function not implemented.");
-            } }              
-            style={{
+            <Button
+              label={"About"}
+              onClick={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              style={{
                 display: " flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -199,12 +195,11 @@ function LandingAid() {
               }}
             >
               <IconStylingProvider value={iconStyling.value}>
-              <GoReport
-                size={iconStyling.value.size}
-                color={iconStyling.value.color}
-              />
-            </IconStylingProvider>
-              
+                <GoReport
+                  size={iconStyling.value.size}
+                  color={iconStyling.value.color}
+                />
+              </IconStylingProvider>
             </Button>
           </Holder>
         </AidContainer>
