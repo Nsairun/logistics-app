@@ -13,6 +13,8 @@ import firstimg from "../../public/firstimg.jpeg";
 import secondimg from "../../public/more.png";
 import thirdimg from "../../public/truck.png";
 import { SessionGuard } from "../Guards/SessionGuard";
+import Vehicule from "../atoms/Vehicule";
+import Services from "../atoms/Services";
 
 const LandingMainContainer = styled("div")`
   display: flex;
@@ -99,8 +101,8 @@ const SwapContainer = styled("div")`
   justify-content: end;
   border: 1px solid grey;
   border-radius: 5px;
-  height: 65vh;
-  width: 70vw;
+  height: 70vh;
+  width: 82%;
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
@@ -144,12 +146,12 @@ function LandingPage() {
           Start
         </StyledButton>
       </LandingContainer>
+      <LandingAid />
       <SwapContainer>
         <SwapImg
           images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png", "/new1.jpg", "/new2.jpg", "/new3.jpg"]}
         />
       </SwapContainer>
-      <LandingAid />
       <CardContainer>
       <Card
           imageSrc={firstimg}
@@ -164,6 +166,7 @@ function LandingPage() {
           title={"Not Home? Change of Plans?"}
           description={"Take control of your shipment delivery! Decide when and where you want us to deliver."} type={""}      />
       </CardContainer>
+      <Services/>
       <Footer />
     </LandingMainContainer>
   );

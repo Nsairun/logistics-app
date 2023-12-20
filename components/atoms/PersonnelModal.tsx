@@ -107,7 +107,8 @@ const Dashboard: React.FC = () => {
                 color: "gray",
                 padding: "5px",
                 borderRadius: "5px",
-                textAlign: "center"
+                textAlign: "center",
+                width: "fitContent"
               }}
             >
               {user.role}

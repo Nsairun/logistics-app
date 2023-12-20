@@ -108,7 +108,7 @@ function LandingAid() {
   const iconStyling: IconStylingProviderProps = {
     value: {
       size: "30px",
-      color: "#000",
+      color: "#fff",
     },
   };
   return (
@@ -131,8 +131,9 @@ function LandingAid() {
                 alignItems: "center",
                 justifyContent: "center",
                 padding: "5px",
-                width: "10vw",
-                backgroundColor: "rgba(135, 198, 86, 0.5)",
+                width: "14vw",
+                color: "#fff",
+                backgroundColor: " #87C656",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
@@ -161,7 +162,8 @@ function LandingAid() {
                 justifyContent: "center",
                 padding: "5px",
                 width: "15vw",
-                backgroundColor: "rgba(135, 198, 86, 0.5)",
+                color: "#fff",
+                backgroundColor: " #87C656",
                 borderRadius: "5px",
                 textAlign: "center",
               }}
@@ -189,7 +191,8 @@ function LandingAid() {
                 justifyContent: "center",
                 padding: "5px",
                 width: "10vw",
-                backgroundColor: "rgba(135, 198, 86, 0.5)",
+                color: "#fff",
+                backgroundColor: " #87C656",
                 borderRadius: "5px",
                 textAlign: "center",
               }}

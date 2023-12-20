@@ -18,7 +18,6 @@ const SwapContainer = styled("div")`
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0.2), rgba(0, 100, 0, 0));
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
 
   @media screen and (max-width: 770px) {
@@ -34,12 +33,6 @@ const SwapSubContainer = styled("div")`
   width: 30vw;
   height: 100%;
   position: absolute;
-  background: linear-gradient(
-    to bottom,
-    rgba(224, 224, 224, 0.8),
-    rgba(255, 255, 255, 0.8),
-    rgba(224, 224, 224, 0.8)
-  );
   top: 0;
   left: 0;
 
@@ -94,17 +87,19 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
         style={{ width: "100%", height: "20vh", padding: "1px" }}
       />
       <SwapSubContainer>
-        <h1 style={{ padding: "5px", fontWeight: "700" }}>We know customers</h1>
-        <p style={{ padding: "35px", width: "100%" }}>
+        <h1 style={{ padding: "5px", fontWeight: "700", color: "#fff" }}>We know customers</h1>
+        <p style={{ padding: "65px", width: "100%", color: "#fff" }}>
           We handle packages with care, all over your city with a steady door to
           door service{" "}
         </p>
         <div
           style={{
-            width: "10vw",
-            backgroundColor: "rgba(135, 198, 86, 0.5)",
+            width: "14vw",
+            backgroundColor: " #87C656",
             borderRadius: "5px",
             textAlign: "center",
+            padding: "5px",
+            color: "#fff"
           }}
         >
           <Button
