@@ -1,13 +1,16 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Text from "../atoms/Text";
-import Input from "../atoms/Input";
+import { FaHome } from "react-icons/fa";
 import { IoNotificationsOutline, IoPersonCircle } from "react-icons/io5";
 import styled from "styled-components";
 import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
+import Button from "../atoms/Button";
+import { useRouter } from "next/navigation";
+import Vehicule from "../atoms/Vehicule";
 
 const TopBar = styled.div`
   display: flex;
@@ -31,6 +34,18 @@ const SubTopBar = styled.div`
   gap: 1rem;
 `;
 
+const Logo = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 20px;
+  color: #000;
+  font-family: Helvetica;
+  text-shadow: 2px 2px 4px grey;
+`;
+
 const iconStyling: IconStylingProviderProps = {
   value: {
     size: "28px",
@@ -39,6 +54,12 @@ const iconStyling: IconStylingProviderProps = {
 };
 
 function TopNavBar() {
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -55,18 +76,39 @@ function TopNavBar() {
 
   return (
     <TopBar>
-      <Text headingLevel="h1" style={{color: "#000", paddingLeft: "70px"}}>
-        <Text headingLevel={"h1"}>{currentDate}{currentTime}</Text>
+      <button onClick={() => navigateToPage("/")}>
+      <Logo>
+        LOGISTICBAMBE <Vehicule />
+      </Logo>
+      </button>
+      <Text headingLevel="h1" style={{ color: "#000", paddingLeft: "70px" }}>
+        <Text headingLevel={"h1"}>
+          {currentDate}
+          {currentTime}
+        </Text>
       </Text>
       <SubTopBar>
+        <div
+          style={{
+            width: "3vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Button label={""} onClick={() => navigateToPage("/")}>
+            <IconStylingProvider value={iconStyling.value}>
+              <FaHome
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+            </IconStylingProvider>
+          </Button>
+        </div>
         <IoNotificationsOutline
           size={iconStyling.value.size}
           color={iconStyling.value.color}
         />
-
-        <IconStylingProvider value={iconStyling.value}>
-          <IoPersonCircle size={iconStyling.value.size} color={iconStyling.value.color} />
-        </IconStylingProvider>
         <Text headingLevel="h1">{}</Text>
       </SubTopBar>
     </TopBar>

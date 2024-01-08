@@ -9,6 +9,12 @@ import SwapImg from "../molecules/SwapImg";
 import LandingAid from "../molecules/LandingAid";
 import Card from "../molecules/Card";
 import Footer from "./Footer";
+import firstimg from "../../public/firstimg.jpeg";
+import secondimg from "../../public/more.png";
+import thirdimg from "../../public/truck.png";
+import { SessionGuard } from "../Guards/SessionGuard";
+import Vehicule from "../atoms/Vehicule";
+import Services from "../atoms/Services";
 
 const LandingMainContainer = styled("div")`
   display: flex;
@@ -16,6 +22,13 @@ const LandingMainContainer = styled("div")`
   justify-content: center;
   gap: 3rem;
   flex-direction: column;
+  background: #F1F2F3;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
 `;
 
 const LandingContainer = styled.div`
@@ -24,7 +37,7 @@ const LandingContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
     url(${Landingimage.src});
@@ -32,17 +45,13 @@ const LandingContainer = styled.div`
   background-position: center;
 
   @media screen and (max-width: 770px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     width: 100%;
 `;
 
 const LogoText = styled(Text)`
   color: #87c656;
   font-family: monospace;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
 
   @media screen and (max-width: 770px) {
@@ -54,23 +63,24 @@ const LogoText = styled(Text)`
 
 const DescriptionText = styled(Text)`
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
 `;
 
 const StyledButton = styled.button`
   background-color: #87c656;
   color: #fff;
-  padding: 5px 20px;
+  padding: 0.6rem 5rem;
   border-radius: 5px;
   font-size: 15px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: translateY(-3px) scale(1.0);
-    background-color: #87C656;
-    width: 20%;
+    transform: translateY(-5px) scale(1.01);
+    transition: 0.3s ease-in-out;
+    padding: 0.8rem 6rem;
+    font-size: 18px;
     font-weight: 600;
 `;
 
@@ -80,6 +90,39 @@ const Nav = styled("div")`
   left: 0;
   width: 100%;
   z-index: 5;
+
+  @media screen and (max-width: 770px) {
+    display: none;
+`;
+
+const SwapContainer = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 70vh;
+  width: 82%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+
+`;
+
+const CardContainer = styled("div")`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
 `;
 
 function LandingPage() {
@@ -96,19 +139,37 @@ function LandingPage() {
           <LandingNav />
         </Nav>
         <LogoText headingLevel={"h1"}>LOGISTICBAMBE</LogoText>
-        <DescriptionText headingLevel={"h1"}>
+        <DescriptionText headingLevel={"h2"}>
           let us ease your courier transportation
         </DescriptionText>
         <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
-          Next Page
+          Start
         </StyledButton>
       </LandingContainer>
-      <SwapImg />
       <LandingAid />
-      <Card />
+      <SwapContainer>
+        <SwapImg
+          images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png", "/new1.jpg", "/new2.jpg", "/new3.jpg"]}
+        />
+      </SwapContainer>
+      <CardContainer>
+      <Card
+          imageSrc={firstimg}
+          title={"Ship Like a Pro"}
+          description={"Get access to powerful and time-saving customizable features found only in Logisticbambe"} type={""}      />
+      <Card
+          imageSrc={secondimg}
+          title={"Save on Frequent Shipping"}
+          description={" Get preferred rates, billing options and other great benefits of having an account!"} type={""}      />
+      <Card
+          imageSrc={thirdimg}
+          title={"Not Home? Change of Plans?"}
+          description={"Take control of your shipment delivery! Decide when and where you want us to deliver."} type={""}      />
+      </CardContainer>
+      <Services/>
       <Footer />
     </LandingMainContainer>
   );
 }
 
-export default LandingPage;
+export default SessionGuard(LandingPage);

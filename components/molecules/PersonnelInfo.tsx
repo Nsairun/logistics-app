@@ -55,12 +55,6 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
         </ContactSubContainer>
         <ContactSubContainer>
           <Text headingLevel={"h1"}>
-            Delivery Area:
-          </Text>
-          <Text headingLevel={"h1"}>{DelivArea}</Text>
-        </ContactSubContainer>
-        <ContactSubContainer>
-          <Text headingLevel={"h1"}>
             CarNum :
           </Text>
           <Text headingLevel={"h1"}>{CarNum}</Text>

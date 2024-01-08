@@ -9,12 +9,15 @@ import styled from "styled-components";
 import Text from "./Text";
 import Vehicule from "./Vehicule";
 import axios from "axios";
+import { API_URL } from "@/services/contants";
+import { useAppContext } from "../../hooks/AppContext";
 
 const OrderMainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 const OrderBtn = styled.div`
@@ -34,6 +37,11 @@ const OrderSection = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const OrderInput = styled.div`
@@ -41,8 +49,14 @@ const OrderInput = styled.div`
   border-radius: 5px;
   display: flex;
   align-items: start;
+  justify-content: center;
   gap: 1rem;
   flex-direction: column;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const OrderSubContainer = styled.div`
@@ -51,34 +65,71 @@ const OrderSubContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    display: block;
+  }
+`;
+
+const FormInput = styled.input`
+  padding: 8px;
+  width: 30vw;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    padding: 12px;
+  }
 `;
 
 function OrderField() {
-  const [name, setName] = useState("");
+  const {currentUser} = useAppContext()
+
+  const [name, setName] = useState(currentUser?.fullname || "");
   const [idNumber, setIdNumber] = useState("");
   const [pointFrom, setPointFrom] = useState("");
   const [pointTo, setPointTo] = useState("");
   const [nameOfGood, setNameOfGood] = useState("");
   const [timeDeparture, setDepartureTime] = useState("");
+  const [error, setError] = useState("")
 
   const handleSubmit: (e?: React.FormEvent) => void = async (e) => {
     if (e) {
       e.preventDefault(); // Prevent the default form submission behavior
     }
     try {
-      const response = await axios.post("/api/order", {
+      const new_order = {
+        userId: currentUser?._id,
         name,
         idNumber,
         pointFrom,
         pointTo,
         nameOfGood,
-        timeDeparture
-      });
+        timeDeparture,
+      }
+
+      console.log({ new_order})
+
+      const response = await axios.post(`${API_URL}/api/ordersRoute/order`, new_order);
       // Handle success response
-      console.log(response.data);
-    } catch (error) {
+      console.log("data", response.data);
+      setName("");
+      setIdNumber("");
+      setPointFrom("");
+      setPointTo("");
+      setNameOfGood("");
+      setDepartureTime("");
+    } catch (error: any) {
       // Handle error response
       console.error(error);
+      if (error.response && error.response.status === 404) {
+        setError("Resource not found. Please try again.");
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
     }
   };
 
@@ -91,15 +142,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Name <IoMdPerson />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Name"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -109,15 +154,9 @@ function OrderField() {
                 ID Number
                 <FaRegIdCard />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="ID Number"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={idNumber}
                 onChange={(e) => setIdNumber(e.target.value)}
               />
@@ -128,15 +167,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Point From <GrLocationPin />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Point From"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={pointFrom}
                 onChange={(e) => setPointFrom(e.target.value)}
               />
@@ -145,15 +178,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Point To <GrLocationPin />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Point To"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={pointTo}
                 onChange={(e) => setPointTo(e.target.value)}
               />
@@ -164,15 +191,9 @@ function OrderField() {
               <Text headingLevel="h1">
                 Name of Good <GoPackage />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Name of Good"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={nameOfGood}
                 onChange={(e) => setNameOfGood(e.target.value)}
               />
@@ -181,24 +202,19 @@ function OrderField() {
               <Text headingLevel="h1">
                 Time Departure <GiSandsOfTime />
               </Text>
-              <input
+              <FormInput
                 type="text"
                 placeholder="Time Departure"
-                style={{
-                  padding: "12px",
-                  width: "35vw",
-                  borderRadius: "5px",
-                  border: "1px solid #D0B9BB",
-                }}
                 value={timeDeparture}
                 onChange={(e) => setDepartureTime(e.target.value)}
               />
             </OrderInput>
           </OrderSubContainer>
         </OrderSection>
-        <Vehicule />
         <OrderBtn>
-          <Button onClick={() => handleSubmit()} label={""}>Submit</Button>
+          <Button onClick={() => handleSubmit()} label={""}>
+            Submit
+          </Button>
         </OrderBtn>
       </OrderMainContainer>
     </form>

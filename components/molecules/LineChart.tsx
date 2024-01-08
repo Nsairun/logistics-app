@@ -35,6 +35,7 @@ const ChartContainer2 = styled("div")`
   justify-content: center;
   height: 20vh;
   width: 33vw;
+  border-radius: 10px;
   border: 1px solid #1c1b21;
   background-color: #1c1b21;
 
