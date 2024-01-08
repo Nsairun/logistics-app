@@ -4,7 +4,7 @@ import { FaCar, FaBicycle, FaTruck } from "react-icons/fa"; // Import the requir
 
 const bounce = keyframes`
   0% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
   50% {
     transform: scale(1.2);
