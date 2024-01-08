@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Vehicule from "../atoms/Vehicule";
 import Button from "../atoms/Button";
 import { useRouter } from "next/navigation"; 
+import { useAppContext } from "../../hooks/AppContext";
 
 
 const NavContainer = styled("div")`
@@ -51,6 +52,7 @@ function LandingNav() {
   const navigateToPage = (path: string) => {
     router.push(path);
   };
+   const {currentUser} = useAppContext()
   
   return (
     <NavContainer>
@@ -97,6 +99,19 @@ function LandingNav() {
             onClick={() => navigateToPage("/login")}
           />
         </div>
+       {currentUser && (<div
+          style={{
+            width: "10vw",
+            color: "#fff",
+            borderRadius: "5px",
+            textAlign: "center",
+          }}
+        >
+          <Button
+            label={"Dashboard"}
+            onClick={() => navigateToPage("/dashboard")}
+          />
+        </div>)}
       </NavContainerSub>
     </NavContainer>
   );

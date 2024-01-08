@@ -40,7 +40,7 @@ const ServiceCard = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 5px;
+  padding: 15px;
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
   gap: 1rem;
 `;
