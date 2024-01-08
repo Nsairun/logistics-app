@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import Text from "../../../components/atoms/Text";
-import { CgProfile } from "react-icons/cg";
 import { PiPhoneCallThin } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
 import {
@@ -17,6 +16,13 @@ import AboutClient from "../../../components/molecules/AboutClient";
 import Contact from "../../../components/molecules/Contact";
 import DeliveryAdress from "../../../components/molecules/DeliveryAdress";
 import PaymentDetails from "../../../components/molecules/PaymentDetails";
+import Footer from "../../../components/Organisms/Footer";
+import { getUserOrders } from "@/services/api";
+import { IOrder } from "@/services/Interfaces/Interface";
+import { useAppContext } from "../../../hooks/AppContext";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import CustomerOrders from "./CustomerOrders";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -69,7 +75,7 @@ const ClientProfile = styled("div")`
   justify-content: space-evenly;
   box-shadow: 2px 5px 5px 2px solid gray;
   gap: 1rem;
-  width: 50%;
+  width: 80%;
   borderRadius: 5px;
   padding: 5px;
   color: grey;
@@ -79,36 +85,17 @@ const ClientProfile = styled("div")`
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    background: red;
+    background: gray;
 `;
 
-const CustomerDetails = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 29px;
-`;
 
-  const ContactSection =styled('div')`
+const ContactSection = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  `;
-
-const CustomerMainDetails = styled("div")`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: #000;
-  background: #F1F2F3;
-  border-radius: 5px;
-
-  @media screen and (max-width: 770px) {
-    width: 100%;
 `;
+
 
 const iconStyling: IconStylingProviderProps = {
   value: {
@@ -117,121 +104,116 @@ const iconStyling: IconStylingProviderProps = {
   },
 };
 
-const bigIcon: IconStylingProviderProps = {
-  value: {
-    size: "50px",
-    color: "#000",
-  },
-};
 
 const page: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [userOrders, setUserOrders] = useState<IOrder[]>([]);
+  const { currentUser } = useAppContext();
 
-  const handleSelectChange = (value: string) => {
-    setSelectedOption(value);
-  };
+  useEffect(() => {
+    const getOne = async (userId: any) => {
+      try {
+        const response = await getUserOrders(userId);
+        console.log("User data:", response.data);
+        setUserOrders(response.data);
+      } catch (error) {
+        console.log("Error while fetching user data:", error);
+      }
+    };
+    console.clear();
+    console.log({currentUser})
+    const userId = currentUser?._id;
+    getOne(userId);
+  }, [currentUser]);
+
   return (
     <OrderSubContainer>
       <NavBar />
       <OrderMain>
-       <TopNavBar />
-         <ClientSection>
+        <TopNavBar />
+        <ResponseNav />
+        <ClientSection>
           <ProfileContainer>
-              <IconStylingProvider value={iconStyling.value}>
-                <ClientProfile>
-                  <Text headingLevel={"h1"}>
-                    <CgProfile
-                      size={bigIcon.value.size}
-                      color={iconStyling.value.color}
-                    />
-                  </Text>
-                  <Text headingLevel={"h1"}>Name of Client</Text>
-                  <div
-                    style={{
-                      width: "8vw",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      color: "#000",
-                      fontSize: "14px",
+            <IconStylingProvider value={iconStyling.value}>
+              <ClientProfile>
+                <Text headingLevel={"h1"}>{currentUser?.fullname || ""}</Text>
+                <div
+                  style={{
+                    width: "8vw",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    color: "#000",
+                    fontSize: "14px",
+                  }}
+                >
+                  <Button
+                    label={""}
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
                     }}
                   >
-                    <Button
-                      label={""}
-                      onClick={function (): void {
-                        throw new Error("Function not implemented.");
+                    <Text
+                      headingLevel={"h1"}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "1rem",
                       }}
                     >
-                      <Text
-                        headingLevel={"h1"}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "1rem"
-                        }}
-                      >
-                        Calls
-                        <PiPhoneCallThin
-                          size={iconStyling.value.size}
-                          color={iconStyling.value.color}
-                        />
-                      </Text>
-                    </Button>
-                    <Button
-                      label={""}
-                      onClick={function (): void {
-                        throw new Error("Function not implemented.");
+                      Calls
+                      <PiPhoneCallThin
+                        size={iconStyling.value.size}
+                        color={iconStyling.value.color}
+                      />
+                    </Text>
+                  </Button>
+                  <Button
+                    label={""}
+                    onClick={function (): void {
+                      throw new Error("Function not implemented.");
+                    }}
+                  >
+                    <Text
+                      headingLevel={"h1"}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "1rem",
                       }}
                     >
-                      <Text
-                        headingLevel={"h1"}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "1rem"
-                        }}
-                      >
-                        Message
-                        <RiMessage2Line
-                          size={iconStyling.value.size}
-                          color={iconStyling.value.color}
-                        />
-                      </Text>
-                    </Button>
-                  </div>
-                </ClientProfile>
-              </IconStylingProvider>
+                      Message
+                      <RiMessage2Line
+                        size={iconStyling.value.size}
+                        color={iconStyling.value.color}
+                      />
+                    </Text>
+                  </Button>
+                </div>
+              </ClientProfile>
+            </IconStylingProvider>
             <ContactSection>
-              <Contact tel={653315415} mail={"55"} />
-              <AboutClient ID={123} ordersDone={5} ordersCancelled={2} />
-              <DeliveryAdress deliveriesDone={80} Deliveries={"bag garri"} />
+              <Contact tel={653315415} mail={currentUser?.email} />
+              <AboutClient
+                ID={currentUser?.idNumber || ""}
+                ordersDone={userOrders.length}
+                ordersCancelled={2}
+              />
+              <DeliveryAdress
+                deliveriesDone={80}
+                Deliveries={userOrders[0]?.nameOfGood}
+              />
               <PaymentDetails paymentMethod={"MOMO"} Number={"654124554"} />
-            </ContactSection> 
+            </ContactSection>
           </ProfileContainer>
-          <CustomerMainDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>ID</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>Points</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>Status</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-            <CustomerDetails>
-              <Text headingLevel={"h1"}>Detail</Text>
-              <Text headingLevel={"h1"}></Text>
-            </CustomerDetails>
-          </CustomerMainDetails>
-        </ClientSection> 
+          
+          <CustomerOrders userOrders={userOrders} />
+        </ClientSection>
+        <Footer />
       </OrderMain>
     </OrderSubContainer>
   );
 };
 
-export default page;
+export default SessionGuard(page);

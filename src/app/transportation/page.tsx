@@ -7,6 +7,9 @@ import TopNavBar from "../../../components/molecules/TopNavBar";
 import SelectField from "../../../components/atoms/SelectField";
 import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
+import Footer from "../../../components/Organisms/Footer";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -17,6 +20,7 @@ const OrderMain = styled("div")`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 2rem;
   width: 100%;
 `;
 
@@ -46,6 +50,7 @@ const page: React.FC = () => {
       <NavBar />
       <OrderMain>
         <TopNavBar />
+        <ResponseNav />
         <InfoDiv>
         <div
           style={{
@@ -159,9 +164,10 @@ const page: React.FC = () => {
             txt7=""
           />
         </InfoDiv>
+        <Footer />
       </OrderMain>
     </OrderSubContainer>
   );
 };
 
-export default page;
+export default SessionGuard(page);

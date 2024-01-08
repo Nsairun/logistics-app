@@ -35,6 +35,7 @@ const ChartContainer2 = styled("div")`
   justify-content: center;
   height: 42vh;
   width: 47vw;
+  border-radius: 10px;
   background-color: #eeeee;
 
   @media screen and (max-width: 770px) {

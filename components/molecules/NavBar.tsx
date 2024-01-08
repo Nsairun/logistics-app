@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import Text from "../atoms/Text";
 import {
   BsGrid1X2,
@@ -10,8 +10,11 @@ import {
 import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
 import { PiWarehouse } from "react-icons/pi";
 import { styled } from "styled-components";
-import { IconStylingProvider, IconStylingProviderProps } from "../../hooks/MyIcons";
-import CustomButton from '../atoms/Button';
+import {
+  IconStylingProvider,
+  IconStylingProviderProps,
+} from "../../hooks/MyIcons";
+import CustomButton from "../atoms/Button";
 
 const NavContainer = styled("div")`
   display: flex;
@@ -19,8 +22,13 @@ const NavContainer = styled("div")`
   justify-content: flex-start;
   gap: 1rem;
   height: 100%;
-  background-color: #F1F2F3;
+  background-color: #f1f2f3;
   border: 0.5px solid #eeeee;
+
+  @media screen and (max-width: 770px) {
+    justify-content: space-between;
+    padding: 10px;
+  }
 `;
 
 const NavSubContainer = styled("div")`
@@ -30,10 +38,14 @@ const NavSubContainer = styled("div")`
   flex-direction: column;
   color: #000;
   height: 40px;
+
+  @media screen and (max-width: 770px) {
+    height: 60px; /* Example change for responsiveness */
+  }
 `;
 
 const NavBarMain = styled("div")`
-  background-color: #F1F2F3;
+  background-color: #f1f2f3;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -46,6 +58,7 @@ const NavBarMain = styled("div")`
 
   @media screen and (max-width: 770px) {
     display: none;
+  }
 `;
 
 function NavBar() {
@@ -59,31 +72,19 @@ function NavBar() {
     value: {
       size: "25px",
       color: "#000",
-    }
+    },
   };
 
   return (
     <NavContainer>
       <NavBarMain>
-        <Text
-          headingLevel={"h1"}
-          style={{
-            color: "#87C656",
-            fontWeight: "bolder",
-            padding: "10px",
-            fontFamily: "Montserrat, sans-serif",
-            fontSize: "15px",
-            textAlign: "center",
-            textShadow: "2px 2px 4px grey",
-          }}
-        >
-          LOGISTIC APP
-        </Text>
-        <CustomButton label={""}  onClick={() => navigateToPage("/dashboard")}>
+        <CustomButton label={""} onClick={() => navigateToPage("/dashboard")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
-              
-              <BsGrid1X2 size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <BsGrid1X2
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
               <Text headingLevel={"h1"}>Overview</Text>
             </IconStylingProvider>
           </NavSubContainer>
@@ -92,8 +93,10 @@ function NavBar() {
         <CustomButton label={""} onClick={() => navigateToPage("/orders")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
-              
-              <BsBookmarks size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <BsBookmarks
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
             <Text headingLevel={"h1"}>Orders</Text>
           </NavSubContainer>
@@ -102,8 +105,10 @@ function NavBar() {
         <CustomButton label={""} onClick={() => navigateToPage("/customer")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
-              
-              <BsPeople size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <BsPeople
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
             <Text headingLevel={"h1"}>Clients</Text>
           </NavSubContainer>
@@ -112,20 +117,39 @@ function NavBar() {
         <CustomButton label={""} onClick={() => navigateToPage("/personnel")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
-              
-              <BsPersonVcard size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <BsPersonVcard
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
             <Text headingLevel={"h1"}>Personnel</Text>
           </NavSubContainer>
         </CustomButton>
-        
-        <CustomButton label={""} onClick={() => navigateToPage("/transportation")}>
+
+        <CustomButton
+          label={""}
+          onClick={() => navigateToPage("/transportation")}
+        >
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
-              
-              <CiDeliveryTruck size={iconStyling.value.size} color={iconStyling.value.color}/>
+              <CiDeliveryTruck
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
             </IconStylingProvider>
-            <Text headingLevel={"h1"}>Delivering</Text>
+            <Text headingLevel={"h1"}>Shipment</Text>
+          </NavSubContainer>
+        </CustomButton>
+
+        <CustomButton label={""} onClick={() => navigateToPage("/tracking")}>
+          <NavSubContainer>
+            <IconStylingProvider value={iconStyling.value}>
+              <PiWarehouse
+                size={iconStyling.value.size}
+                color={iconStyling.value.color}
+              />
+            </IconStylingProvider>
+            <Text headingLevel={"h1"}>Tracking</Text>
           </NavSubContainer>
         </CustomButton>
       </NavBarMain>

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Vehicule from "../atoms/Vehicule";
 import Button from "../atoms/Button";
+import { useRouter } from "next/navigation"; 
+
 
 const NavContainer = styled("div")`
   display: flex;
@@ -9,36 +11,47 @@ const NavContainer = styled("div")`
   justify-content: space-between;
   width: 100%;
   height: 7vh;
-  border: 0.5px solid grey;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 128, 0, 0.5),
-    rgba(0, 128, 0, 0)
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 100, 0, 0));
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+  }
 `;
 
 const NavContainerSub = styled("div")`
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   gap: 1rem;
-  width: 30vw;
+  padding-right: 5px;
   color: #fff;
+
+  @media screen and (max-width: 770px) {
+      display: none
+  }
 `;
 
 const Logo = styled("div")`
   display: flex;
   align-items: center;
+  padding-left: 3%;
   justify-content: space-evenly;
   font-weight: 700;
   font-size: 18px;
-  padding: 20px;
   color: #fff;
   font-family: Helvetica;
   text-shadow: 2px 2px 4px #87c656;
 `;
 
+
 function LandingNav() {
+
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+  
   return (
     <NavContainer>
       <Logo>
@@ -48,46 +61,40 @@ function LandingNav() {
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}
         >
           <Button
             label={"HomePage"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/")}
           />
         </div>
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}
         >
           <Button
             label={"Registration"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/registrationlogin")}
           />
         </div>
         <div
           style={{
             width: "10vw",
-            background: "#87c656",
+            color: "#fff",
             borderRadius: "5px",
             textAlign: "center",
           }}
         >
           <Button
             label={"Login"}
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            onClick={() => navigateToPage("/login")}
           />
         </div>
       </NavContainerSub>
