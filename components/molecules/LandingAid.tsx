@@ -45,6 +45,21 @@ const AidMain = styled("div")`
 
 `;
 
+const ResponsiveButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: #fff;
+  background-color: #87C656;
+  border-radius: 5px;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 const ImgContainer = styled("div")`
   height: 35vh;
   width: 22vw;
@@ -70,8 +85,8 @@ const Holder = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 15vh;
-  width: 17vw;
+  height: 12vh;
+  width: 14vw;
   font-size: 12px;
   background: #fff;
 
@@ -81,7 +96,8 @@ const Holder = styled("div")`
   }
   
   @media screen and (max-width: 770px) {
-    width: 60%;
+    width: 80%;
+    padding: 15px;
     margin: auto;
 `;
 
@@ -123,20 +139,8 @@ function LandingAid() {
         </p>
         <AidContainer>
           <Holder>
-            <Button
-              label={"Create Order"}
+            <ResponsiveButton
               onClick={openModal}
-              style={{
-                display: " flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "5px",
-                width: "14vw",
-                color: "#fff",
-                backgroundColor: " #87C656",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
             >
               <IconStylingProvider value={iconStyling.value}>
                 <FiTruck
@@ -144,7 +148,8 @@ function LandingAid() {
                   color={iconStyling.value.color}
                 />
               </IconStylingProvider>
-            </Button>
+              <h1 style={{fontSize: "15px", padding:"5px"}}>Create Order</h1>
+            </ResponsiveButton>
             <Modal
               isOpen={isModalOpen}
               onClose={closeModal}
@@ -153,20 +158,8 @@ function LandingAid() {
             />
           </Holder>
           <Holder>
-            <Button
-              label={"For Personnel"}
+            <ResponsiveButton
               onClick={openPersModal}
-              style={{
-                display: " flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "5px",
-                width: "15vw",
-                color: "#fff",
-                backgroundColor: " #87C656",
-                borderRadius: "5px",
-                textAlign: "center",
-              }}
             >
               <IconStylingProvider value={iconStyling.value}>
                 <LiaHandsHelpingSolid
@@ -174,27 +167,16 @@ function LandingAid() {
                   color={iconStyling.value.color}
                 />
               </IconStylingProvider>
-            </Button>
+              <h1 style={{fontSize: "15px", padding: '5px'}}>For Personnel</h1>
+            </ResponsiveButton>
             <Modal isOpen={isPersModalOpen} onClose={closePersModal}>
               <PersonnelModal personnel={[]} />
             </Modal>
           </Holder>
           <Holder>
-            <Button
-              label={"About"}
+            <ResponsiveButton
               onClick={function (): void {
                 throw new Error("Function not implemented.");
-              }}
-              style={{
-                display: " flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "5px",
-                width: "10vw",
-                color: "#fff",
-                backgroundColor: " #87C656",
-                borderRadius: "5px",
-                textAlign: "center",
               }}
             >
               <IconStylingProvider value={iconStyling.value}>
@@ -203,7 +185,8 @@ function LandingAid() {
                   color={iconStyling.value.color}
                 />
               </IconStylingProvider>
-            </Button>
+              <h1 style={{fontSize: "15px", padding: "5px"}}>About</h1>
+            </ResponsiveButton>
           </Holder>
         </AidContainer>
       </AidMain>

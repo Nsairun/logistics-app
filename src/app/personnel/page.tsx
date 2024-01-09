@@ -30,6 +30,12 @@ const OrderMain = styled("div")`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const ClientSection = styled("div")`
@@ -39,6 +45,12 @@ const ClientSection = styled("div")`
   gap: 1rem;
   padding: 15px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+    margin-top: 5%;
+  }
 `;
 
 const ProfileContainer = styled("div")`
@@ -58,7 +70,7 @@ const CustomerDetails = styled("div")`
   padding: 29px;
 `;
 
-  const ContactSection =styled('div')`
+  const ContactSection =styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,8 +82,25 @@ const CustomerMainDetails = styled("div")`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  width: 40%;
   color: #000;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const UserSection = styled("div")`
+display: flex;
+  alignItems: center;
+  justifyContent: space-between;
+  gap: 1rem;
+  width: 70%;
+  borderRadius: 5px;
+  padding: 5px;
+  color: grey;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -126,18 +155,7 @@ const Page: React.FC = () => {
          <ClientSection>
           <ProfileContainer>
               <IconStylingProvider value={iconStyling.value}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "1rem",
-                    width: "70%",
-                    borderRadius: "5px",
-                    padding: "5px",
-                    color: "grey",
-                  }}
-                >
+                <UserSection>
                   <Text headingLevel={"h1"}>
                     <CgProfile
                       size={bigIcon.value.size}
@@ -200,7 +218,7 @@ const Page: React.FC = () => {
                       </Text>
                     </Button>
                   </div>
-                </div>
+                </UserSection>
               </IconStylingProvider>
             <ContactSection>
             <PersonnelInfo
@@ -220,11 +238,11 @@ const Page: React.FC = () => {
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>points</Text>
+              <Text headingLevel={"h1"}>From</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Points</Text>
+              <Text headingLevel={"h1"}>To</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>

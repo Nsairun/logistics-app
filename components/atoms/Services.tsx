@@ -16,6 +16,10 @@ const bounce = keyframes`
 
 const Section = styled.section`
 width: 100%;
+@media (max-width: 768px) {
+  flex-direction: column;
+  width: 100%;
+}
 `;
 
 const Title = styled.h2`
@@ -33,6 +37,10 @@ const ServiceContainer = styled.div`
   gap: 1rem;
   padding: 35px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ServiceCard = styled.div`
@@ -40,9 +48,15 @@ const ServiceCard = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 15px;
+  padding: 25px;
+  width: 45%;
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const ServiceDescription = styled.p`
@@ -53,6 +67,11 @@ const ServiceDescription = styled.p`
   text-align: left;
   line-height: 24px;
   font-size: 15px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Number = styled.div`
@@ -67,6 +86,12 @@ const Number = styled.div`
   align-items: center;
   justify-content: center;
   animation: ${bounce} 2s infinite;
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    font-size: 1.5em;
+  }
 `;
 
 const ServiceSection: React.FC = () => {

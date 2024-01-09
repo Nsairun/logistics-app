@@ -11,16 +11,27 @@ const RegistrationContainer =styled("div")`
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 5%;
 
 @media screen and (max-width: 770px) {
   display: block;
   width: 100%;
-`
+`;
+
+const ResNav = styled("div")`
+width: 100%;
+
+@media screen and (max-width: 770px) {
+  display: none;
+}
+`;
 
 function page() {
   return (
     <RegistrationContainer>
+      <ResNav>
         <LandingNav/>
+      </ResNav>
         <ResponseNav />
         <Registration />
     </RegistrationContainer>

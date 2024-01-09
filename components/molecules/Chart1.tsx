@@ -51,7 +51,8 @@ const ChartContainer2 = styled("div")`
   background-color: #F1F2F3;
 
   @media screen and (max-width: 770px) {
-    display: block;
+    margin-top: 15px;
+    padding: 1rem;
     width: 100%;
 `;
 

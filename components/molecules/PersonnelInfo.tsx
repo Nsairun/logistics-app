@@ -22,6 +22,10 @@ const ContactContainer = styled.div`
   width: 40vw;
   gap: 1rem;
   color: #000;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const ContactSubContainer = styled.div`
   display: flex;
@@ -31,6 +35,10 @@ const ContactSubContainer = styled.div`
   padding: 10px;
   align-text: left;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const PersonnelInfo: React.FC<PersonalInfoProp> = ({
   ID,

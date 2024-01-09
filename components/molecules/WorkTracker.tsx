@@ -8,7 +8,13 @@ const CalendarSection = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  height: 100%;
   gap: 2rem;
+
+  // @media (max-width: 768px) {
+  //   display: block;
+  //   width: 100%;
+  // }
 `;
 
 const MonthContainer = styled.div`
@@ -29,8 +35,14 @@ const MonthGrid = styled.div`
   grid-template-columns: repeat(7, 1fr);
   gap: 1rem;
   box-shadow: 2px 5px 20px 2px #ccc;
-  height: 40vh;
+  height: 45vh;
   padding: 20px;
+
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height; 100%;
+  }
 `;
 
 const DayCell = styled.div`
@@ -61,26 +73,21 @@ const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
   useEffect(() => {
-    // Load initial work days from local storage on component mount
     const savedWorkDays = localStorage.getItem("workDays");
     if (savedWorkDays) {
       setWorkDays(parseInt(savedWorkDays, 10));
     }
   }, []);
 
-  // Function to handle checkbox change
   const handleCheckboxChange = (day: number, month: number) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
         setWorkDays((prevDays) => prevDays + 1);
-        // Save the day of work locally using localStorage
         localStorage.setItem(`workDay_${month}_${day}`, "true");
       } else {
         setWorkDays((prevDays) => prevDays - 1);
-        // Remove the day of work from local storage
         localStorage.removeItem(`workDay_${month}_${day}`);
       }
-      // Update the total work days in local storage
       localStorage.setItem("workDays", String(workDays));
     };
   };

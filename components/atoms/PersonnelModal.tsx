@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Button from "./Button";
 import { getAllUsers, updateRolesInDatabase } from "@/services/api";
 import { IUser } from "@/services/Interfaces/Interface";
-import axios from "axios";
 
 const users = [
   { id: 1, name: "John Doe", role: "personnel" },
@@ -90,7 +89,7 @@ const Dashboard: React.FC = () => {
       <UserList>
         {users?.map((user) => (
           <User key={user._id}>
-            <input
+            <CheckboxInput
               type="checkbox"
               id={user.fullname}
               name="selected-user"
@@ -108,7 +107,7 @@ const Dashboard: React.FC = () => {
                 padding: "5px",
                 borderRadius: "5px",
                 textAlign: "center",
-                width: "fitContent"
+                width: "10vw"
               }}
             >
               {user.role}
@@ -126,11 +125,32 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 20px;
-  height: fit-content;
   background-color: #f4f4f4;
   border-radius: 8px;
+  padding: 10px;
   margin-bottom: 5%;
+  margin-top: 50%;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    margin-top: 20%;
+    width: 100%;
+    padding: 20px;
+  }
+`;
+
+const CheckboxInput = styled.input`
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+
+  &:checked {
+    background-color: #87C656;
+    border-color: #87C656;
+  }
 `;
 
 const SelectContainer = styled.div`
@@ -153,6 +173,11 @@ const SelectContainer = styled.div`
     padding: 8px;
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    width: 80vw;
+    margin-top: 30%;
+  }
 `;
 
 const UserList = styled.div`
@@ -171,6 +196,12 @@ const User = styled.div`
 
   input {
     margin-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    font-size: 10px;
+    grid-template-columns: 2px 6px 4px ;
   }
 `;
 

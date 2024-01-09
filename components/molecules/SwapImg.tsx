@@ -31,14 +31,35 @@ const SwapSubContainer = styled("div")`
   flex-direction: column;
   gap: 2rem;
   width: 30vw;
+  padding: 10px;
   height: 100%;
   position: absolute;
+  background-color: rgba(0, 0, 0, 0.5); 
   top: 0;
   left: 0;
 
   @media screen and (max-width: 770px) {
     width: 100%;
+  }
 `;
+
+const BtnContainer = styled("div")`
+  width: 14vw;
+  background-color: #87C656;
+  borderRadius: 5px;
+  textAlign: center;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  @media screen and (max-width: 770px) {
+    width: 50%;
+    margin: auto;
+  }
+`;
+
 
 interface CarouselProps {
   images: string[];
@@ -92,15 +113,7 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
           We handle packages with care, all over your city with a steady door to
           door service{" "}
         </p>
-        <div
-          style={{
-            width: "14vw",
-            backgroundColor: " #87C656",
-            borderRadius: "5px",
-            textAlign: "center",
-            padding: "5px",
-            color: "#fff"
-          }}
+        <BtnContainer
         >
           <Button
             label={"let us help you"}
@@ -108,7 +121,7 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
               throw new Error("Function not implemented.");
             }}
           />
-        </div>
+        </BtnContainer>
       </SwapSubContainer>
       <div style={{ width: "4vw"}}>
         <button onClick={goToNextImage}>
