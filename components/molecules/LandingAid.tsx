@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import firstimg from "../../public/card.jpg.png";
-import Button from "../atoms/Button";
 import { FiTruck } from "react-icons/fi";
 import { LiaHandsHelpingSolid } from "react-icons/lia";
 import { GoReport } from "react-icons/go";
@@ -13,6 +12,7 @@ import {
 import Modal from "../../modal/SlideModal";
 import ModalInputfeld from "../atoms/ModalInputfeld";
 import PersonnelModal from "../atoms/PersonnelModal";
+import { useAppContext } from "../../hooks/AppContext";
 
 const LadingAidContainer = styled("div")`
   display: flex;
@@ -101,9 +101,19 @@ const Holder = styled("div")`
     margin: auto;
 `;
 
-function LandingAid() {
+type Personnel = {
+  name: string;
+  role: string;
+};
+
+type PersonnelModalProps = {
+  personnel: Personnel[];
+};
+
+const LandingAid: React.FC<PersonnelModalProps> = ({personnel}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPersModalOpen, setIsPersModalOpen] = useState(false);
+  const { currentUser } = useAppContext();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -170,7 +180,7 @@ function LandingAid() {
               <h1 style={{fontSize: "15px", padding: '5px'}}>For Personnel</h1>
             </ResponsiveButton>
             <Modal isOpen={isPersModalOpen} onClose={closePersModal}>
-              <PersonnelModal personnel={[]} />
+              <PersonnelModal/>
             </Modal>
           </Holder>
           <Holder>
