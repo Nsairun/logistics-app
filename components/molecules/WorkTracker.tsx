@@ -72,21 +72,18 @@ appearance: none;
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
-  const localStorageFallback = {
-    getItem: () => null,
-    setItem: () => {},
-    removeItem: () => {},
-  };
-
-  const localStorageObject = typeof localStorage !== "undefined" ? localStorage : localStorageFallback;
-
+  const localStorageObject =
+    typeof localStorage !== "undefined" ? localStorage : null;
 
   useEffect(() => {
-    const savedWorkDays = localStorageObject.getItem("workDays");
-    if (savedWorkDays) {
-      setWorkDays(parseInt(savedWorkDays, 10));
+    if (localStorageObject) {
+      const savedWorkDays = localStorageObject.getItem("workDays");
+      if (savedWorkDays) {
+        setWorkDays(parseInt(savedWorkDays, 10));
+      }
     }
   }, [localStorageObject]);
+
 
   const handleCheckboxChange = (day: number, month: number) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
