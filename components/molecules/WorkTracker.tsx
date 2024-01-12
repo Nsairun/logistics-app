@@ -72,8 +72,17 @@ appearance: none;
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
+  const localStorageFallback = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+  };
+
+  const localStorageObject = typeof localStorage !== "undefined" ? localStorage : localStorageFallback;
+
+
   useEffect(() => {
-    const savedWorkDays = localStorage.getItem("workDays");
+    const savedWorkDays = localStorageObject.getItem("workDays");
     if (savedWorkDays) {
       setWorkDays(parseInt(savedWorkDays, 10));
     }
