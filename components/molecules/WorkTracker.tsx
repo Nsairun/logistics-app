@@ -86,7 +86,7 @@ const WorkTracker: React.FC = () => {
     if (savedWorkDays) {
       setWorkDays(parseInt(savedWorkDays, 10));
     }
-  }, []);
+  }, [localStorageObject]);
 
   const handleCheckboxChange = (day: number, month: number) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
