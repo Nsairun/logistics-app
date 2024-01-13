@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
@@ -13,6 +13,13 @@ import {
 } from "../../../hooks/MyIcons";
 import Button from "../../../components/atoms/Button";
 import PersonnelInfo from "../../../components/molecules/PersonnelInfo";
+import Footer from "../../../components/Organisms/Footer";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import { useAppContext } from "../../../hooks/AppContext";
+import { getOne } from "@/services/api";
+import { IUser } from "@/services/Interfaces/Interface";
+import WorkTracker from "../../../components/molecules/WorkTracker";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
@@ -23,6 +30,12 @@ const OrderMain = styled("div")`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const ClientSection = styled("div")`
@@ -32,6 +45,12 @@ const ClientSection = styled("div")`
   gap: 1rem;
   padding: 15px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+    margin-top: 5%;
+  }
 `;
 
 const ProfileContainer = styled("div")`
@@ -51,7 +70,7 @@ const CustomerDetails = styled("div")`
   padding: 29px;
 `;
 
-  const ContactSection =styled('div')`
+  const ContactSection =styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,8 +82,25 @@ const CustomerMainDetails = styled("div")`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  width: 40%;
   color: #000;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const UserSection = styled("div")`
+display: flex;
+  alignItems: center;
+  justifyContent: space-between;
+  gap: 1rem;
+  width: 70%;
+  borderRadius: 5px;
+  padding: 5px;
+  color: grey;
 `;
 
 const iconStyling: IconStylingProviderProps = {
@@ -83,7 +119,30 @@ const bigIcon: IconStylingProviderProps = {
 
 const Page: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const [user, setUser] = useState<IUser[]>([]);
 
+  const { currentUser } = useAppContext();
+
+
+  useEffect(() => {
+    const fetchData = async (userId: string) => {
+      try {
+        const userData = await getOne(userId);
+        console.log("User data:", userData);
+        setUser(userData);
+      } catch (error) {
+        console.log("Error while fetching user data:", error);
+      }
+    };
+  
+    console.clear();
+    console.log({ currentUser });
+  
+    const userId = currentUser?._id;
+    if (userId) {
+      fetchData(userId);
+    }
+  }, [currentUser]);
   const handleSelectChange = (value: string) => {
     setSelectedOption(value);
   };
@@ -92,28 +151,18 @@ const Page: React.FC = () => {
       <NavBar />
       <OrderMain>
        <TopNavBar />
+       <ResponseNav />
          <ClientSection>
           <ProfileContainer>
               <IconStylingProvider value={iconStyling.value}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "1rem",
-                    width: "70%",
-                    borderRadius: "5px",
-                    padding: "5px",
-                    color: "grey",
-                  }}
-                >
+                <UserSection>
                   <Text headingLevel={"h1"}>
                     <CgProfile
                       size={bigIcon.value.size}
                       color={iconStyling.value.color}
                     />
                   </Text>
-                  <Text headingLevel={"h1"}>Name of Client</Text>
+                  <Text headingLevel={"h1"}>{currentUser?.fullname}</Text>
                   <div
                     style={{
                       width: "8vw",
@@ -169,27 +218,31 @@ const Page: React.FC = () => {
                       </Text>
                     </Button>
                   </div>
-                </div>
+                </UserSection>
               </IconStylingProvider>
             <ContactSection>
             <PersonnelInfo
-                ID={"3246SDFHJ"}
-                DelivArea={"Mfoundi"}
+                ID={currentUser?.fullname || ""}
                 CarNum={"1542"}
                 tel={"4626495+6"}
-                mail={"ksaghlwqlkvb"}
+                mail={currentUser?.email || ""}
                 trips={"70"}
-                NumofOrders={80}
+                NumofOrders={80} 
+                DelivArea={""}
               />
             </ContactSection> 
           </ProfileContainer>
-          <CustomerMainDetails>
+           {<CustomerMainDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>ID</Text>
+              <Text headingLevel={"h1"}>{currentUser?.idNumber}</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
-              <Text headingLevel={"h1"}>Points</Text>
+              <Text headingLevel={"h1"}>From</Text>
+              <Text headingLevel={"h1"}></Text>
+            </CustomerDetails>
+            <CustomerDetails>
+              <Text headingLevel={"h1"}>To</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
             <CustomerDetails>
@@ -200,11 +253,13 @@ const Page: React.FC = () => {
               <Text headingLevel={"h1"}>Detail</Text>
               <Text headingLevel={"h1"}></Text>
             </CustomerDetails>
-          </CustomerMainDetails>
-        </ClientSection> 
+          </CustomerMainDetails>}
+        </ClientSection>
+        <WorkTracker /> 
+        <Footer />
       </OrderMain>
     </OrderSubContainer>
   );
 };
 
-export default Page;
+export default SessionGuard (Page);
