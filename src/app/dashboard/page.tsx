@@ -7,7 +7,6 @@ import TopNavBar from "../../../components/molecules/TopNavBar";
 import CustomerSection from "../../../components/molecules/CustomerSection";
 import Chart1 from "../../../components/molecules/Chart1";
 import { Data } from "../../../hooks/Data";
-import px2vw from "../../../src/utils/px2vw";
 
 interface UserData {
   labels: any[];
