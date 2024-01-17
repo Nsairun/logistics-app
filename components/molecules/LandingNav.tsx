@@ -73,7 +73,7 @@ function LandingNav() {
             onClick={() => navigateToPage("/")}
           />
         </div>
-        <div
+       {!currentUser && (<div
           style={{
             width: "10vw",
             color: "#fff",
@@ -85,8 +85,8 @@ function LandingNav() {
             label={"Registration"}
             onClick={() => navigateToPage("/registrationlogin")}
           />
-        </div>
-        <div
+        </div>)}
+       {! currentUser && (<div
           style={{
             width: "10vw",
             color: "#fff",
@@ -98,7 +98,7 @@ function LandingNav() {
             label={"Login"}
             onClick={() => navigateToPage("/login")}
           />
-        </div>
+        </div>)}
        {currentUser && (<div
           style={{
             width: "10vw",
@@ -109,6 +109,31 @@ function LandingNav() {
         >
           <Button
             label={"Dashboard"}
+            onClick={() => navigateToPage("/dashboard")}
+          />
+        </div>)}
+        {currentUser && (<div
+          style={{
+            width: "10vw",
+            color: "#fff",
+            borderRadius: "5px",
+            textAlign: "center",
+          }}
+        >
+          <Button
+            label={"About"}
+            onClick={() => navigateToPage("/dashboard")}
+          />
+        </div>)}{currentUser && (<div
+          style={{
+            width: "10vw",
+            color: "#fff",
+            borderRadius: "5px",
+            textAlign: "center",
+          }}
+        >
+          <Button
+            label={"Contact"}
             onClick={() => navigateToPage("/dashboard")}
           />
         </div>)}

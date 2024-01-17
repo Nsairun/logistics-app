@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import mapboxgl, { Map as MapboxMap } from "mapbox-gl";
+/*import React, { useState, useEffect } from "react";
+//import mapboxgl, { Map as MapboxMap } from "mapbox-gl"
 import styled from "styled-components";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
@@ -37,7 +37,7 @@ const TrackingPage: React.FC = () => {
   const [map, setMap] = useState<MapboxMap | null>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => {                           
     mapboxgl.accessToken = "YOUR_MAPBOX_ACCESS_TOKEN";
 
     const initializeMap = () => {
@@ -102,6 +102,4 @@ const TrackingPage: React.FC = () => {
       <Footer />
     </Container>
   );
-};
-
-export default TrackingPage;
+};*/

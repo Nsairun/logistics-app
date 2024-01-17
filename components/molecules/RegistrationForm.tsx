@@ -382,6 +382,12 @@ function Registration() {
                 </div>
               </Account>
 
+              <div>
+                <p></p>
+                <p>OR</p>
+                <p></p>
+              </div>
+
               <button
                 onClick={function (): void {
                   throw new Error("Function not implemented.");

@@ -36,7 +36,7 @@ const FormInputFields: React.FC = () => {
       <FormInput type="text" placeholder="Form" />
       <FormInput type="text" placeholder="To" />
       <FormInput type="text" placeholder="Quarter" />
-      <Button label={''} onClick={() => navigateToPage("/Registrationlogin")} style={{width: "20vw"}}>Submit</Button>
+      <Button label={''} onClick={() => navigateToPage("/Registrationlogin")} style={{width: "20vw", background: " #87C656"}}>Submit</Button>
     </FormContainer>
   );
 };

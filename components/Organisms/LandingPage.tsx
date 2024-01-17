@@ -13,7 +13,6 @@ import firstimg from "../../public/firstimg.jpeg";
 import secondimg from "../../public/more.png";
 import thirdimg from "../../public/truck.png";
 import { SessionGuard } from "../Guards/SessionGuard";
-import Vehicule from "../atoms/Vehicule";
 import Services from "../atoms/Services";
 
 const LandingMainContainer = styled("div")`
@@ -147,11 +146,13 @@ function LandingPage() {
         </StyledButton>
       </LandingContainer>
       <LandingAid personnel={[]} />
+      <h1 style={{fontSize: "35px", fontWeight: "bolder"}}>IMAGE CAROUSEL</h1>
       <SwapContainer>
         <SwapImg
           images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png", "/new1.jpg", "/new2.jpg", "/new3.jpg"]}
         />
       </SwapContainer>
+      <h1 style={{fontSize: "35px", fontWeight: "bolder"}}>CARDS_SECTION</h1>
       <CardContainer>
       <Card
           imageSrc={firstimg}

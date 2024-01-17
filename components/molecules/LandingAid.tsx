@@ -13,6 +13,7 @@ import Modal from "../../modal/SlideModal";
 import ModalInputfeld from "../atoms/ModalInputfeld";
 import PersonnelModal from "../atoms/PersonnelModal";
 import { useAppContext } from "../../hooks/AppContext";
+import { IUser } from "@/services/Interfaces/Interface";
 
 const LadingAidContainer = styled("div")`
   display: flex;
@@ -131,6 +132,11 @@ const LandingAid: React.FC<PersonnelModalProps> = ({personnel}) => {
     setIsPersModalOpen(false);
   };
 
+
+  const isAdmin = (currentUser: IUser | null | undefined) => {
+    return currentUser?.role === "ADMIN";
+  };
+
   const iconStyling: IconStylingProviderProps = {
     value: {
       size: "30px",
@@ -167,7 +173,7 @@ const LandingAid: React.FC<PersonnelModalProps> = ({personnel}) => {
               children={<ModalInputfeld />}
             />
           </Holder>
-          <Holder>
+          {isAdmin(currentUser)&&(<Holder>
             <ResponsiveButton
               onClick={openPersModal}
             >
@@ -182,7 +188,7 @@ const LandingAid: React.FC<PersonnelModalProps> = ({personnel}) => {
             <Modal isOpen={isPersModalOpen} onClose={closePersModal}>
               <PersonnelModal/>
             </Modal>
-          </Holder>
+          </Holder>)}
           <Holder>
             <ResponsiveButton
               onClick={function (): void {

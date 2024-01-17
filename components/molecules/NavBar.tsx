@@ -15,6 +15,8 @@ import {
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
 import CustomButton from "../atoms/Button";
+import { useAppContext } from "../../hooks/AppContext";
+import { IUser } from "@/services/Interfaces/Interface";
 
 const NavContainer = styled("div")`
   display: flex;
@@ -63,6 +65,12 @@ const NavBarMain = styled("div")`
 
 function NavBar() {
   const router = useRouter();
+
+  const { currentUser } = useAppContext();
+
+  const isAdmin = (currentUser: IUser | null | undefined) => {
+    return currentUser?.role === "ADMIN" || "PERSONNEL";
+  };
 
   const navigateToPage = (path: string) => {
     router.push(path);
@@ -114,7 +122,7 @@ function NavBar() {
           </NavSubContainer>
         </CustomButton>
 
-        <CustomButton label={""} onClick={() => navigateToPage("/personnel")}>
+       {isAdmin(currentUser) && ( <CustomButton label={""} onClick={() => navigateToPage("/personnel")}>
           <NavSubContainer>
             <IconStylingProvider value={iconStyling.value}>
               <BsPersonVcard
@@ -125,8 +133,8 @@ function NavBar() {
             <Text headingLevel={"h1"}>Personnel</Text>
           </NavSubContainer>
         </CustomButton>
-
-        <CustomButton
+)}
+       {isAdmin(currentUser)&&( <CustomButton
           label={""}
           onClick={() => navigateToPage("/transportation")}
         >
@@ -139,7 +147,7 @@ function NavBar() {
             </IconStylingProvider>
             <Text headingLevel={"h1"}>Shipment</Text>
           </NavSubContainer>
-        </CustomButton>
+        </CustomButton>)}
 
         <CustomButton label={""} onClick={() => navigateToPage("/tracking")}>
           <NavSubContainer>

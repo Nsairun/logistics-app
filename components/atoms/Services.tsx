@@ -15,11 +15,11 @@ const bounce = keyframes`
 `;
 
 const Section = styled.section`
-width: 100%;
-@media (max-width: 768px) {
-  flex-direction: column;
   width: 100%;
-}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Title = styled.h2`
@@ -65,7 +65,7 @@ const ServiceDescription = styled.p`
   height: 55vh;
   padding: 10px;
   text-align: left;
-  line-height: 24px;
+  line-height: 2;
   font-size: 15px;
 
   @media (max-width: 768px) {
@@ -122,31 +122,28 @@ const ServiceSection: React.FC = () => {
         <ServiceCard>
           <FaBicycle size={100} color="black" />
           <ServiceDescription>
-            Bike Service Logistics bikes are an efficient and eco-friendly mode
-            of transportation for urban deliveries. With their agile
-            maneuverability and ability to navigate through congested city
-            streets, logistics bikes provide a sustainable solution for
-            last-mile deliveries. Equipped with ample cargo space and versatile
-            handling, these bikes ensure prompt and reliable delivery services,
-            contributing to reduced traffic congestion and carbon emissions in
-            urban areas
+            Truck services are crucial for seamless property and goods transfer,
+            offering ample cargo capacity and efficient long-distance
+            transportation. They serve as the backbone of logistics, ensuring
+            secure and timely transfers of diverse items. With reliable
+            operations and versatile capabilities, trucks enable smooth property
+            transfers and logistical operations
           </ServiceDescription>
           <Number>{bikes}</Number>
         </ServiceCard>
         <ServiceCard>
           <FaTruck size={100} color="black" />{" "}
           <ServiceDescription>
-            Truck Service play a pivotal role in the seamless transfer of
-            properties and goods, offering substantial cargo capacity and robust
-            capabilities for long-distance transportation. These vehicles serve
-            as the backbone of logistical operations, facilitating the efficient
-            movement of diverse properties and goods across extensive routes.
-            With their spacious cargo compartments and formidable hauling power,
-            logistics trucks ensure the secure and timely transfer of
-            properties, ranging from large-scale equipment to valuable
-            commodities. Their reliability and adaptability make them essential
-            for handling complex logistical challenges, contributing to the
-            smooth flow of property transfers and logistical operations
+            Truck services are vital for seamless property and goods transfer,
+            providing ample cargo capacity and strong capabilities for
+            long-distance transportation. They serve as logistical backbone,
+            enabling efficient movement of diverse items across extensive
+            routes. With spacious cargo compartments and powerful hauling
+            capacity, logistics trucks ensure secure and timely transfers of
+            various properties, from large-scale equipment to valuable
+            commodities. Their reliability and adaptability are essential for
+            handling complex logistical challenges, ensuring smooth property
+            transfers and logistical operations.
           </ServiceDescription>
           <Number>{trucks}</Number>
         </ServiceCard>

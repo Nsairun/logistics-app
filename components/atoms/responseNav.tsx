@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { useAppContext } from "../../hooks/AppContext";
+import { useRouter } from "next/navigation";
+import Button from "./Button";
+import { IRoles, IUser, Roles } from "@/services/Interfaces/Interface";
 
 const NavbarContainer = styled.nav`
   display: none;
@@ -41,6 +45,7 @@ const Modal = styled.div<{ show: boolean }>`
     top: 60px;
     right: ${({ show }) => (show ? "0" : "-200px")};
     width: 200px;
+    height: 70vh;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
@@ -55,27 +60,51 @@ const CloseButton = styled.div`
   padding: 5px;
 `;
 
-const NavLink = styled.a`
-  @media screen and (max-width: 768px) {
-    padding: 10px;
-    text-align: left;
-    margin-bottom: 5%;
-    text-decoration: none;
-    width: 30vw;
-    font-weight: bold;
-    border-bottom: 1px solid green;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+const StyledButton = styled.button`
+  background-color: rgba(0, 128, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: #d3d4d5;
-    }
+  &:hover {
+    background-color: rgba(0, 128, 0, 0.8);
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
 const Navbar: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const Button = ({ label, onClick }: ButtonProps) => {
+    return <StyledButton onClick={onClick}>{label}</StyledButton>;
+  };
+
+  const router = useRouter();
+
+  const navigateToPage = (path: string) => {
+    router.push(path);
+  };
+  const { currentUser } = useAppContext();
+
+  const isAdmin = (currentUser: IUser | null | undefined) => {
+    return currentUser?.role === "ADMIN";
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -113,12 +142,30 @@ const Navbar: React.FC = () => {
         >
           ✕
         </CloseButton>
-        <NavLink href="#">Dashboard</NavLink>
-        <NavLink href="#">Order</NavLink>
-        <NavLink href="#">Customer</NavLink>
-        <NavLink href="#">Personnel</NavLink>
-        <NavLink href="#">Tracking</NavLink>
-        <NavLink href="#">Shipment</NavLink>
+        <ButtonContainer>
+          <Button label={"Homepage"} onClick={() => navigateToPage("/")} />
+          <Button label={"Order"} onClick={() => navigateToPage("/orders")} />
+          <Button
+            label={"Customer"}
+            onClick={() => navigateToPage("/customer")}
+          />
+          <Button
+            label={"Tracking"}
+            onClick={() => navigateToPage("/tracking")}
+          />
+          {isAdmin(currentUser) && (
+            <>
+              <Button
+                label={"Personnel"}
+                onClick={() => navigateToPage("/personnel")}
+              />
+              <Button
+                label={"Transportation"}
+                onClick={() => navigateToPage("/transportation")}
+              />{" "}
+            </>
+          )}
+        </ButtonContainer>
       </Modal>
     </NavbarContainer>
   );
