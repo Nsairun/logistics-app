@@ -14,6 +14,8 @@ import {
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
 import { signUp } from "@/services/api";
+import {GoogleAuthProvider, signInWithPopup, signInWithRedirect} from 'firebase/auth';
+import {auth} from '../../firebase/firebaseconfig';
 
 export const RegContainer = styled("div")`
   display: flex;
@@ -224,6 +226,16 @@ function Registration() {
     }
   };
 
+  const handleGoogle = async (e: any) => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error('Error authenticating with Google:', error);
+    }
+  };
+
   return (
     <RegMainContainer>
       <RegImageContainer>
@@ -382,16 +394,14 @@ function Registration() {
                 </div>
               </Account>
 
-              <div>
-                <p></p>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '1rem'}}>
+                <p>...........</p>
                 <p>OR</p>
-                <p></p>
+                <p>...........</p>
               </div>
 
               <button
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
+                onClick={handleGoogle}
                 style={{
                   width: "100%",
                   display: "flex",

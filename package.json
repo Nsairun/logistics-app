@@ -16,6 +16,7 @@
     "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.0",
+    "firebase": "^10.7.1",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "mapbox-gl": "^3.0.1",

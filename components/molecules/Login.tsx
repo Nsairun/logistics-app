@@ -14,6 +14,8 @@ import {
 } from "../../hooks/MyIcons";
 import { FcGoogle } from "react-icons/fc";
 import { login } from "@/services/api";
+import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import {auth} from '../../firebase/firebaseconfig';
 
 const RegMainContainer = styled("div")`
   display: flex;
@@ -149,6 +151,16 @@ function Login() {
     }
   };
 
+  const handleGoogle = async (e: any) => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      console.error('Error authenticating with Google:', error);
+    }
+  };
+
   return (
     <RegMainContainer>
       <RegContainer>
@@ -236,7 +248,11 @@ function Login() {
               </Button>
               </div>
             </Account>
-
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '1rem'}}>
+                <p>...........</p>
+                <p>OR</p>
+                <p>...........</p>
+              </div>
             <button
               style={{
                 width: "100%",
@@ -247,7 +263,7 @@ function Login() {
                 backgroundColor: " rgba(135, 198, 86, 0.5)",
                 padding: "5px",
               }}
-              onClick={() => navigateToPage("/")}
+              onClick={handleGoogle}
             >
               <IconStylingProvider value={iconStyling.value}>
                 <FcGoogle
