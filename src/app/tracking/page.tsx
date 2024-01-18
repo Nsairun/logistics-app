@@ -1,6 +1,6 @@
 "use client";
-/*import React, { useState, useEffect } from "react";
-//import mapboxgl, { Map as MapboxMap } from "mapbox-gl"
+import React, { useState, useEffect } from "react";
+import mapboxgl, { Map as MapboxMap } from "mapbox-gl"
 import styled from "@emotion/styled";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
@@ -102,4 +102,4 @@ const TrackingPage: React.FC = () => {
       <Footer />
     </Container>
   );
-};*/
+};
