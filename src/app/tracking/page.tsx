@@ -33,7 +33,7 @@ const MapPlaceholder = styled.div`
   border-radius: 8px;
 `;
 
-const TrackingPage: React.FC = () => {
+const Page: React.FC = () => {
   const [map, setMap] = useState<MapboxMap | null>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
 
@@ -103,3 +103,5 @@ const TrackingPage: React.FC = () => {
     </Container>
   );
 };
+
+export default Page;
