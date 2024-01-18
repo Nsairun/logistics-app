@@ -1,7 +1,7 @@
 // components/WorkTracker.tsx
 
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const CalendarSection = styled.section`
   display: flex;

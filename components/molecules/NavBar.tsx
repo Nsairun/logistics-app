@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 import { CiDeliveryTruck, CiLocationOn } from "react-icons/ci";
 import { PiWarehouse } from "react-icons/pi";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import {
   IconStylingProvider,
   IconStylingProviderProps,

@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react';
-import { styled } from 'styled-components';
+import styled from "@emotion/styled";
 
 const InputWrapper = styled.div`
   height: 5vh;
@@ -43,6 +43,7 @@ interface InputProps {
   value: string | number;
   name: string;
   placeholder: string;
+  id: string;
   error: boolean;
   disabled?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -52,6 +53,7 @@ const Input: FC<InputProps> = ({
   type,
   label,
   value,
+  id,
   name,
   placeholder,
   error,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/legacy/image";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Button from "../atoms/Button";
 import { TfiControlBackward, TfiControlForward } from "react-icons/tfi";
 import {
@@ -105,7 +105,7 @@ const SwapImg: React.FC<CarouselProps> = ({ images }) => {
         width="1000"
         height="500"
         quality={100}
-        style={{ width: "100%", height: "20vh", padding: "1px" }}
+        style={{ width: "100%", height: "15vh", padding: "1px" }}
       />
       <SwapSubContainer>
         <h1 style={{ padding: "5px", fontWeight: "700", color: "#fff" }}>We know customers</h1>

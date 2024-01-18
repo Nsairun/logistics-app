@@ -2,7 +2,7 @@
 import React from "react";
 import Landingimage from "../../public/backound.webp";
 import Text from "../atoms/Text";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { useRouter } from "next/navigation";
 import LandingNav from "../molecules/LandingNav";
 import SwapImg from "../molecules/SwapImg";
@@ -21,7 +21,7 @@ const LandingMainContainer = styled("div")`
   justify-content: center;
   gap: 3rem;
   flex-direction: column;
-  background: #F1F2F3;
+  background: #f1f2f3;
 
   @media screen and (max-width: 770px) {
     width: 100%;
@@ -137,37 +137,61 @@ function LandingPage() {
         <Nav>
           <LandingNav />
         </Nav>
-        <LogoText headingLevel={"h1"}>LOGISTICBAMBE</LogoText>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <LogoText headingLevel={"h1"}>LOGISTIC</LogoText>
+          <LogoText style={{ color: "#fff" }} headingLevel={"h1"}>
+            BAMBE
+          </LogoText>
+        </div>
         <DescriptionText headingLevel={"h2"}>
           let us ease your courier transportation
         </DescriptionText>
         <StyledButton onClick={() => navigateToPage("/registrationlogin")}>
-          Start
+          Get Started
         </StyledButton>
       </LandingContainer>
       <LandingAid personnel={[]} />
-      <h1 style={{fontSize: "35px", fontWeight: "bolder"}}>IMAGE CAROUSEL</h1>
+      <h1 style={{ fontSize: "35px", fontWeight: "bolder" }}>Enjoy Our Image Gallery </h1>
       <SwapContainer>
         <SwapImg
-          images={["/firstimg.jpeg", "/secondimg.jpeg", "/third image.png", "/new1.jpg", "/new2.jpg", "/new3.jpg"]}
+          images={[
+            "/logistics.webp",
+            "/package.jpg",
+            "/personnel.jpg",
+            "/truck.jpg",
+            "/new2.jpg",
+            "/new3.jpg",
+          ]}
         />
       </SwapContainer>
-      <h1 style={{fontSize: "35px", fontWeight: "bolder"}}>CARDS_SECTION</h1>
+      <h1 style={{ fontSize: "35px", fontWeight: "bolder" }}>Explore Our Quality Services</h1>
       <CardContainer>
-      <Card
+        <Card
           imageSrc={firstimg}
           title={"Ship Like a Pro"}
-          description={"Get access to powerful and time-saving customizable features found only in Logisticbambe"} type={""}      />
-      <Card
+          description={
+            "Get access to powerful and time-saving customizable features found only in Logisticbambe"
+          }
+          type={""}
+        />
+        <Card
           imageSrc={secondimg}
           title={"Save on Frequent Shipping"}
-          description={" Get preferred rates, billing options and other great benefits of having an account!"} type={""}      />
-      <Card
+          description={
+            " Get preferred rates, billing options and other great benefits of having an account!"
+          }
+          type={""}
+        />
+        <Card
           imageSrc={thirdimg}
           title={"Not Home? Change of Plans?"}
-          description={"Take control of your shipment delivery! Decide when and where you want us to deliver."} type={""}      />
+          description={
+            "Take control of your shipment delivery! Decide when and where you want us to deliver."
+          }
+          type={""}
+        />
       </CardContainer>
-      <Services/>
+      <Services />
       <Footer />
     </LandingMainContainer>
   );

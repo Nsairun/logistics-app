@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Text from "../../../components/atoms/Text";
 import { CgDetailsMore } from "react-icons/cg";
 import {

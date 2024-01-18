@@ -1,6 +1,6 @@
 
 import React, { CSSProperties, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import style from 'styled-jsx/style';
 
 const Btn = styled.button`

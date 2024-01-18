@@ -2,12 +2,11 @@
 import React, {useMemo, useState, useEffect} from "react";
 import NavBar from "../../../components/molecules/NavBar";
 import MapSection from "../../../components/molecules/MapSection";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import CustomerSection from "../../../components/molecules/CustomerSection";
 import Chart1 from "../../../components/molecules/Chart1";
 import { Data } from "../../../hooks/Data";
-import px2vw from "../../../src/utils/px2vw";
 import Footer from "../../../components/Organisms/Footer";
 import ResponseNav from "../../../components/atoms/responseNav";
 

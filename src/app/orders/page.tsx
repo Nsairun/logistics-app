@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import SelectField from "../../../components/atoms/SelectField";

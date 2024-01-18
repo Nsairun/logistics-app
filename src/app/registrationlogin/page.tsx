@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Registration from '../../../components/molecules/RegistrationForm';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import LandingNav from '../../../components/molecules/LandingNav';
 import ResponseNav from '../../../components/atoms/responseNav';
 

@@ -15,6 +15,7 @@ const signUp = async (data: {
     password: string;
     confirmPassword: string;
     IDcard: string;
+    phonenumber: string;
 }) => await axios.post(`${API_URL}/api/users/signup`, data)
 
 const getCurrentUser = async (token: string) => {

@@ -1,7 +1,7 @@
 "use client";
 /*import React, { useState, useEffect } from "react";
 //import mapboxgl, { Map as MapboxMap } from "mapbox-gl"
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import Footer from "../../../components/Organisms/Footer";

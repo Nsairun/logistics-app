@@ -32,6 +32,8 @@ interface IOrder {
     status: string
     vehicle: string
     timeDeparture: string
+    telephone: string
+    goodDetails: string
 }
 
 export { Roles };

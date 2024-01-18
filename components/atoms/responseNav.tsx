@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../hooks/AppContext";
 import { useRouter } from "next/navigation";
-import Button from "./Button";
 import { IRoles, IUser, Roles } from "@/services/Interfaces/Interface";
 
 const NavbarContainer = styled.nav`

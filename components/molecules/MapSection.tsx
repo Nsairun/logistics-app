@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Text from "../atoms/Text";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import image from "../../public/cityscape.jpg";
 import Image from "next/legacy/image";
 import Button from "../atoms/Button";

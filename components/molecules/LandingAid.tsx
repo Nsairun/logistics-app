@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/legacy/image";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import firstimg from "../../public/card.jpg.png";
 import { FiTruck } from "react-icons/fi";
 import { LiaHandsHelpingSolid } from "react-icons/lia";

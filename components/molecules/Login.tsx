@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import RegImage from "../../public/real logo.png";
 import Image from "next/legacy/image";
 import Text from "../atoms/Text";
-import Input from "../atoms/Input";
+import Input from '../atoms/Input';
 import Button from "../atoms/Button";
 import { useRouter } from "next/navigation";
 import Landingimage from "../../public/backound.webp";
@@ -191,6 +191,7 @@ function Login() {
                 type={"text"}
                 label={""}
                 value={email}
+                id={'input1'}
                 name={""}
                 placeholder={"Email"}
                 error={false}
@@ -205,6 +206,7 @@ function Login() {
               <Input
                 type={"text"}
                 label={""}
+                id="input2"
                 value={password}
                 name={""}
                 placeholder={"Password"}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import Text from "../../../components/atoms/Text";

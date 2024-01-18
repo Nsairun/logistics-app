@@ -2,7 +2,7 @@
 import React from "react";
 import Login from "../../../components/molecules/Login";
 import LandingNav from "../../../components/molecules/LandingNav";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import ResponseNav from "../../../components/atoms/responseNav";
 
 function page() {

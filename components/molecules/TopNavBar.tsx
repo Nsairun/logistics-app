@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Text from "../atoms/Text";
 import { FaHome } from "react-icons/fa";
 import { IoNotificationsOutline, IoPersonCircle } from "react-icons/io5";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   IconStylingProvider,
   IconStylingProviderProps,

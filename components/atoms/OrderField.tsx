@@ -5,9 +5,10 @@ import { FaRegIdCard } from "react-icons/fa";
 import { GrLocationPin } from "react-icons/gr";
 import { GiSandsOfTime } from "react-icons/gi";
 import { GoPackage } from "react-icons/go";
+import { CiMobile3 } from "react-icons/ci";
+import { BiDetail } from "react-icons/bi";
 import styled from "styled-components";
 import Text from "./Text";
-import Vehicule from "./Vehicule";
 import axios from "axios";
 import { API_URL } from "@/services/contants";
 import { useAppContext } from "../../hooks/AppContext";
@@ -94,11 +95,14 @@ function OrderField() {
   const [pointTo, setPointTo] = useState("");
   const [nameOfGood, setNameOfGood] = useState("");
   const [timeDeparture, setDepartureTime] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [goodDetails, setGoodDetails] = useState("");
   const [error, setError] = useState("")
+  const [successMessage, setSuccessMessage] =useState("")
 
   const handleSubmit: (e?: React.FormEvent) => void = async (e) => {
     if (e) {
-      e.preventDefault(); // Prevent the default form submission behavior
+      e.preventDefault();
     }
     try {
       const new_order = {
@@ -109,6 +113,8 @@ function OrderField() {
         pointTo,
         nameOfGood,
         timeDeparture,
+        telephone,
+        goodDetails,
       }
 
       console.log({ new_order})
@@ -122,8 +128,12 @@ function OrderField() {
       setPointTo("");
       setNameOfGood("");
       setDepartureTime("");
+      setTelephone("");
+      setGoodDetails("")
+
+      setSuccessMessage("Order has been placed successfully")
+      window.alert("Order successfully placed")
     } catch (error: any) {
-      // Handle error response
       console.error(error);
       if (error.response && error.response.status === 404) {
         setError("Resource not found. Please try again.");
@@ -206,6 +216,31 @@ function OrderField() {
                 type="text"
                 placeholder="Time Departure"
                 value={timeDeparture}
+                onChange={(e) => setDepartureTime(e.target.value)}
+              />
+            </OrderInput>
+            </OrderSubContainer>
+            <OrderSubContainer>
+            <OrderInput>
+              <Text headingLevel="h1">
+                Phone Number <CiMobile3 />
+
+              </Text>
+              <FormInput
+                type="text"
+                placeholder="Tel"
+                value={telephone}
+                onChange={(e) => setDepartureTime(e.target.value)}
+              />
+            </OrderInput>
+            <OrderInput>
+              <Text headingLevel="h1">
+                Order details <BiDetail />
+              </Text>
+              <FormInput
+                type="text"
+                placeholder="Details of good"
+                value={goodDetails}
                 onChange={(e) => setDepartureTime(e.target.value)}
               />
             </OrderInput>

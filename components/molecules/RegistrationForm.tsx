@@ -1,6 +1,6 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled from "@emotion/styled";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
@@ -14,8 +14,12 @@ import {
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
 import { signUp } from "@/services/api";
-import {GoogleAuthProvider, signInWithPopup, signInWithRedirect} from 'firebase/auth';
-import {auth} from '../../firebase/firebaseconfig';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
+import { auth } from "../../firebase/firebaseconfig";
 
 export const RegContainer = styled("div")`
   display: flex;
@@ -45,7 +49,7 @@ const RegImageContainer = styled("div")`
   url(${Landingimage.src});
   background-size: cover;
   background-position: center;
-  box-shadow: 2px 4px 30px 1px grey;
+  box-shadow: 2px 4px 10px 1px grey;
 
   @media screen and (max-width: 770px) {
     display: none;
@@ -55,7 +59,7 @@ const RegMainContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 4px 30px 1px grey;
+  box-shadow: 2px 4px 10px 1px grey;
   height: 100vh;
 
   @media screen and (max-width: 770px) {
@@ -106,7 +110,8 @@ const Title = styled("div")`
 
 const Separation = styled("div")`
   display: flex;
-  align-items: center;
+  align-items: left;
+  width: 100%;
   justify-content: space-evenly;
   gap: 4rem;
 
@@ -120,6 +125,7 @@ const Account = styled("div")`
   align-items: center;
   justify-content: center;
   padding: 15px;
+  width: 100%;
   gap: 1rem;
 
   @media screen and (max-width: 770px) {
@@ -147,6 +153,7 @@ function Registration() {
     password: "",
     confirmPassword: "",
     IDcard: "",
+    phonenumber: "",
   });
   const [validationErrors, setValidationErrors] = useState<
     { fullname?: string; password?: string; confirmPassword?: string }[]
@@ -161,8 +168,7 @@ function Registration() {
     } else if (data.fullname?.length > 30) {
       errors.push({ fullname: "Full name should be less than 30 characters" });
     }
-
-    if (data.password.length < 6) {
+    if (data.password.length <= 6) {
       errors.push({
         password: "Password should be at least 6 characters long",
       });
@@ -190,7 +196,8 @@ function Registration() {
       !data.email ||
       !data.password ||
       !data.quarter ||
-      !data.IDcard
+      !data.IDcard ||
+      !data.phonenumber
     ) {
       setError("All fields are necessary");
       return;
@@ -208,9 +215,12 @@ function Registration() {
           password: "",
           confirmPassword: "",
           IDcard: "",
+          phonenumber: "",
         });
         setValidationErrors([]);
         setError("");
+
+        router.push("/login");
       } else {
         setError("User registration failed");
       }
@@ -230,9 +240,9 @@ function Registration() {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (error) {
-      console.error('Error authenticating with Google:', error);
+      console.error("Error authenticating with Google:", error);
     }
   };
 
@@ -257,6 +267,7 @@ function Registration() {
                     type={"text"}
                     label={"Full Name"}
                     value={data.fullname}
+                    id={"input1"}
                     name="fullname"
                     placeholder={"Full Name"}
                     error={false}
@@ -272,6 +283,7 @@ function Registration() {
                     type={"email"}
                     label={"Email"}
                     value={data.email}
+                    id={"input2"}
                     name="email"
                     placeholder={"Email"}
                     error={false}
@@ -292,6 +304,7 @@ function Registration() {
                     type={"password"}
                     label={"Password"}
                     value={data.password}
+                    id={"input3"}
                     name="Password"
                     placeholder={"Password"}
                     error={false}
@@ -307,6 +320,7 @@ function Registration() {
                     type={"password"}
                     label={"Password Confirmation"}
                     value={data.confirmPassword}
+                    id={"input4"}
                     name={"password"}
                     placeholder={"Password Confirmation"}
                     error={false}
@@ -326,6 +340,7 @@ function Registration() {
                     type={"text"}
                     label={""}
                     value={data.quarter}
+                    id={"input5"}
                     name={""}
                     placeholder={"Quarter"}
                     error={false}
@@ -340,6 +355,7 @@ function Registration() {
                   <Input
                     type={"text"}
                     label={""}
+                    id="input6"
                     value={data.IDcard}
                     name={""}
                     placeholder={"ID Number"}
@@ -350,37 +366,31 @@ function Registration() {
                   />
                 </Title>
               </Separation>
-              <div
-                style={{
-                  width: "20vw",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "5px",
-                  background: "#87C656",
-                  gap: "1rem",
-                }}
-              >
-                <Button label={""} onClick={() => handleSubmit}>
-                  <Text
-                    headingLevel={"h1"}
-                    style={{
-                      borderRadius: "5px",
-                      border: " solid #87C656",
-                      padding: "5px",
-                    }}
-                  >
-                    Register
-                  </Text>
-                </Button>
-              </div>
+              <Separation>
+                <Title>
+                  <Text headingLevel={"h1"}>Tel:</Text>
+                  <Input
+                    type={"text"}
+                    label={""}
+                    id="input6"
+                    value={data.phonenumber}
+                    name={""}
+                    placeholder={"Phone Number"}
+                    error={false}
+                    onChange={(e) =>
+                      setData({ ...data, phonenumber: e.target.value })
+                    }
+                  />
+                </Title>
+              </Separation>
+              
             </RegSectionRoles>
             <RegSectionRoles>
               <Account>
                 <Text headingLevel={"h1"}>Already have an account?</Text>
                 <div
                   style={{
-                    width: "20%",
+                    width: "25%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -394,7 +404,14 @@ function Registration() {
                 </div>
               </Account>
 
-              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '1rem'}}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  gap: "1rem",
+                }}
+              >
                 <p>...........</p>
                 <p>OR</p>
                 <p>...........</p>
@@ -426,7 +443,6 @@ function Registration() {
                   {error}
                 </Text>
               )}
-              
             </RegSectionRoles>
           </form>
         </RegSection>

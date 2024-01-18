@@ -6,7 +6,7 @@ import {
   IconStylingProvider,
   IconStylingProviderProps,
 } from "../../hooks/MyIcons";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 
 const VehiculeMain = styled("div")`
