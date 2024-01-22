@@ -132,8 +132,10 @@ function OrderField() {
       setGoodDetails("")
 
       setSuccessMessage("Order has been placed successfully")
-      window.alert("Order successfully placed")
-    } catch (error: any) {
+      if (typeof window !== 'undefined') {
+        window.alert("Order successfully placed");
+      }
+        } catch (error: any) {
       console.error(error);
       if (error.response && error.response.status === 404) {
         setError("Resource not found. Please try again.");
