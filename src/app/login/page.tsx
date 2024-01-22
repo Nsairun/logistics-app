@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import Login from "../../../components/molecules/Login";
 import LandingNav from "../../../components/molecules/LandingNav";
 import styled from "@emotion/styled";
 import ResponseNav from "../../../components/atoms/responseNav";
 
-function page() {
+function Page() {
   const RegistrationContainer = styled("div")`
     gap: 1rem;
     flex-direction: column;
@@ -32,4 +33,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
