@@ -111,6 +111,8 @@ const Navbar: React.FC = () => {
       if (typeof window !== 'undefined' && window.innerWidth <= 700) {
         setShowModal(true);
       } else {
+
+
         setShowModal(false);
       }
     };

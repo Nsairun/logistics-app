@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import Cookies from 'js-cookie';
+
 
 const CalendarSection = styled.section`
   display: flex;
@@ -72,31 +74,29 @@ appearance: none;
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
-  const localStorageObject =
-    typeof localStorage !== "undefined" ? localStorage : null;
+ const localStorageObject =
+ typeof localStorage !== "undefined" ? localStorage : null;
 
-  useEffect(() => {
-    if (localStorageObject) {
-      const savedWorkDays = localStorageObject.getItem("workDays");
-      if (savedWorkDays) {
-        setWorkDays(parseInt(savedWorkDays, 10));
-      }
+ useEffect(() => {
+  const savedWorkDays = Cookies.get('workDays');
+  if (savedWorkDays) {
+    setWorkDays(parseInt(savedWorkDays, 10));
+  }
+}, []);
+
+const handleCheckboxChange = (day: number, month: number) => {
+  return (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setWorkDays((prevDays) => prevDays + 1);
+      Cookies.set(`workDay_${month}_${day}`, 'true');
+    } else {
+      setWorkDays((prevDays) => prevDays - 1);
+      Cookies.remove(`workDay_${month}_${day}`);
     }
-  }, [localStorageObject]);
-
-
-  const handleCheckboxChange = (day: number, month: number) => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.checked) {
-        setWorkDays((prevDays) => prevDays + 1);
-        localStorage.setItem(`workDay_${month}_${day}`, "true");
-      } else {
-        setWorkDays((prevDays) => prevDays - 1);
-        localStorage.removeItem(`workDay_${month}_${day}`);
-      }
-      localStorage.setItem("workDays", String(workDays));
-    };
+    Cookies.set('workDays', String(workDays));
   };
+};
+
 
   const renderDaysForMonth = (
     month: number,
