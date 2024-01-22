@@ -135,7 +135,6 @@ const Page: React.FC = () => {
       }
     };
   
-    console.clear();
     console.log({ currentUser });
   
     const userId = currentUser?._id;
