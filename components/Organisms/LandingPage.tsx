@@ -99,7 +99,7 @@ const SwapContainer = styled("div")`
   align-items: center;
   justify-content: end;
   border: 1px solid grey;
-  border-radius: 5px;
+  border-radius: 4px;
   height: 70vh;
   width: 82%;
   position: relative;
