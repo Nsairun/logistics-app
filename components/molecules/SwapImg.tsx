@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import styled from "styled-components";
-import firstimg from "../../public/black.png";
-import secondimg from "../../public/more.png";
-import thirdimg from "../../public/truck.png";
+import React, { useState } from "react";
+import Image from "next/legacy/image";
+import styled from "@emotion/styled";
 import Button from "../atoms/Button";
+import { TfiControlBackward, TfiControlForward } from "react-icons/tfi";
+import {
+  IconStylingProvider,
+  IconStylingProviderProps,
+} from "../../hooks/MyIcons";
 
 const SwapContainer = styled("div")`
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   border: 1px solid grey;
   border-radius: 5px;
-  height: 65vh;
-  width: 70vw;
+  height: 100%;
+  width: 100%;
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
 `;
 
 const SwapSubContainer = styled("div")`
@@ -26,56 +31,110 @@ const SwapSubContainer = styled("div")`
   flex-direction: column;
   gap: 2rem;
   width: 30vw;
+  padding: 10px;
   height: 100%;
   position: absolute;
-  background: linear-gradient(
-    to bottom,
-    rgba(224, 224, 224, 0.8),
-    rgba(255, 255, 255, 0.8),
-    rgba(224, 224, 224, 0.8)
-  );
+  background-color: rgba(0, 0, 0, 0.5); 
   top: 0;
   left: 0;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+  }
 `;
 
-function SwapImg() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const images = [
-    firstimg,
-    secondimg,
-    thirdimg,
-    // Add more image URLs here
-  ];
+const BtnContainer = styled("div")`
+  width: 14vw;
+  background-color: #87C656;
+  borderRadius: 5px;
+  textAlign: center;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 15000);
+  @media screen and (max-width: 770px) {
+    width: 50%;
+    margin: auto;
+  }
+`;
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+
+interface CarouselProps {
+  images: string[];
+}
+
+const SwapImg: React.FC<CarouselProps> = ({ images }) => {
+  const iconStyling: IconStylingProviderProps = {
+    value: {
+      size: "25px",
+      color: "#000",
+    },
+  };
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const goToPreviousImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <SwapContainer>
+      <div style={{ width: "4vw", zIndex: "5" }}>
+        <button onClick={goToPreviousImage}>
+          <IconStylingProvider value={iconStyling.value}>
+            <TfiControlBackward
+              size={iconStyling.value.size}
+              color={iconStyling.value.color}
+            />
+          </IconStylingProvider>
+        </button>
+      </div>
       <Image
-        src={images[currentImage]}
+        src={images[currentImageIndex]}
         alt="Slider Image"
         objectFit="cover"
-        style={{ height: "100%", width: "100%" }}
+        width="1000"
+        height="500"
+        quality={100}
+        style={{ width: "100%", height: "15vh", padding: "1px" }}
       />
       <SwapSubContainer>
-        <h1 style={{padding:"5px", fontWeight: "700"}}>We know customers</h1>
-        <p style={{padding:"5px", width: "20vw"}}>We handle packages with care, all over your city with a steady door to door service </p>
-        <div style={{width: "10vw", background: "grey", borderRadius: "5px", textAlign: "center"}}>
-        <Button
-          label={"let us help you"}
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
-        </div>
+        <h1 style={{ padding: "5px", fontWeight: "700", color: "#fff" }}>We know customers</h1>
+        <p style={{ padding: "65px", width: "100%", color: "#fff" }}>
+          We handle packages with care, all over your city with a steady door to
+          door service{" "}
+        </p>
+        <BtnContainer
+        >
+          <Button
+            label={"let us help you"}
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
+        </BtnContainer>
       </SwapSubContainer>
+      <div style={{ width: "4vw"}}>
+        <button onClick={goToNextImage}>
+          <IconStylingProvider value={iconStyling.value}>
+            <TfiControlForward
+              size={iconStyling.value.size}
+              color={iconStyling.value.color}
+            />
+          </IconStylingProvider>
+        </button>
+      </div>
     </SwapContainer>
   );
-}
+};
 
 export default SwapImg;

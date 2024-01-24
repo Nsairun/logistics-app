@@ -1,19 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import NavBar from "../../../components/molecules/NavBar";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import SelectField from "../../../components/atoms/SelectField";
 import Text from "../../../components/atoms/Text";
 import Info from "../../../components/atoms/Info";
-import Vehicule from "../../../components/atoms/Vehicule";
 import OrderField from "../../../components/atoms/OrderField";
+import Footer from "../../../components/Organisms/Footer";
+import { SessionGuard } from "../../../components/Guards/SessionGuard";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
+  gap: 1rem;
+  top: 0;
+  left: 0;
 
   @media screen and (max-width: 770px) {
     width: 100%;
@@ -21,9 +27,8 @@ const OrderSubContainer = styled("div")`
 
 const OrderMain = styled("div")`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: start;
+  justify-content: start;
   width: 100%;
 
   @media screen and (max-width: 770px) {
@@ -57,6 +62,7 @@ const InfoDiv = styled("div")`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: auto;
   gap: 1rem;
 `;
 const orders = [
@@ -87,6 +93,7 @@ const orders = [
 ];
 
 const Page = () => {
+  const [ordersData, setOrdersData] = useState([]);
   const [sortByDate, setSortByDate] = useState("");
   const [filterStartPoint, setFilterStartPoint] = useState("");
   const [filterDepositPoint, setFilterDepositPoint] = useState("");
@@ -109,8 +116,8 @@ const Page = () => {
       });
     } else if (sortBy === "Time") {
       return data.sort((a, b) => {
-        const timeA = new Date("1970/01/01 " + a.time);
-        const timeB = new Date("1970/01/01 " + b.time);
+        const timeA = new Date("1970/01/01" + a.time);
+        const timeB = new Date("1970/01/01" + b.time);
 
         if (timeA < timeB) {
           return -1;
@@ -147,11 +154,25 @@ const Page = () => {
 
   return (
     <OrderSubContainer>
-      <NavBar />
+      <TopNavBar />
+      <ResponseNav />
       <OrderMain>
-        <TopNavBar />
+      <NavBar />
         <InfoDiv>
+        <h1
+          style={{
+            fontSize: "30px",
+            width: "85%",
+            textAlign: "center",
+            margin: "0 auto",
+            boxShadow: "1px 5px 15px 2px #ccc",
+            padding: "3px",
+          }}
+        >
+          PLACE YOUR SHIPMENT ORDER HERE
+        </h1>
           <SelectMain>
+            
             <SelectContainer>
               <Text
                 headingLevel={"h1"}
@@ -205,9 +226,8 @@ const Page = () => {
               />
             </SelectContainer>
           </SelectMain>
-        </InfoDiv>
-        <OrderField />
-        <Info
+          <OrderField />
+          <Info
           text1={""}
           text2={""}
           text3={""}
@@ -222,10 +242,12 @@ const Page = () => {
           txt6={""}
           txt7={""}
         />
+        </InfoDiv>
       </OrderMain>
       <InfoDiv />
+      <Footer />
     </OrderSubContainer>
   );
 };
-export default Page;
+export default SessionGuard(Page);
 

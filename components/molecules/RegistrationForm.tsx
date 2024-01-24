@@ -1,15 +1,25 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled from "@emotion/styled";
 import Text from "../atoms/Text";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import RegImage from "../../public/real logo.png";
 import Landingimage from "../../public/backound.webp";
-import Image from "next/image";
+import Image from "next/legacy/image";
+import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
-import axios, { AxiosError } from "axios";
-import { API_URL } from "@/services/contants";
+import {
+  IconStylingProvider,
+  IconStylingProviderProps,
+} from "../../hooks/MyIcons";
+import { signUp } from "@/services/api";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
+import { auth } from "../../firebase/firebaseconfig";
 
 export const RegContainer = styled("div")`
   display: flex;
@@ -17,7 +27,7 @@ export const RegContainer = styled("div")`
   flex-direction: column;
   justify-content: space-evenly;
   width: 50vw;
-  height: 90vh;
+  height: 100%;
   background: #F1F2F3;
   gap: 1rem;
   border-top: 6px solid #87C656;
@@ -25,20 +35,21 @@ export const RegContainer = styled("div")`
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
+    margin: auto;
 `;
 
 const RegImageContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100vh;
   width: 35vw;
   padding: 4px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
   url(${Landingimage.src});
   background-size: cover;
   background-position: center;
-  box-shadow: 2px 4px 30px 1px grey;
+  box-shadow: 2px 4px 10px 1px grey;
 
   @media screen and (max-width: 770px) {
     display: none;
@@ -48,13 +59,14 @@ const RegMainContainer = styled("div")`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 4px 30px 1px grey;
+  box-shadow: 2px 4px 10px 1px grey;
   height: 100vh;
 
   @media screen and (max-width: 770px) {
     display: block;
     width: 100%;
     height: 100%;
+    margin: auto;
     background: #87C656;
 `;
 
@@ -67,7 +79,6 @@ const RegSection = styled("div")`
   color: #000;
 
   @media screen and (max-width: 770px) {
-    display: block;
     width: 100%;
 `;
 
@@ -80,7 +91,7 @@ const RegSectionRoles = styled("div")`
   padding: 5px;
 
   @media screen and (max-width: 770px) {
-    display: block;
+    marigin auto;
     width: 100%;
 `;
 
@@ -91,11 +102,16 @@ const Title = styled("div")`
   flex-direction: column;
   justify-content: center;
   padding: 5px;
+
+  @media screen and (max-width: 770px) {
+    marigin auto;
+    width: 100%;
 `;
 
 const Separation = styled("div")`
   display: flex;
-  align-items: center;
+  align-items: left;
+  width: 100%;
   justify-content: space-evenly;
   gap: 4rem;
 
@@ -109,13 +125,21 @@ const Account = styled("div")`
   align-items: center;
   justify-content: center;
   padding: 15px;
+  width: 100%;
   gap: 1rem;
 
   @media screen and (max-width: 770px) {
-    display: block;
-    width: 100%;
+    // display: block;
+    margin: auto;
+    // width: 100%;
 `;
 function Registration() {
+  const iconStyling: IconStylingProviderProps = {
+    value: {
+      size: "35px",
+      color: "#fff",
+    },
+  };
   const router = useRouter();
 
   const navigateToPage = (path: string) => {
@@ -129,11 +153,11 @@ function Registration() {
     password: "",
     confirmPassword: "",
     IDcard: "",
+    phonenumber: "",
   });
   const [validationErrors, setValidationErrors] = useState<
     { fullname?: string; password?: string; confirmPassword?: string }[]
   >([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const validateData = () => {
@@ -144,10 +168,14 @@ function Registration() {
     } else if (data.fullname?.length > 30) {
       errors.push({ fullname: "Full name should be less than 30 characters" });
     }
-
-    if (data.password.length < 6) {
+    if (data.password.length <= 6) {
       errors.push({
         password: "Password should be at least 6 characters long",
+      });
+    } else if (!/A-Z/.test(data.password) || !/a-z/.test(data.password)) {
+      errors.push({
+        password:
+          "Password should contain at least one uppercase letter and lowercase letter",
       });
     } else if (data.password !== data.confirmPassword) {
       errors.push({ confirmPassword: "Passwords don't match" });
@@ -161,26 +189,24 @@ function Registration() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    console.log(validateData());
+
     if (
       !data.fullname ||
       !data.email ||
       !data.password ||
       !data.quarter ||
-      !data.IDcard
+      !data.IDcard ||
+      !data.phonenumber
     ) {
       setError("All fields are necessary");
       return;
     }
 
-    if (!validateData()) {
-      setError("Validation failed");
-      return;
-    }
-
     try {
-      console.log({ API_URL, data });
+      console.log({ data });
       // const res = await axios.post( `${API_URL}/api/users/signup`, data);
-      const res = await axios.post(`${API_URL}/api/users/signup`, data);
+      const res = await signUp(data);
       if (res.status === 200) {
         setData({
           fullname: "",
@@ -189,12 +215,22 @@ function Registration() {
           password: "",
           confirmPassword: "",
           IDcard: "",
+          phonenumber: "",
         });
         setValidationErrors([]);
         setError("");
+
+        router.push("/login");
       } else {
         setError("User registration failed");
       }
+
+      const token = res.data.token;
+
+      if(typeof localStorage === undefined) return;
+
+
+      localStorage.setItem("token", token);
 
       console.log("data", { res });
     } catch (error) {
@@ -203,13 +239,14 @@ function Registration() {
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleGoogle = async (e: any) => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push("/dashboard");
+    } catch (error) {
+      console.error("Error authenticating with Google:", error);
+    }
   };
 
   return (
@@ -223,21 +260,6 @@ function Registration() {
       </RegImageContainer>
       <RegContainer>
         <RegSection>
-          <Account>
-            <Text headingLevel={"h1"} style={{ color: "#000" }}>
-              Hey! Welcome to{" "}
-            </Text>
-            <Text
-              headingLevel={"h1"}
-              style={{
-                color: "#87C656",
-                fontWeight: "bolder",
-                borderBottom: "4px solid #87C656",
-              }}
-            >
-              LogiscticBambe
-            </Text>
-          </Account>
           <form onSubmit={handleSubmit}>
             <RegSectionRoles>
               <Separation>
@@ -248,6 +270,7 @@ function Registration() {
                     type={"text"}
                     label={"Full Name"}
                     value={data.fullname}
+                    id={"input1"}
                     name="fullname"
                     placeholder={"Full Name"}
                     error={false}
@@ -263,6 +286,7 @@ function Registration() {
                     type={"email"}
                     label={"Email"}
                     value={data.email}
+                    id={"input2"}
                     name="email"
                     placeholder={"Email"}
                     error={false}
@@ -283,6 +307,7 @@ function Registration() {
                     type={"password"}
                     label={"Password"}
                     value={data.password}
+                    id={"input3"}
                     name="Password"
                     placeholder={"Password"}
                     error={false}
@@ -298,6 +323,7 @@ function Registration() {
                     type={"password"}
                     label={"Password Confirmation"}
                     value={data.confirmPassword}
+                    id={"input4"}
                     name={"password"}
                     placeholder={"Password Confirmation"}
                     error={false}
@@ -317,6 +343,7 @@ function Registration() {
                     type={"text"}
                     label={""}
                     value={data.quarter}
+                    id={"input5"}
                     name={""}
                     placeholder={"Quarter"}
                     error={false}
@@ -331,6 +358,7 @@ function Registration() {
                   <Input
                     type={"text"}
                     label={""}
+                    id="input6"
                     value={data.IDcard}
                     name={""}
                     placeholder={"ID Number"}
@@ -341,27 +369,83 @@ function Registration() {
                   />
                 </Title>
               </Separation>
+              <Separation>
+                <Title>
+                  <Text headingLevel={"h1"}>Tel:</Text>
+                  <Input
+                    type={"text"}
+                    label={""}
+                    id="input6"
+                    value={data.phonenumber}
+                    name={""}
+                    placeholder={"Phone Number"}
+                    error={false}
+                    onChange={(e) =>
+                      setData({ ...data, phonenumber: e.target.value })
+                    }
+                  />
+                </Title>
+              </Separation>
+              
             </RegSectionRoles>
             <RegSectionRoles>
               <Account>
                 <Text headingLevel={"h1"}>Already have an account?</Text>
-                <Button label={""} onClick={() => navigateToPage("/login")}>
-                  Sign In
-                </Button>
-              </Account>
-              {error && <Text headingLevel={"h1"}>{error}</Text>}
-              <Button label={""} onClick={() => handleSubmit}>
-                <Text
-                  headingLevel={"h1"}
+                <div
                   style={{
-                    borderRadius: "5px",
-                    border: " solid #87C656",
-                    padding: "5px",
+                    width: "25%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottom: "1px solid #87C656",
+                    gap: "1rem",
                   }}
                 >
-                  Register
+                  <Button label={""} onClick={() => navigateToPage("/login")}>
+                    Sign In
+                  </Button>
+                </div>
+              </Account>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  gap: "1rem",
+                }}
+              >
+                <p>...........</p>
+                <p>OR</p>
+                <p>...........</p>
+              </div>
+
+              <button
+                onClick={handleGoogle}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: " rgba(135, 198, 86, 0.5)",
+                  padding: "5px",
+                  gap: "1rem",
+                }}
+              >
+                <IconStylingProvider value={iconStyling.value}>
+                  <FcGoogle
+                    size={iconStyling.value.size}
+                    color={iconStyling.value.color}
+                  />
+                </IconStylingProvider>
+                <Text headingLevel={"h1"}> Register with google account</Text>
+              </button>
+
+              {error && (
+                <Text headingLevel={"h1"} style={{ color: "red" }}>
+                  {error}
                 </Text>
-              </Button>
+              )}
             </RegSectionRoles>
           </form>
         </RegSection>

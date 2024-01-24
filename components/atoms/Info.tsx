@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Text from "./Text";
 
 type TextProps = {
@@ -26,6 +26,7 @@ const InfoMainContainer = styled("div")`
   background: #F1F2F3;
   border-left: 5px solid #87C656;
   border-radius: 5px;
+  min-width: 63vw;
   padding: 5px;
   gap: 1rem;
 

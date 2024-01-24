@@ -1,12 +1,14 @@
 "use client"
-import React, {useState} from "react";
+import React, {useMemo, useState, useEffect} from "react";
 import NavBar from "../../../components/molecules/NavBar";
 import MapSection from "../../../components/molecules/MapSection";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import TopNavBar from "../../../components/molecules/TopNavBar";
 import CustomerSection from "../../../components/molecules/CustomerSection";
 import Chart1 from "../../../components/molecules/Chart1";
 import { Data } from "../../../hooks/Data";
+import Footer from "../../../components/Organisms/Footer";
+import ResponseNav from "../../../components/atoms/responseNav";
 
 interface UserData {
   labels: any[];
@@ -21,6 +23,7 @@ const SubContainer = styled("div")`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background-color: ${(props) => props.color};
   height: 100%;
   width: 100%;
 
@@ -46,18 +49,16 @@ const LandingBody = styled("div")`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 1rem;
   height: 100%;
   width: 100%;
-  
-  // @media screen and (max-width: 770px) {
-  //   display: block;
-  //   background: blue;
-  //   max-width: 100%;
 `;
+
 
 const LandingPage: React.FC = () => {
   console.log("Data:", Data);
 
+ 
   const [userData, setUserData] = useState<UserData>({
     labels: Data?.map((data) => data.month),
     datasets: [
@@ -69,20 +70,22 @@ const LandingPage: React.FC = () => {
     ],
   });
 
+
   return (
     <SubContainer>
       <NavBar />
       <LandingBody>
         <TopNavBar />
+        <ResponseNav />
         <FirstSectionHolder>
           <MapSection />
           <CustomerSection />
         </FirstSectionHolder>
         <Chart1 chartData={userData} />
+        <Footer />
       </LandingBody>
     </SubContainer>
   );
 };
 
 export default LandingPage;
-
