@@ -227,6 +227,9 @@ function Registration() {
 
       const token = res.data.token;
 
+      if(typeof localStorage === undefined) return;
+
+
       localStorage.setItem("token", token);
 
       console.log("data", { res });

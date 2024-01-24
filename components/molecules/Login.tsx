@@ -139,6 +139,8 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => {
+    if( typeof localStorage === undefined) return;
+
     try {
       const response = await login(email, password);
 

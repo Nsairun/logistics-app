@@ -9,6 +9,8 @@ export function SessionGuard(Component: React.FC<any>) {
     const { setCurrentUser } = useAppContext();
 
     React.useEffect(() => {
+      if(typeof localStorage === undefined) return;
+
       const token = localStorage.getItem("token") || "";
 
       const loadUser = () => {

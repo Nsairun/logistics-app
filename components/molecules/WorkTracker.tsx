@@ -75,6 +75,7 @@ const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
  const localStorageObject =
+ 
  typeof localStorage !== "undefined" ? localStorage : null;
 
  useEffect(() => {
