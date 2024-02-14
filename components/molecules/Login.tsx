@@ -260,7 +260,7 @@ function Login() {
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
-                gap: "1rem",
+                gap: "1.2rem",
                 justifyContent: "center",
                 backgroundColor: " rgba(135, 198, 86, 0.5)",
                 padding: "5px",
