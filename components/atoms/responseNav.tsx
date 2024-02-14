@@ -43,7 +43,7 @@ const Modal = styled.div<{ show: boolean }>`
   @media screen and (max-width: 768px) {
     position: absolute;
     top: 60px;
-    right: ${({ show }) => (show ? "0" : "-200px")};
+    left: ${({ show }) => (show ? "0" : "-500px")};
     width: 200px;
     height: 70vh;
     background-color: rgba(0, 0, 0, 0.7);
@@ -105,26 +105,6 @@ const Navbar: React.FC = () => {
   const isAdmin = (currentUser: IUser | null | undefined) => {
     return currentUser?.role === "ADMIN";
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (typeof window !== "undefined" && window.innerWidth <= 700) {
-        setShowModal(true);
-      } else {
-        setShowModal(false);
-      }
-    };
-  
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      handleResize();
-  
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  
-  }, []);
 
   return (
     <NavbarContainer>
