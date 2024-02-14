@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import { LocalStorage } from "node-localstorage";
 
 const CalendarSection = styled.section`
   display: flex;
@@ -64,6 +65,7 @@ const CheckboxInput = styled.input`
 
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
+  const localStorage = new LocalStorage("./scratch");
 
   useEffect(() => {
     const savedWorkDays = localStorage.getItem("workDays");
