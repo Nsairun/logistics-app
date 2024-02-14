@@ -1,5 +1,3 @@
-// components/WorkTracker.tsx
-"use client"
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
@@ -11,10 +9,10 @@ const CalendarSection = styled.section`
   height: 100%;
   gap: 2rem;
 
-  // @media (max-width: 768px) {
-  //   display: block;
-  //   width: 100%;
-  // }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const MonthContainer = styled.div`
@@ -37,12 +35,6 @@ const MonthGrid = styled.div`
   box-shadow: 2px 5px 20px 2px #ccc;
   height: 45vh;
   padding: 20px;
-
-  
-  @media (max-width: 768px) {
-    width: 100%;
-    height; 100%;
-  }
 `;
 
 const DayCell = styled.div`
@@ -50,7 +42,7 @@ const DayCell = styled.div`
 `;
 
 const CheckboxInput = styled.input`
-appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 25px;
@@ -61,48 +53,35 @@ appearance: none;
   transition: all 0.3s ease;
 
   &:checked {
-    background-color:  rgba(135, 198, 86, 0.5);
-    border: 2px solid  rgba(135, 198, 86, 0.5);
+    background-color: rgba(135, 198, 86, 0.5);
+    border: 2px solid rgba(135, 198, 86, 0.5);
   }
 
   &:hover {
     transform: scale(1.1);
-  }`;
+  }
+`;
 
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
 
-  const localStorageObject =
-    typeof localStorage !== "undefined" ? localStorage : null;
-
   useEffect(() => {
-    if (localStorageObject) {
-      const savedWorkDays = localStorageObject.getItem("workDays");
-      if (savedWorkDays) {
-        setWorkDays(parseInt(savedWorkDays, 10));
-      }
+    const savedWorkDays = localStorage.getItem("workDays");
+    if (savedWorkDays) {
+      setWorkDays(parseInt(savedWorkDays, 10));
     }
-  }, [localStorageObject]);
-
+  }, []);
 
   const handleCheckboxChange = (day: number, month: number) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.checked) {
-        setWorkDays((prevDays) => prevDays + 1);
-        localStorage.setItem(`workDay_${month}_${day}`, "true");
-      } else {
-        setWorkDays((prevDays) => prevDays - 1);
-        localStorage.removeItem(`workDay_${month}_${day}`);
-      }
-      localStorage.setItem("workDays", String(workDays));
+      const isChecked = e.target.checked;
+      setWorkDays((prevDays) => prevDays + (isChecked ? 1 : -1));
+      localStorage.setItem(`workDay_${month}_${day}`, isChecked.toString());
+      localStorage.setItem("workDays", workDays.toString());
     };
   };
 
-  const renderDaysForMonth = (
-    month: number,
-    year: number,
-    monthName: string
-  ) => {
+  const renderDaysForMonth = (month: number, year: number, monthName: string) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     return (
       <MonthContainer key={month}>
@@ -115,8 +94,7 @@ const WorkTracker: React.FC = () => {
                 type="checkbox"
                 onChange={handleCheckboxChange(dayIndex + 1, month)}
                 checked={
-                  localStorage.getItem(`workDay_${month}_${dayIndex + 1}`) ===
-                  "true"
+                  localStorage.getItem(`workDay_${month}_${dayIndex + 1}`) === "true"
                 }
               />
             </DayCell>
@@ -127,56 +105,16 @@ const WorkTracker: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "center",
-        gap: "1rem",
-        marginTop: "2%" 
-      }}
-    >
-      <h1
-        style={{
-          width: "22vw",
-          margin: "auto",
-          padding: "5px",
-          fontWeight: "700",
-          borderBottom: "1px solid #ccc",
-          textAlign: "center",
-        }}
-      >
+    <div style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", gap: "1rem", marginTop: "2%" }}>
+      <h1 style={{ width: "22vw", margin: "auto", padding: "5px", fontWeight: "700", borderBottom: "1px solid #ccc", textAlign: "center" }}>
         RECORD SECTION
       </h1>
       <CalendarSection>
-        {renderDaysForMonth(0, 2023, "January")}
-        {renderDaysForMonth(1, 2023, "February")}
-        {renderDaysForMonth(2, 2023, "March")}
-        {renderDaysForMonth(3, 2023, "April")}
-        {renderDaysForMonth(4, 2023, "May")}
-        {renderDaysForMonth(5, 2023, "June")}
-        {renderDaysForMonth(6, 2023, "July")}
-        {renderDaysForMonth(7, 2023, "August")}
-        {renderDaysForMonth(8, 2023, "September")}
-        {renderDaysForMonth(9, 2023, "October")}
-        {renderDaysForMonth(10, 2023, "November")}
-        {renderDaysForMonth(11, 2023, "December")}
-        <div
-          style={{
-            width: "30%",
-            textAlign: "center",
-            margin: "auto",
-            marginBottom: "5%",
-          }}
-        >
-          <h1
-            style={{
-              padding: "5px",
-              fontWeight: "700",
-              border: "1px solid #ccc",
-            }}
-          >
+        {[...Array(12)].map((_, monthIndex) =>
+          renderDaysForMonth(monthIndex, 2023, new Date(2023, monthIndex).toLocaleString("default", { month: "long" }))
+        )}
+        <div style={{ width: "30%", textAlign: "center", margin: "auto", marginBottom: "5%" }}>
+          <h1 style={{ padding: "5px", fontWeight: "700", border: "1px solid #ccc" }}>
             Total work days: {workDays}
           </h1>
         </div>

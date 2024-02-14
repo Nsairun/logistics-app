@@ -31,7 +31,6 @@ const OrderMain = styled("div")`
   align-items: flex-start;
   width: 100%;
 
-  
   @media (max-width: 768px) {
     width: 100%;
     display: block;
