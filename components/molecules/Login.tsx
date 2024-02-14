@@ -15,7 +15,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { login } from "@/services/api";
 import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
-import {auth} from '../../firebase/firebaseconfig';
+import {auth} from '../../src/app/firebase/firebaseconfig';
 
 const RegMainContainer = styled("div")`
   display: flex;

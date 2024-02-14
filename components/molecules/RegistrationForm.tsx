@@ -19,7 +19,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
-import { auth } from "../../firebase/firebaseconfig";
+import { auth } from "../../src/app/firebase/firebaseconfig";
 
 export const RegContainer = styled("div")`
   display: flex;

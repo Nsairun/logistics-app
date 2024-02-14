@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Pie } from "react-chartjs-2";

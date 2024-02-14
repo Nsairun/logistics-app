@@ -1,4 +1,4 @@
-
+" use client "
 import React, { CSSProperties, ReactNode } from 'react';
 import styled from "@emotion/styled";
 import style from 'styled-jsx/style';
