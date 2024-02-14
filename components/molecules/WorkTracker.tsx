@@ -63,14 +63,18 @@ const CheckboxInput = styled.input`
   }
 `;
 
+
+const isBrowser = typeof window !== "undefined";
+
 const WorkTracker: React.FC = () => {
   const [workDays, setWorkDays] = useState<number>(0);
-  const localStorage = new LocalStorage("./scratch");
 
   useEffect(() => {
-    const savedWorkDays = localStorage.getItem("workDays");
-    if (savedWorkDays) {
-      setWorkDays(parseInt(savedWorkDays, 10));
+    if (isBrowser) {
+      const savedWorkDays = localStorage.getItem("workDays");
+      if (savedWorkDays) {
+        setWorkDays(parseInt(savedWorkDays, 10));
+      }
     }
   }, []);
 
@@ -78,8 +82,10 @@ const WorkTracker: React.FC = () => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const isChecked = e.target.checked;
       setWorkDays((prevDays) => prevDays + (isChecked ? 1 : -1));
-      localStorage.setItem(`workDay_${month}_${day}`, isChecked.toString());
-      localStorage.setItem("workDays", workDays.toString());
+      if (isBrowser) {
+        localStorage.setItem(`workDay_${month}_${day}`, isChecked.toString());
+        localStorage.setItem("workDays", workDays.toString());
+      }
     };
   };
 
