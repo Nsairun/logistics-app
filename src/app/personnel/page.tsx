@@ -18,7 +18,7 @@ import { SessionGuard } from "../../../components/Guards/SessionGuard";
 import { useAppContext } from "../../../hooks/AppContext";
 import { getOne } from "@/services/api";
 import { IUser } from "@/services/Interfaces/Interface";
-import WorkTracker from "../../../components/molecules/WorkTracker";
+//import WorkTracker from "../../../components/molecules/WorkTracker";
 import ResponseNav from "../../../components/atoms/responseNav";
 
 const OrderSubContainer = styled("div")`
@@ -254,7 +254,6 @@ const Page: React.FC = () => {
             </CustomerDetails>
           </CustomerMainDetails>}
         </ClientSection>
-        <WorkTracker /> 
         <Footer />
       </OrderMain>
     </OrderSubContainer>
