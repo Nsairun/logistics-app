@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import Text from "../atoms/Text";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 type DeliveryAdressProps = {
   deliveriesDone: string | number | boolean | React.ReactNode;

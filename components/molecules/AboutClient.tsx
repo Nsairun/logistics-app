@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
 import Text from "../atoms/Text";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 type AboutClientProps = {
-  ID: string | number;
+  ID: string;
   ordersDone: string | number;
   ordersCancelled: string | number;
 };

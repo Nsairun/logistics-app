@@ -1,5 +1,6 @@
+"use client"
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -35,6 +36,7 @@ const ChartContainer2 = styled("div")`
   justify-content: center;
   height: 42vh;
   width: 47vw;
+  border-radius: 10px;
   background-color: #eeeee;
 
   @media screen and (max-width: 770px) {

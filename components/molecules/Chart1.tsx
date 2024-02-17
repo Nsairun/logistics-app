@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Bar, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -30,6 +30,7 @@ const ChartContainer = styled("div")`
   height: 40vh;
   width: 50vw;
   color: #fff;
+  border-radius: 5px;
   border: 1px solid #eeeee;
   background-color: #F1F2F3;
 
@@ -45,11 +46,13 @@ const ChartContainer2 = styled("div")`
   justify-content: center;
   height: 40vh;
   width: 33vw;
+  border-radius: 10px;
   border: 1px solid #eeeee;
   background-color: #F1F2F3;
 
   @media screen and (max-width: 770px) {
-    display: block;
+    margin-top: 15px;
+    padding: 1rem;
     width: 100%;
 `;
 

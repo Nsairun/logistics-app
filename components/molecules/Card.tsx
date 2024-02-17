@@ -1,77 +1,85 @@
-import React from 'react';
-import styled from 'styled-components';
-import Image from "next/image";
-import firstimg from "../../public/black.png";
-import secondimg from "../../public/truck.png";
-import thirdimg from "../../public/more.png";
+"use client"
+import React from "react";
+import styled from "@emotion/styled";
+import Image, { StaticImageData } from "next/legacy/image";
 
- const CardContainer = styled('div')`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 2rem;
- `;
+const CardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 
- const CardOne = styled('div')`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   height: 70vh;
-   width: 25vw;
- `;
-  
- const CardInfo = styled('div')`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   gap: 1rem;
-   height: 40vh;
-   box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    flex-direction: column;
 `;
 
-function Card() {
-  return (
-    <CardContainer>
-       <CardOne>
-       <Image
-          src={firstimg}
-          alt="Slider Image"
-          objectFit="cover"
-          style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
-        />
-        <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Ship Like a Pro</h1>
-            <p style={{padding: "12px", fontSize: "15px"}}>Get access to powerful and time-saving customizable features found only in Logisticbambe</p>
-        </CardInfo>
-       </CardOne>
-       <CardOne>
-       <Image
-          src={secondimg}
-          alt="Slider Image"
-          objectFit="cover"
-          style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
-        />
-        <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Save on Frequent Shipping</h1>
-            <p style={{padding: "12px", fontSize: "15px"}}>Get preferred rates, billing options and other great benefits of having an account!</p>
-        </CardInfo>
-       </CardOne>
-       <CardOne>
-       <Image
-          src={thirdimg}
-          alt="Slider Image"
-          objectFit="cover"
-          style={{ height: "100%", width: "100%", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}
-        />
-        <CardInfo>
-            <h1 style={{fontWeight: "700", fontSize: "12px", padding: "15px", borderBottom: "1px solid #87C656"}}>Not Home? Change of Plans?</h1>
-            <p style={{padding: "12px", fontSize: "15px"}}>Take control of your shipment delivery!  Decide when and where you want us to deliver.</p>
-        </CardInfo>
-       </CardOne>
-    </CardContainer>
-  )
+const CardOne = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  width: 25vw;
+
+  @media screen and (max-width: 770px) {
+    width: 100%;
+`;
+
+const CardInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  height: 40vh;
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+`;
+
+interface CardProps {
+  imageSrc: StaticImageData;
+  title: string;
+  description: string;
+  type: string;
 }
 
-export default Card
+function Card({ imageSrc, title, description }: CardProps) {
+  
+  return (
+    <CardContainer>
+      <CardOne>
+        <Image
+          src={imageSrc}
+          alt="Slider Image"
+          objectFit="cover"
+          width={"450"}
+          height={"400"}
+          quality={100}
+          style={{
+            height: "100%",
+            width: "50vw",
+            borderTopLeftRadius: "5px",
+            borderTopRightRadius: "5px",
+          }}
+        />
+        <CardInfo>
+          <h1
+            style={{
+              fontWeight: "700",
+              fontSize: "15px",
+              padding: "15px",
+              borderBottom: "1px solid #87C656",
+            }}
+          >
+            {title}
+          </h1>
+          <p style={{ padding: "12px", fontSize: "15px", textAlign: "center" }}>{description}</p>
+        </CardInfo>
+      </CardOne>
+    </CardContainer>
+  );
+}
+
+export default Card;

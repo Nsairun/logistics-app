@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Text from '../atoms/Text';
 
 interface PersonalInfoProp {
@@ -22,6 +22,10 @@ const ContactContainer = styled.div`
   width: 40vw;
   gap: 1rem;
   color: #000;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const ContactSubContainer = styled.div`
   display: flex;
@@ -31,6 +35,10 @@ const ContactSubContainer = styled.div`
   padding: 10px;
   align-text: left;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const PersonnelInfo: React.FC<PersonalInfoProp> = ({
   ID,
@@ -52,12 +60,6 @@ const PersonnelInfo: React.FC<PersonalInfoProp> = ({
             Customer ID Num:
           </Text>
           <Text headingLevel={"h1"}>{ID}</Text>
-        </ContactSubContainer>
-        <ContactSubContainer>
-          <Text headingLevel={"h1"}>
-            Delivery Area:
-          </Text>
-          <Text headingLevel={"h1"}>{DelivArea}</Text>
         </ContactSubContainer>
         <ContactSubContainer>
           <Text headingLevel={"h1"}>
