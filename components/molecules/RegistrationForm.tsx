@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Text from "../atoms/Text";

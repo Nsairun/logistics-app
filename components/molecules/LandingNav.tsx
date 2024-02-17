@@ -1,11 +1,10 @@
-"use client"
-import React from "react";
+'use client'
+
 import styled from "@emotion/styled";
 import Vehicule from "../atoms/Vehicule";
 import Button from "../atoms/Button";
 import { useRouter } from "next/navigation"; 
 import { useAppContext } from "../../hooks/AppContext";
-
 
 const NavContainer = styled("div")`
   display: flex;

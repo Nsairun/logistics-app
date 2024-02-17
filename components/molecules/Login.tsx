@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import styled from "@emotion/styled";
 import RegImage from "../../public/real logo.png";
 import Image from "next/legacy/image";
